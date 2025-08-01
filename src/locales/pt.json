@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "role": "Engenheiro de Software • Angular & React Specialist",
+    "bio": "Há mais de 5 anos transformo ideias em produtos digitais usando Angular, React, Ionic e NestJS. Amante de clean code, UX sem fricção, pizza de pepperoni e longas caminhadas com meus cães.",
+    "cta_projects": "Ver projetos",
+    "cta_contact": "Falar comigo"
+  },
+  "footer": {
+    "quick_links": "Links rápidos",
+    "services": "Serviços",
+    "rights": "© {{year}} Matheus Oliveira. Todos os direitos reservados.",
+    "made_with": "Feito com ❤, ☕ e umas linhas de TypeScript.",
+    "links": {
+      "about": "Sobre",
+      "skills": "Skills",
+      "projects": "Projetos",
+      "contact": "Contato"
+    },
+    "services_list": {
+      "web": "Web & Mobile",
+      "api": "APIs REST / NestJS",
+      "consulting": "Consultoria de Arquitetura",
+      "mentoring": "Mentoria Técnica"
+    }
+  }
+}

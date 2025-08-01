@@ -1,27 +1,41 @@
-import { Toaster } from "@/components/ui/toaster";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import LanguageSwitch from "./components/LanguageSwitch";
+import { LocaleProvider } from "./contexts/LocaleContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <LocaleProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            
+            <header className="fixed top-4 right-4 z-50 flex gap-4 items-center">
+              <LanguageSwitch />
+              <ThemeSwitch />
+            </header>
 
-export default App;
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </LocaleProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
+}

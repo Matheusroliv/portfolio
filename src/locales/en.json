@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "role": "Software Engineer • Angular & React Specialist",
+    "bio": "For 5+ years I’ve turned ideas into production apps with Angular, React, Ionic and NestJS. Clean-code advocate, UX enthusiast, pepperoni-pizza lover and proud dog dad.",
+    "cta_projects": "View projects",
+    "cta_contact": "Get in touch"
+  },
+  "footer": {
+    "quick_links": "Quick links",
+    "services": "Services",
+    "rights": "© {{year}} Matheus Oliveira. All rights reserved.",
+    "made_with": "Made with ❤, ☕ and a pinch of TypeScript.",
+    "links": {
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "services_list": {
+      "web": "Web & Mobile",
+      "api": "REST APIs / NestJS",
+      "consulting": "Architecture Consulting",
+      "mentoring": "Technical Mentoring"
+    }
+  }
+}

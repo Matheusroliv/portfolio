@@ -1,8 +1,8 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
 
 const Contact = () => {
@@ -14,9 +14,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica de envio do formulário
     console.log("Form submitted:", formData);
-    // Reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -40,7 +38,6 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
           <div className="space-y-8">
             <Card className="glass-card p-6 hover:scale-105 transition-all duration-300">
               <div className="flex items-center gap-4">
@@ -86,7 +83,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
           <Card className="glass-card p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
