@@ -7,9 +7,12 @@ import { useTranslation } from "react-i18next";
 export default function Hero() {
   const { t } = useTranslation();
 
-  /* -------- efeito máquina-de-escrever -------- */
   const [text, setText] = useState("");
   const role = t("hero.role");
+
+  useEffect(() => {
+    setText("");
+  }, [role]);
 
   useEffect(() => {
     if (text.length < role.length) {
@@ -19,7 +22,7 @@ export default function Hero() {
   }, [text, role]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-12 md:pt-32 pb-24 md:pb-32">
       <div className="container mx-auto px-6 relative z-10 text-center space-y-10">
         <Reveal dir="up">
           <h1 className="text-6xl md:text-8xl font-bold leading-tight">
@@ -30,10 +33,12 @@ export default function Hero() {
         </Reveal>
 
         <Reveal dir="up" delay={0.15}>
-          <p className="text-xl md:text-2xl text-muted-foreground h-10 flex justify-center">
-            {text}
-            <span className="animate-pulse">|</span>
-          </p>
+          <div className="flex justify-center">
+            <p className="typewriter text-xl md:text-2xl text-muted-foreground text-center leading-relaxed">
+              {text}
+              <span aria-hidden className="caret" />
+            </p>
+          </div>
         </Reveal>
 
         <Reveal dir="up" delay={0.3}>
@@ -57,11 +62,13 @@ export default function Hero() {
         </Reveal>
 
         <Reveal dir="up" delay={0.6}>
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center gap-6 mb-8">
             <a
               href="https://github.com/seu-usuario"
               className="p-3 glass-card hover:scale-110 transition-transform"
               aria-label="GitHub"
+              target="_blank"
+              rel="noreferrer"
             >
               <Github className="w-6 h-6" />
             </a>
@@ -69,6 +76,8 @@ export default function Hero() {
               href="https://linkedin.com/in/seu-usuario"
               className="p-3 glass-card hover:scale-110 transition-transform"
               aria-label="LinkedIn"
+              target="_blank"
+              rel="noreferrer"
             >
               <Linkedin className="w-6 h-6" />
             </a>
@@ -83,8 +92,8 @@ export default function Hero() {
         </Reveal>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <ArrowDown className="w-6 h-6 text-primary" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-4 md:bottom-8 flex justify-center">
+        <ArrowDown className="w-6 h-6 text-primary animate-bounce" />
       </div>
     </section>
   );

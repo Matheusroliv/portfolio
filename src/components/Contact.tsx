@@ -22,7 +22,6 @@ export default function Contact() {
   return (
     <section className="py-20 px-6 bg-muted/30">
       <div className="container mx-auto">
-        {/* ---------- Cabeçalho ---------- */}
         <Reveal dir="up">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -35,7 +34,6 @@ export default function Contact() {
         </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* ---------- Informações ---------- */}
           <div className="space-y-8">
             {[
               { icon: Mail, label: "Email", value: "matheus@email.com" },
@@ -67,7 +65,6 @@ export default function Contact() {
             </Reveal>
           </div>
 
-          {/* ---------- Formulário ---------- */}
           <Reveal dir="right" delay={0.2}>
             <Card className="glass-card p-8">
               <form onSubmit={handleSubmit} className="space-y-6">

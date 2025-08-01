@@ -62,7 +62,6 @@ export default function Footer() {
             </div>
           </Reveal>
 
-          {/* ——— Serviços ——— */}
           <Reveal dir="right" delay={0.3}>
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">{t("footer.services")}</h4>
