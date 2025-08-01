@@ -47,6 +47,20 @@
 }
 
 @layer utilities {
+  .scale-y-0 {
+    transform: scaleY(0);
+  }
+  .scale-y-100 {
+    transform: scaleY(1);
+  }
+
+  .max-h-0 {
+    max-height: 0;
+  }
+  .max-h-60 {
+    max-height: 15rem;
+  }
+
   .font-emoji {
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
   }
@@ -127,5 +141,19 @@
   }
   .animate-slide-right-fade {
     animation: slideRightFade 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-slide-down {
+    animation: slideDown 0.18s ease-out;
   }
 }

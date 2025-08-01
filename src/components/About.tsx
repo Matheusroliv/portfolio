@@ -71,7 +71,7 @@ export default function About() {
                     cargo: "Full Stack Developer",
                     empresa: "Code Tech",
                     periodo: "2023 – Presente",
-                    desc: "Templates NestJS + Ionic que reduziram deploy em 80 %."
+                    desc: "Templates NestJS + Ionic que reduziram deploy em 80%."
                   },
                   {
                     cargo: "Frontend Developer",

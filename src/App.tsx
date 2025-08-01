@@ -1,37 +1,36 @@
-import ThemeSwitch from "@/components/ThemeSwitch";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { ThemeProvider } from "@/contexts/ThemeContext";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Toaster as Sonner } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/toaster"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { ThemeProvider } from "@/contexts/ThemeContext"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import LanguageSwitch from "./components/LanguageSwitch";
-import SeoTitle from "./components/SeoTitle";
-import { LocaleProvider } from "./contexts/LocaleContext";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar"
+import SeoTitle from "./components/SeoTitle"
+import { LocaleProvider } from "./contexts/LocaleContext"
 
-const queryClient = new QueryClient();
+import Index from "./pages/Index"
+import NotFound from "./pages/NotFound"
+import Games from "./pages/games"
+
+const queryClient = new QueryClient()
 
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <LocaleProvider>
-          <SeoTitle />
           <TooltipProvider>
             <Toaster />
             <Sonner />
 
-            <header className="fixed top-4 right-4 z-50 flex gap-4 items-center">
-              <LanguageSwitch />
-              <ThemeSwitch />
-            </header>
-
             <BrowserRouter>
+              <SeoTitle />
+              <Navbar />
+
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/games" element={<Games />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
@@ -39,5 +38,5 @@ export default function App() {
         </LocaleProvider>
       </ThemeProvider>
     </QueryClientProvider>
-  );
+  )
 }
