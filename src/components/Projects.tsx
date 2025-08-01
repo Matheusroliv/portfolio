@@ -1,7 +1,8 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { ExternalLink, Github } from "lucide-react";
+import Reveal from "./Reveal";
 
 const Projects = () => {
   const projects = [
@@ -53,44 +54,44 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card 
-              key={project.title}
-              className="glass-card overflow-hidden hover:scale-105 transition-all duration-300 group"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              
-              <div className="p-6 space-y-4">
-                <h3 className="text-xl font-bold">{project.title}</h3>
-                <p className="text-muted-foreground">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
+            <Reveal key={project.title} dir={index % 2 ? "up" : "up"} delay={index * 0.15}>
+              <Card
+                className="glass-card overflow-hidden hover:scale-105 transition-transform duration-300 group"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                
-                <div className="flex gap-3 pt-4">
-                  <Button size="sm" className="gradient-button">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Demo
-                  </Button>
-                  <Button size="sm" variant="outline">
-                    <Github className="w-4 h-4 mr-2" />
-                    Código
-                  </Button>
+
+                <div className="p-6 space-y-4">
+                  <h3 className="text-xl font-bold">{project.title}</h3>
+                  <p className="text-muted-foreground">{project.description}</p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <Badge key={tech} variant="secondary" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-3 pt-4">
+                    <Button size="sm" className="gradient-button">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Demo
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Github className="w-4 h-4 mr-2" />
+                      Código
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </Reveal>
           ))}
         </div>
 

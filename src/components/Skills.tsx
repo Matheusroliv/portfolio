@@ -1,84 +1,124 @@
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { Cpu, Globe, LayoutDashboard, LayoutList, Server, Users } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import {
+  SiAmazon,
+  SiAngular,
+  SiBootstrap,
+  SiCplusplus,
+  SiCss3,
+  SiDocker,
+  SiGit, SiGithub, SiGithubactions,
+  SiGraphql,
+  SiHtml5,
+  SiIonic,
+  SiJasmine,
+  SiJavascript,
+  SiJest,
+  SiJira,
+  SiMongodb,
+  SiMui,
+  SiNestjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiSendgrid,
+  SiStyledcomponents,
+  SiTailwindcss,
+  SiTwilio,
+  SiTypescript
+} from "react-icons/si";
+import Reveal from "./Reveal";
 
-const Skills = () => {
+export default function Skills() {
+  const { t } = useTranslation();
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setAnimated(true), 500);
-    return () => clearTimeout(timer);
+    const id = setTimeout(() => setAnimated(true), 400);
+    return () => clearTimeout(id);
   }, []);
 
+  const icons: Record<string, JSX.Element> = {
+    JavaScript: <SiJavascript />,
+    TypeScript: <SiTypescript />,
+    "React.js": <SiReact />,
+    Angular: <SiAngular />,
+    "Node.js": <SiNodedotjs />,
+    "React Native": <SiReact />,
+    NestJS: <SiNestjs />,
+    "Ionic Framework": <SiIonic />,
+    "REST APIs": <Server />,
+    AWS: <SiAmazon />,
+    Docker: <SiDocker />,
+    "Tailwind CSS": <SiTailwindcss />,
+    "Material-UI": <SiMui />,
+    "styled-components": <SiStyledcomponents />,
+    Jest: <SiJest />,
+    "React Hooks": <SiReact />,
+    AngularJS: <SiAngular />,
+    i18n: <Globe />,
+    GraphQL: <SiGraphql />,
+    Jasmine: <SiJasmine />,
+    MongoDB: <SiMongodb />,
+    PostgreSQL: <SiPostgresql />,
+    Twilio: <SiTwilio />,
+    SendGrid: <SiSendgrid />,
+    Git: <SiGit />,
+    GitHub: <SiGithub />,
+    "CI / CD": <SiGithubactions />,
+    Jira: <SiJira />,
+    Kanban: <LayoutDashboard />,
+    Scrum: <Users />,
+    "Agile Methodologies": <Globe />,
+    Scrumban: <LayoutList />,
+    HTML5: <SiHtml5 />,
+    CSS: <SiCss3 />,
+    Bootstrap: <SiBootstrap />,
+    "Web Engineering": <Globe />,
+    "Software Infrastructure": <Server />,
+    "C++": <SiCplusplus />
+  };
+
   const skills = [
-    { name: "React", level: 95, color: "bg-blue-500" },
-    { name: "TypeScript", level: 90, color: "bg-blue-600" },
-    { name: "Node.js", level: 85, color: "bg-green-500" },
-    { name: "Python", level: 80, color: "bg-yellow-500" },
-    { name: "PostgreSQL", level: 85, color: "bg-indigo-500" },
-    { name: "AWS", level: 75, color: "bg-orange-500" },
+    "JavaScript", "TypeScript", "React.js", "Angular", "Node.js", "React Native",
+    "NestJS", "Ionic Framework", "REST APIs", "AWS", "Docker",
+    "Tailwind CSS", "Material-UI", "styled-components", "Jest",
+    "React Hooks", "AngularJS", "i18n", "GraphQL", "Karma", "Jasmine",
+    "MongoDB", "PostgreSQL", "Twilio", "SendGrid",
+    "Git", "GitHub", "CI / CD", "Jira", "Kanban", "Scrum",
+    "Agile Methodologies", "Scrumban",
+    "HTML5", "CSS", "Bootstrap", "Web Engineering",
+    "Software Infrastructure", "Microsoft Excel", "C++"
   ];
 
   return (
     <section className="py-20 px-6 bg-muted/30">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Minhas <span className="gradient-text">Skills</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tecnologias que domino e uso para criar soluções incríveis
-          </p>
-        </div>
+        <Card className="glass-card p-8 max-w-6xl mx-auto">
+          <h3 className="text-2xl font-bold mb-6 text-center">
+            {t("skills.title", "Tech Stack")}
+          </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skills.map((skill, index) => (
-            <Card 
-              key={skill.name} 
-              className="glass-card p-6 hover:scale-105 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold">{skill.name}</h3>
-                  <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                </div>
-                <div className="w-full bg-muted rounded-full h-2">
-                  <div 
-                    className={`h-2 rounded-full ${skill.color} transition-all duration-1000 ease-out`}
-                    style={{ 
-                      width: animated ? `${skill.level}%` : '0%',
-                      background: 'var(--gradient-primary)'
-                    }}
-                  />
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <Card className="glass-card p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6">Outras Tecnologias</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              {[
-                "Docker", "Git", "MongoDB", "Redis", 
-                "GraphQL", "Jest", "Figma", "Linux"
-              ].map((tech, index) => (
-                <div 
-                  key={tech}
-                  className="p-3 glass-card hover:scale-110 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.05}s` }}
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            {skills.map((tech, i) => (
+              <Reveal key={tech} dir="up" delay={i * 0.02}>
+                <div
+                  className="
+      p-3 glass-card text-center text-sm font-medium
+      flex flex-col items-center gap-2
+      hover:scale-110 transition-transform
+    "
                 >
-                  <span className="text-sm font-medium">{tech}</span>
+                  <span className="text-xl">{icons[tech] ?? <Cpu />}</span>
+                  {tech}
                 </div>
-              ))}
-            </div>
-          </Card>
-        </div>
+              </Reveal>
+            ))}
+          </div>
+        </Card>
       </div>
     </section>
   );
-};
-
-export default Skills;
+}

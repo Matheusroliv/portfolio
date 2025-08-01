@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import LanguageSwitch from "./components/LanguageSwitch";
+import SeoTitle from "./components/SeoTitle";
 import { LocaleProvider } from "./contexts/LocaleContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -18,10 +19,11 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <LocaleProvider>
+          <SeoTitle />
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            
+
             <header className="fixed top-4 right-4 z-50 flex gap-4 items-center">
               <LanguageSwitch />
               <ThemeSwitch />
