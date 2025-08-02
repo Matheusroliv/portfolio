@@ -299,8 +299,8 @@ export default function SnakeGame() {
 
   const multiplier = power ? (power.star && power.pepper ? 3 : 2) : 1;
   const powerBadge =
-    multiplier === 3 ? "🌶️⭐ 3× combo!" :
-      multiplier === 2 ? "✨ 2× combo!" : null;
+    multiplier === 3 ? "🌶️⭐ 3x combo!" :
+      multiplier === 2 ? "✨ 2x combo!" : null;
 
   const poweredClass =
     multiplier === 3 ? "snake-powered-3x" :
@@ -424,7 +424,7 @@ export default function SnakeGame() {
       )}
 
       <div className="text-xs text-center opacity-60">
-        Use Arrow Keys or WASD. Base points: {LEVEL_POINTS[level]} (⭐ 2×, 🌶️ 2×, ⭐+🌶️ = 3× por 15s).
+        Use Arrow Keys or WASD. Base points: {LEVEL_POINTS[level]} (⭐ 2x, 🌶️ 2x, ⭐+🌶️ = 3x por 15s).
       </div>
     </div>
   );
