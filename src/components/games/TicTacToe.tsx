@@ -9,15 +9,20 @@ type Level = "easy" | "medium" | "hard";
 type Line = readonly [number, number, number];
 
 const WIN: readonly Line[] = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],
-  [0, 4, 8], [2, 4, 6],
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ] as const;
 
 const LEVELS: Record<Level, string> = { easy: "😴 Easy", medium: "🙂 Medium", hard: "🤖 Hard" };
 
 const getWinLine = (board: Cell[], p: Player): Line | null =>
-  WIN.find(line => line.every(i => board[i] === p)) ?? null;
+  WIN.find((line) => line.every((i) => board[i] === p)) ?? null;
 
 export default function TicTacToe() {
   const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
@@ -35,8 +40,12 @@ export default function TicTacToe() {
   const place = (p: Player, idx: number, brd = board, mvs = moves) => {
     const nb = [...brd];
     const q = [...mvs[p]];
-    if (q.length === 3) { const out = q.shift()!; nb[out] = null; }
-    nb[idx] = p; q.push(idx);
+    if (q.length === 3) {
+      const out = q.shift()!;
+      nb[out] = null;
+    }
+    nb[idx] = p;
+    q.push(idx);
     return { board: nb, moves: { ...mvs, [p]: q } };
   };
 
@@ -44,8 +53,17 @@ export default function TicTacToe() {
     if (winner || board[idx] || turn !== "X") return;
     const { board: nb, moves: nm } = place("X", idx);
     const line = getWinLine(nb, "X");
-    if (line) { setBoard(nb); setMoves(nm); setWinner("X"); setWinningLine(line); return; }
-    setBoard(nb); setMoves(nm); setTurn("O"); setLocked(true);
+    if (line) {
+      setBoard(nb);
+      setMoves(nm);
+      setWinner("X");
+      setWinningLine(line);
+      return;
+    }
+    setBoard(nb);
+    setMoves(nm);
+    setTurn("O");
+    setLocked(true);
   };
 
   const pickAiMove = (): number | null => {
@@ -53,15 +71,20 @@ export default function TicTacToe() {
     if (!free.length) return null;
     const random = () => free[Math.floor(Math.random() * free.length)];
     const tryLine = (p: Player) => {
-      for (const idx of free) { const sim = place(p, idx); if (getWinLine(sim.board, p)) return idx; }
+      for (const idx of free) {
+        const sim = place(p, idx);
+        if (getWinLine(sim.board, p)) return idx;
+      }
       return null;
     };
     if (level === "easy") return random();
-    const win = tryLine("O"); if (win !== null) return win;
-    const block = tryLine("X"); if (block !== null) return block;
+    const win = tryLine("O");
+    if (win !== null) return win;
+    const block = tryLine("X");
+    if (block !== null) return block;
     if (level === "hard") {
       if (board[4] === null) return 4;
-      const corners = [0, 2, 6, 8].filter(i => board[i] === null);
+      const corners = [0, 2, 6, 8].filter((i) => board[i] === null);
       if (corners.length) return corners[Math.floor(Math.random() * corners.length)];
     }
     return random();
@@ -69,18 +92,30 @@ export default function TicTacToe() {
 
   useEffect(() => {
     if (turn !== "O" || winner) return;
-    const idx = pickAiMove(); if (idx === null) return;
+    const idx = pickAiMove();
+    if (idx === null) return;
     const t = setTimeout(() => {
       const { board: nb, moves: nm } = place("O", idx);
       const line = getWinLine(nb, "O");
-      if (line) { setBoard(nb); setMoves(nm); setWinner("O"); setWinningLine(line); }
-      else { setBoard(nb); setMoves(nm); setTurn("X"); }
+      if (line) {
+        setBoard(nb);
+        setMoves(nm);
+        setWinner("O");
+        setWinningLine(line);
+      } else {
+        setBoard(nb);
+        setMoves(nm);
+        setTurn("X");
+      }
     }, 350);
     return () => clearTimeout(t);
   }, [turn, winner, board, moves, level]);
 
   useEffect(() => {
-    if (!winningLine || !boardRef.current) { setWinPts(null); return; }
+    if (!winningLine || !boardRef.current) {
+      setWinPts(null);
+      return;
+    }
     const [a, , c] = winningLine;
     const ra = cellRefs.current[a]?.getBoundingClientRect();
     const rc = cellRefs.current[c]?.getBoundingClientRect();
@@ -110,7 +145,7 @@ export default function TicTacToe() {
   return (
     <div className="space-y-4">
       <div className="flex justify-center gap-2">
-        {(Object.keys(LEVELS) as Level[]).map(l => (
+        {(Object.keys(LEVELS) as Level[]).map((l) => (
           <Button key={l} size="sm" variant={level === l ? "default" : "outline"} disabled={locked} onClick={() => setLevel(l)}>
             {LEVELS[l]}
           </Button>
@@ -124,7 +159,7 @@ export default function TicTacToe() {
       <div className="relative mx-auto w-fit" ref={boardRef}>
         <ConfettiRain active={!!winner} />
         {winPts && (
-          <svg className="pointer-events-none absolute inset-0 z-40" width="100%" height="100%">
+          <svg className="pointer-events-none absolute inset-0 z-30" width="100%" height="100%">
             <line x1={winPts.x1} y1={winPts.y1} x2={winPts.x2} y2={winPts.y2} className="win-line win-line--glow" style={{ ["--len" as any]: `${winPts.len}px` }} />
             <line x1={winPts.x1} y1={winPts.y1} x2={winPts.x2} y2={winPts.y2} className="win-line" style={{ ["--len" as any]: `${winPts.len}px` }} />
           </svg>
@@ -133,24 +168,25 @@ export default function TicTacToe() {
           {board.map((v, i) => {
             const willVanish = v !== null && moves[v].length === 3 && moves[v][0] === i;
             const isWin = winningLine?.includes(i);
-            const showTrophyHere = winner && i === winningLine?.[1];
+            const dim = willVanish && !isWin;
+            const showTrophyHere = winner && i === midIdx;
             return (
               <button
                 key={i}
                 ref={(el) => (cellRefs.current[i] = el)}
                 onClick={() => handleClick(i)}
                 className={`
-            w-20 h-20 md:w-24 md:h-24 rounded-xl
-            bg-muted dark:bg-card
-            text-3xl md:text-4xl font-bold
-            flex items-center justify-center
-            transition-transform hover:scale-105
-            focus:outline-none focus:ring-2 focus:ring-primary/60
-            ${willVanish ? "opacity-40" : ""} ${isWin ? "win-cell" : ""} ${showTrophyHere ? "relative" : ""}
-          `}
+                  w-20 h-20 md:w-24 md:h-24 rounded-xl
+                  bg-muted dark:bg-card
+                  text-3xl md:text-4xl font-bold
+                  flex items-center justify-center
+                  transition-transform hover:scale-105
+                  focus:outline-none focus:ring-2 focus:ring-primary/60
+                  ${dim ? "opacity-40" : ""} ${isWin ? "win-cell" : ""} ${showTrophyHere ? "relative z-40" : ""}
+                `}
               >
                 {showTrophyHere && (
-                  <span className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center text-7xl md:text-8xl animate-win-pop drop-shadow">
+                  <span className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center text-6xl md:text-7xl animate-win-pop drop-shadow">
                     🏆
                   </span>
                 )}
@@ -161,7 +197,9 @@ export default function TicTacToe() {
         </div>
       </div>
 
-      <Button onClick={reset} className="w-full">Reiniciar</Button>
+      <Button onClick={reset} className="w-full">
+        Reiniciar
+      </Button>
     </div>
   );
 }
