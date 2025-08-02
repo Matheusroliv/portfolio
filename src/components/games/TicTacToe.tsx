@@ -33,6 +33,7 @@ export default function TicTacToe() {
   const [level, setLevel] = useState<Level>("easy");
   const [locked, setLocked] = useState(false);
   const [winPts, setWinPts] = useState<{ x1: number; y1: number; x2: number; y2: number; len: number } | null>(null);
+  const [trophyPos, setTrophyPos] = useState<{ x: number; y: number } | null>(null);
 
   const boardRef = useRef<HTMLDivElement>(null);
   const cellRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -129,6 +130,22 @@ export default function TicTacToe() {
     setWinPts({ x1: ax, y1: ay, x2: cx, y2: cy, len });
   }, [winningLine]);
 
+  const midIdx = winningLine?.[1];
+
+  useEffect(() => {
+    if (!winner || midIdx == null || !boardRef.current) {
+      setTrophyPos(null);
+      return;
+    }
+    const rMid = cellRefs.current[midIdx]?.getBoundingClientRect();
+    const rBoard = boardRef.current.getBoundingClientRect();
+    if (!rMid) return;
+    setTrophyPos({
+      x: rMid.left + rMid.width / 2 - rBoard.left,
+      y: rMid.top + rMid.height / 2 - rBoard.top,
+    });
+  }, [winner, midIdx]);
+
   const reset = () => {
     setBoard(Array(9).fill(null));
     setMoves({ X: [], O: [] });
@@ -136,11 +153,11 @@ export default function TicTacToe() {
     setWinner(null);
     setWinningLine(null);
     setWinPts(null);
+    setTrophyPos(null);
     setLocked(false);
   };
 
   const status = winner ? `🏆 ${winner} venceu!` : `Vez de ${turn}`;
-  const midIdx = winningLine?.[1];
 
   return (
     <div className="space-y-4">
@@ -158,18 +175,28 @@ export default function TicTacToe() {
 
       <div className="relative mx-auto w-fit" ref={boardRef}>
         <ConfettiRain active={!!winner} />
+
         {winPts && (
-          <svg className="pointer-events-none absolute inset-0 z-30" width="100%" height="100%">
+          <svg className="pointer-events-none absolute inset-0 z-40" width="100%" height="100%">
             <line x1={winPts.x1} y1={winPts.y1} x2={winPts.x2} y2={winPts.y2} className="win-line win-line--glow" style={{ ["--len" as any]: `${winPts.len}px` }} />
             <line x1={winPts.x1} y1={winPts.y1} x2={winPts.x2} y2={winPts.y2} className="win-line" style={{ ["--len" as any]: `${winPts.len}px` }} />
           </svg>
         )}
+
+        {trophyPos && (
+          <div
+            className="pointer-events-none absolute z-50"
+            style={{ left: trophyPos.x, top: trophyPos.y, transform: "translate(-50%, -50%)" }}
+          >
+            <span className="trophy-animate drop-shadow text-6xl md:text-7xl">🏆</span>
+          </div>
+        )}
+
         <div className={`grid grid-cols-3 gap-3 ${winner ? "animate-board-shake" : ""}`}>
           {board.map((v, i) => {
             const willVanish = v !== null && moves[v].length === 3 && moves[v][0] === i;
             const isWin = winningLine?.includes(i);
             const dim = willVanish && !isWin;
-            const showTrophyHere = winner && i === midIdx;
             return (
               <button
                 key={i}
@@ -182,14 +209,9 @@ export default function TicTacToe() {
                   flex items-center justify-center
                   transition-transform hover:scale-105
                   focus:outline-none focus:ring-2 focus:ring-primary/60
-                  ${dim ? "opacity-40" : ""} ${isWin ? "win-cell" : ""} ${showTrophyHere ? "relative z-40" : ""}
+                  ${dim ? "opacity-40" : ""} ${isWin ? "win-cell" : ""}
                 `}
               >
-                {showTrophyHere && (
-                  <span className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center text-6xl md:text-7xl animate-win-pop drop-shadow">
-                    🏆
-                  </span>
-                )}
                 <span className={isWin ? "animate-win-pop" : ""}>{v}</span>
               </button>
             );
