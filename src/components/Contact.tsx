@@ -20,7 +20,7 @@ export default function Contact() {
   ) => setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   return (
-    <section className="py-20 px-6 bg-muted/30">
+    <section className="py-20 px-1 bg-muted/30">
       <div className="container mx-auto">
         <Reveal dir="up">
           <div className="text-center mb-16">

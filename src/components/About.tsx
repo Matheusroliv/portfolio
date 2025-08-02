@@ -4,7 +4,7 @@ import { Code, Palette, Rocket } from "lucide-react";
 
 export default function About() {
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-1">
       <div className="container mx-auto">
         <Reveal dir="up">
           <div className="text-center mb-16">

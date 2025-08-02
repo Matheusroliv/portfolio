@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { Cpu, Globe, LayoutDashboard, LayoutList, Server, Users } from "lucide-react";
+import { Cpu, Globe, LayoutDashboard, LayoutList, Server, Users, Plus, Minus } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -69,7 +69,7 @@ export default function Skills() {
   const canShowLess = visibleCount > INITIAL;
 
   return (
-    <section className="py-20 px-6 bg-muted/30">
+    <section className="py-20 px-1 bg-muted/30">
       <div className="container mx-auto">
         <Card className="glass-card p-8 max-w-6xl mx-auto">
           <h3 className="text-2xl font-bold mb-6 text-center">
@@ -106,25 +106,29 @@ export default function Skills() {
             <button
               disabled={!canShowMore}
               onClick={() => setTarget(Math.min(allSkills.length, visibleCount + STEP))}
+              aria-label={t("skills.show_more", "Show more")}
               className="
-                px-4 py-2 rounded-md border
+                inline-flex items-center justify-center
+                w-10 h-10 rounded-md border
                 disabled:opacity-40 disabled:cursor-not-allowed
-                hover:scale-[1.02] transition
+                hover:scale-[1.05] transition
               "
             >
-              {t("skills.show_more", "Show more")}
+              <Plus className="w-5 h-5" />
             </button>
 
             <button
               disabled={!canShowLess}
               onClick={() => setTarget(INITIAL)}
+              aria-label={t("skills.show_less", "Show less")}
               className="
-                px-4 py-2 rounded-md border
+                inline-flex items-center justify-center
+                w-10 h-10 rounded-md border
                 disabled:opacity-40 disabled:cursor-not-allowed
-                hover:scale-[1.02] transition
+                hover:scale-[1.05] transition
               "
             >
-              {t("skills.show_less", "Show less")}
+              <Minus className="w-5 h-5" />
             </button>
           </div>
         </Card>

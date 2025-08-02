@@ -2,26 +2,17 @@ import LanguageSwitch from "@/components/LanguageSwitch"
 import ThemeSwitch from "@/components/ThemeSwitch"
 import { useTheme } from "@/contexts/ThemeContext"
 import { Menu, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, NavLink } from "react-router-dom"
 
 export default function Navbar() {
   const { t } = useTranslation()
   const { theme } = useTheme()
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  const navBg = scrolled
-    ? "bg-background/80 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b border-border"
-    : "bg-transparent"
-
+  const navBg = "bg-background/50 supports-[backdrop-filter]:bg-background/40 backdrop-blur border-b border-border"
+  const dropdownBg = "bg-background/50 supports-[backdrop-filter]:bg-background/40 backdrop-blur border-t border-border"
   const logoSrc = theme === "dark" ? "/favicon-dark.svg" : "/favicon-light.svg"
 
   const navItems = [
@@ -78,7 +69,7 @@ export default function Navbar() {
           className={`
             md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out
             ${open ? "max-h-60 opacity-100" : "max-h-0 opacity-0 pointer-events-none"}
-            bg-background/90 supports-[backdrop-filter]:bg-background/70 backdrop-blur border-t border-border
+            ${dropdownBg}
           `}
         >
           <ul className="flex flex-col gap-2 px-6 py-4 text-sm font-medium">

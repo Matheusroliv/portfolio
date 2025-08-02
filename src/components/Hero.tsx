@@ -22,7 +22,7 @@ export default function Hero() {
   }, [text, role]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-12 md:pt-32 pb-24 md:pb-32">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 md:pt-32 pb-24 md:pb-32">
       <div className="container mx-auto px-6 relative z-10 text-center space-y-10">
         <Reveal dir="up">
           <h1 className="text-6xl md:text-8xl font-bold leading-tight">
