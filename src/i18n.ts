@@ -1,20 +1,22 @@
 import en from "@/locales/en.json";
-import es from "@/locales/es.json";
 import pt from "@/locales/pt.json";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+
+export const SUPPORTED_LOCALES = ["pt", "en"] as const;
 
 i18n
   .use(initReactI18next)
   .init({
     resources: {
-      pt: { translation: pt },
       en: { translation: en },
-      es: { translation: es },
+      pt: { translation: pt },
     },
-    lng: localStorage.getItem("locale") ?? "pt",
-    fallbackLng: "pt",
+    lng: "pt",
+    fallbackLng: "en",
+    supportedLngs: SUPPORTED_LOCALES,
     interpolation: { escapeValue: false },
+    returnNull: false,
   });
 
 export default i18n;

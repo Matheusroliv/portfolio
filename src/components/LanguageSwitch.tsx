@@ -3,7 +3,7 @@ import { getTwemojiURL } from "@/lib/getTwemoji"
 import { useEffect, useRef, useState } from "react"
 import i18n from "../i18n"
 
-const emojis: Record<Locale, string> = { pt: "🇧🇷", en: "🇺🇸", es: "🇪🇸" }
+const emojis: Record<Locale, string> = { pt: "🇧🇷", en: "🇺🇸" }
 
 function Flag({ emoji }: { emoji: string }) {
   return (
@@ -32,7 +32,7 @@ export default function LanguageSwitch() {
     return () => document.removeEventListener("click", close)
   }, [])
 
-  const others = (["pt", "en", "es"] as Locale[]).filter((l) => l !== locale)
+  const others = (["pt", "en"] as Locale[]).filter((l) => l !== locale)
 
   return (
     <div ref={ref} className="relative z-50">

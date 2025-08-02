@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 import { Card } from "@/components/ui/card";
-import { Code, Palette, Rocket } from "lucide-react";
+import { Code, Github, Linkedin, Mail, Palette, Rocket } from "lucide-react";
 
 export default function About() {
   return (
@@ -14,6 +14,36 @@ export default function About() {
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Desenvolvedor apaixonado por criar soluções inovadoras e interfaces que conectam pessoas à tecnologia
             </p>
+          </div>
+        </Reveal>
+
+        <Reveal dir="up" delay={0.6}>
+          <div className="flex justify-center gap-6 mb-8">
+            <a
+              href="https://github.com/seu-usuario"
+              className="p-3 glass-card hover:scale-110 transition-transform"
+              aria-label="GitHub"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Github className="w-6 h-6" />
+            </a>
+            <a
+              href="https://linkedin.com/in/seu-usuario"
+              className="p-3 glass-card hover:scale-110 transition-transform"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a
+              href="mailto:seuemail@exemplo.com"
+              className="p-3 glass-card hover:scale-110 transition-transform"
+              aria-label="Email"
+            >
+              <Mail className="w-6 h-6" />
+            </a>
           </div>
         </Reveal>
 

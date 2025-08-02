@@ -47,7 +47,7 @@ export default function Hero() {
           </p>
         </Reveal>
 
-        <Reveal dir="up" delay={0.45}>
+        {/* <Reveal dir="up" delay={0.45}>
           <div className="flex justify-center gap-4">
             <Button className="gradient-button px-8 py-3 text-lg">
               {t("hero.cta_projects")}
@@ -59,37 +59,8 @@ export default function Hero() {
               {t("hero.cta_contact")}
             </Button>
           </div>
-        </Reveal>
+        </Reveal> */}
 
-        <Reveal dir="up" delay={0.6}>
-          <div className="flex justify-center gap-6 mb-8">
-            <a
-              href="https://github.com/seu-usuario"
-              className="p-3 glass-card hover:scale-110 transition-transform"
-              aria-label="GitHub"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="https://linkedin.com/in/seu-usuario"
-              className="p-3 glass-card hover:scale-110 transition-transform"
-              aria-label="LinkedIn"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:seuemail@exemplo.com"
-              className="p-3 glass-card hover:scale-110 transition-transform"
-              aria-label="Email"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
-        </Reveal>
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-4 md:bottom-8 flex justify-center">

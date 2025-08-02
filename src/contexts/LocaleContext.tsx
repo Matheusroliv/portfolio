@@ -1,15 +1,18 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-export type Locale = "pt" | "en" | "es";
+export type Locale = "pt" | "en";
 type Ctx = { locale: Locale; setLocale: (l: Locale) => void };
 
 const LocaleContext = createContext<Ctx | undefined>(undefined);
 
-export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>(
-    () => (localStorage.getItem("locale") as Locale) ?? "pt",
-  );
+const DEFAULT_LOCALE: Locale = "pt";
+function getInitialLocale(): Locale {
+  const stored = localStorage.getItem("locale");
+  return stored === "pt" || stored === "en" ? stored : DEFAULT_LOCALE;
+}
 
+export function LocaleProvider({ children }: { children: React.ReactNode }) {
+  const [locale, setLocale] = useState<Locale>(getInitialLocale);
   useEffect(() => localStorage.setItem("locale", locale), [locale]);
 
   return (

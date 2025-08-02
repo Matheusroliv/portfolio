@@ -6,11 +6,10 @@ type Player = "X" | "O";
 type Cell = Player | null;
 type Level = "easy" | "medium" | "hard";
 
-/* ─── constantes ──────────────────────────────────────────────────────────── */
 const WIN = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], // linhas
-  [0, 3, 6], [1, 4, 7], [2, 5, 8], // colunas
-  [0, 4, 8], [2, 4, 6],            // diagonais
+  [0, 1, 2], [3, 4, 5], [6, 7, 8],
+  [0, 3, 6], [1, 4, 7], [2, 5, 8],
+  [0, 4, 8], [2, 4, 6],
 ] as const;
 
 const LEVELS: Record<Level, string> = {
@@ -19,27 +18,23 @@ const LEVELS: Record<Level, string> = {
   hard: "🤖 Hard",
 };
 
-/* ─── helpers ─────────────────────────────────────────────────────────────── */
 const hasWin = (board: Cell[], p: Player) =>
   WIN.some(line => line.every(i => board[i] === p));
 
-/* ─── componente ──────────────────────────────────────────────────────────── */
 export default function TicTacToe() {
-  /* ---------- estado ---------- */
   const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
   const [moves, setMoves] = useState<Record<Player, number[]>>({ X: [], O: [] });
   const [turn, setTurn] = useState<Player>("X");
   const [winner, setWinner] = useState<Player | null>(null);
   const [level, setLevel] = useState<Level>("easy");
-  const [locked, setLocked] = useState(false);   // trava nível depois do 1º lance
+  const [locked, setLocked] = useState(false);
 
-  /* ---------- colocar peça aplicando FIFO---------- */
   const place = (p: Player, idx: number, brd = board, mvs = moves) => {
     const nb = [...brd];
     const q = [...mvs[p]];
 
     if (q.length === 3) {
-      const out = q.shift()!;   // remove a mais antiga
+      const out = q.shift()!;
       nb[out] = null;
     }
     nb[idx] = p;
@@ -48,7 +43,6 @@ export default function TicTacToe() {
     return { board: nb, moves: { ...mvs, [p]: q } };
   };
 
-  /* ---------- jogada humana ---------- */
   const handleClick = (idx: number) => {
     if (winner || board[idx] || turn !== "X") return;
 
@@ -60,14 +54,12 @@ export default function TicTacToe() {
     setBoard(nb); setMoves(nm); setTurn("O"); setLocked(true);
   };
 
-  /* ---------- IA ---------- */
   const pickAiMove = (): number | null => {
     const free = board.flatMap((c, i) => (c ? [] : i));
     if (!free.length) return null;
 
     const random = () => free[Math.floor(Math.random() * free.length)];
 
-    /* tenta vencer ou bloquear (medium/hard) */
     const tryLine = (p: Player) => {
       for (const idx of free) {
         const sim = place(p, idx);
@@ -93,7 +85,6 @@ export default function TicTacToe() {
     return random();
   };
 
-  /* ---------- turno da máquina ---------- */
   useEffect(() => {
     if (turn !== "O" || winner) return;
     const idx = pickAiMove();
@@ -110,7 +101,6 @@ export default function TicTacToe() {
     return () => clearTimeout(t);
   }, [turn, winner, board, moves, level]);
 
-  /* ---------- reiniciar ---------- */
   const reset = () => {
     setBoard(Array(9).fill(null));
     setMoves({ X: [], O: [] });
@@ -119,14 +109,12 @@ export default function TicTacToe() {
     setLocked(false);
   };
 
-  /* ---------- UI ---------- */
   const status = winner
     ? `🏆 ${winner} venceu!`
     : `Vez de ${turn}`;
 
   return (
     <div className="space-y-4">
-      {/* seletor de dificuldade */}
       <div className="flex justify-center gap-2">
         {(Object.keys(LEVELS) as Level[]).map(l => (
           <Button
@@ -141,19 +129,16 @@ export default function TicTacToe() {
         ))}
       </div>
 
-      {/* status */}
       <Card className="glass-card p-2 text-center">
         <span className="text-sm">{status}</span>
       </Card>
 
-      {/* tabuleiro */}
       <div className="grid grid-cols-3 gap-3">
         {board.map((v, i) => {
-          // ➊ – Será que esta peça é a mais antiga do seu jogador?
           const willVanish =
-            v !== null &&           // existe peça aqui
-            moves[v].length === 3 && // jogador já tem 3
-            moves[v][0] === i;       // este índice é o 1.º da fila
+            v !== null &&
+            moves[v].length === 3 &&
+            moves[v][0] === i;
 
           return (
             <button
@@ -175,7 +160,6 @@ export default function TicTacToe() {
         })}
       </div>
 
-      {/* reiniciar */}
       <Button onClick={reset} className="w-full">
         Reiniciar
       </Button>
