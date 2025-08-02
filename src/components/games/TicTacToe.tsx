@@ -24,6 +24,8 @@ const LEVELS: Record<Level, string> = { easy: "😴 Easy", medium: "🙂 Medium"
 const getWinLine = (board: Cell[], p: Player): Line | null =>
   WIN.find((line) => line.every((i) => board[i] === p)) ?? null;
 
+const opposite = (p: Player): Player => (p === "X" ? "O" : "X");
+
 export default function TicTacToe() {
   const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
   const [moves, setMoves] = useState<Record<Player, number[]>>({ X: [], O: [] });
@@ -34,6 +36,7 @@ export default function TicTacToe() {
   const [locked, setLocked] = useState(false);
   const [winPts, setWinPts] = useState<{ x1: number; y1: number; x2: number; y2: number; len: number } | null>(null);
   const [trophyPos, setTrophyPos] = useState<{ x: number; y: number } | null>(null);
+  const [playerAs, setPlayerAs] = useState<Player>("X");
 
   const boardRef = useRef<HTMLDivElement>(null);
   const cellRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -51,19 +54,19 @@ export default function TicTacToe() {
   };
 
   const handleClick = (idx: number) => {
-    if (winner || board[idx] || turn !== "X") return;
-    const { board: nb, moves: nm } = place("X", idx);
-    const line = getWinLine(nb, "X");
+    if (winner || board[idx] || turn !== playerAs) return;
+    const { board: nb, moves: nm } = place(playerAs, idx);
+    const line = getWinLine(nb, playerAs);
     if (line) {
       setBoard(nb);
       setMoves(nm);
-      setWinner("X");
+      setWinner(playerAs);
       setWinningLine(line);
       return;
     }
     setBoard(nb);
     setMoves(nm);
-    setTurn("O");
+    setTurn(opposite(playerAs));
     setLocked(true);
   };
 
@@ -79,9 +82,10 @@ export default function TicTacToe() {
       return null;
     };
     if (level === "easy") return random();
-    const win = tryLine("O");
+    const ai = opposite(playerAs);
+    const win = tryLine(ai);
     if (win !== null) return win;
-    const block = tryLine("X");
+    const block = tryLine(playerAs);
     if (block !== null) return block;
     if (level === "hard") {
       if (board[4] === null) return 4;
@@ -92,25 +96,27 @@ export default function TicTacToe() {
   };
 
   useEffect(() => {
-    if (turn !== "O" || winner) return;
+    const ai = opposite(playerAs);
+    if (turn !== ai || winner) return;
     const idx = pickAiMove();
     if (idx === null) return;
     const t = setTimeout(() => {
-      const { board: nb, moves: nm } = place("O", idx);
-      const line = getWinLine(nb, "O");
+      const aiP = opposite(playerAs);
+      const { board: nb, moves: nm } = place(aiP, idx);
+      const line = getWinLine(nb, aiP);
       if (line) {
         setBoard(nb);
         setMoves(nm);
-        setWinner("O");
+        setWinner(aiP);
         setWinningLine(line);
       } else {
         setBoard(nb);
         setMoves(nm);
-        setTurn("X");
+        setTurn(playerAs);
       }
     }, 350);
     return () => clearTimeout(t);
-  }, [turn, winner, board, moves, level]);
+  }, [turn, winner, board, moves, level, playerAs]);
 
   useEffect(() => {
     if (!winningLine || !boardRef.current) {
@@ -146,7 +152,7 @@ export default function TicTacToe() {
     });
   }, [winner, midIdx]);
 
-  const reset = () => {
+  const reset = (nextPlayerAs: Player = playerAs) => {
     setBoard(Array(9).fill(null));
     setMoves({ X: [], O: [] });
     setTurn("X");
@@ -155,16 +161,36 @@ export default function TicTacToe() {
     setWinPts(null);
     setTrophyPos(null);
     setLocked(false);
+    setPlayerAs(nextPlayerAs);
   };
 
   const status = winner ? `🏆 ${winner} venceu!` : `Vez de ${turn}`;
+  const winEmoji = winner ? (winner === playerAs ? "🏆" : "😭") : "🏆";
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-center gap-2">
+      <div className="flex flex-wrap items-center justify-center gap-2">
         {(Object.keys(LEVELS) as Level[]).map((l) => (
-          <Button key={l} size="sm" variant={level === l ? "default" : "outline"} disabled={locked} onClick={() => setLevel(l)}>
+          <Button
+            key={l}
+            size="sm"
+            variant={level === l ? "default" : "outline"}
+            disabled={locked}
+            onClick={() => setLevel(l)}
+          >
             {LEVELS[l]}
+          </Button>
+        ))}
+        <span className="mx-1 hidden sm:inline-block opacity-60">•</span>
+        {(["X", "O"] as Player[]).map((p) => (
+          <Button
+            key={p}
+            size="sm"
+            variant={playerAs === p ? "default" : "outline"}
+            disabled={locked}
+            onClick={() => reset(p)}
+          >
+            {p}
           </Button>
         ))}
       </div>
@@ -178,17 +204,31 @@ export default function TicTacToe() {
 
         {winPts && (
           <svg className="pointer-events-none absolute inset-0 z-40" width="100%" height="100%">
-            <line x1={winPts.x1} y1={winPts.y1} x2={winPts.x2} y2={winPts.y2} className="win-line win-line--glow" style={{ ["--len" as any]: `${winPts.len}px` }} />
-            <line x1={winPts.x1} y1={winPts.y1} x2={winPts.x2} y2={winPts.y2} className="win-line" style={{ ["--len" as any]: `${winPts.len}px` }} />
+            <line
+              x1={winPts.x1}
+              y1={winPts.y1}
+              x2={winPts.x2}
+              y2={winPts.y2}
+              className="win-line win-line--glow"
+              style={{ ["--len" as any]: `${winPts.len}px` }}
+            />
+            <line
+              x1={winPts.x1}
+              y1={winPts.y1}
+              x2={winPts.x2}
+              y2={winPts.y2}
+              className="win-line"
+              style={{ ["--len" as any]: `${winPts.len}px` }}
+            />
           </svg>
         )}
 
-        {trophyPos && (
+        {trophyPos && winner && (
           <div
             className="pointer-events-none absolute z-50"
             style={{ left: trophyPos.x, top: trophyPos.y, transform: "translate(-50%, -50%)" }}
           >
-            <span className="trophy-animate drop-shadow text-6xl md:text-7xl">🏆</span>
+            <span className="trophy-animate drop-shadow text-6xl md:text-7xl">{winEmoji}</span>
           </div>
         )}
 
@@ -219,7 +259,7 @@ export default function TicTacToe() {
         </div>
       </div>
 
-      <Button onClick={reset} className="w-full">
+      <Button onClick={() => reset()} className="w-full">
         Reiniciar
       </Button>
     </div>
