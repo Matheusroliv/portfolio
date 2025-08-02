@@ -1,3 +1,4 @@
+import SnakeGame from "@/components/games/SnakeGame";
 import TicTacToe from "@/components/games/TicTacToe";
 import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +12,7 @@ import { useTranslation } from "react-i18next";
 export default function Games() {
   const { t } = useTranslation();
   const [openTTT, setOpenTTT] = useState(false);
+  const [openSnake, setOpenSnake] = useState(false);
 
   const games: {
     title: string;
@@ -48,10 +50,7 @@ export default function Games() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Reveal dir="up" delay={0}>
             <Card className="glass-card overflow-hidden group">
-              <button
-                onClick={() => setOpenTTT(true)}
-                className="w-full text-left"
-              >
+              <button onClick={() => setOpenTTT(true)} className="w-full text-left">
                 <div className="relative overflow-hidden">
                   <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-foreground/10 flex items-center justify-center">
                     <div className="grid grid-cols-3 gap-2">
@@ -69,9 +68,47 @@ export default function Games() {
 
                 <div className="p-6 space-y-4">
                   <h3 className="text-xl font-bold">Tic Tac Toe Infinity</h3>
-                  <p className="text-muted-foreground">
-                    Clássico jogo da velha feito em React + TypeScript.
-                  </p>
+                  <p className="text-muted-foreground">Clássico jogo da velha feito em React + TypeScript.</p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {["React", "TypeScript", "shadcn/ui"].map((tech) => (
+                      <Badge key={tech} variant="secondary" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="pt-2">
+                    <Button className="gradient-button" size="sm">
+                      Jogar agora
+                    </Button>
+                  </div>
+                </div>
+              </button>
+            </Card>
+          </Reveal>
+
+          <Reveal dir="up" delay={0.15}>
+            <Card className="glass-card overflow-hidden group">
+              <button onClick={() => setOpenSnake(true)} className="w-full text-left">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-foreground/10 flex items-center justify-center">
+                    <div className="grid grid-cols-5 gap-2">
+                      {Array.from({ length: 15 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className="size-8 rounded-md bg-background/70 border border-border flex items-center justify-center text-lg"
+                        >
+                          {i === 7 ? "🐍" : i % 5 === 0 ? "🍎" : ""}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-4">
+                  <h3 className="text-xl font-bold">Snake</h3>
+                  <p className="text-muted-foreground">Cobrinha fofa, comidas em emoji e níveis com crescimento variável.</p>
 
                   <div className="flex flex-wrap gap-2">
                     {["React", "TypeScript", "shadcn/ui"].map((tech) => (
@@ -92,7 +129,7 @@ export default function Games() {
           </Reveal>
 
           {games.slice(1).map((g, i) => (
-            <Reveal key={g.title} dir="up" delay={(i + 1) * 0.15}>
+            <Reveal key={g.title} dir="up" delay={(i + 2) * 0.15}>
               <Card className="glass-card overflow-hidden hover:scale-105 transition-transform duration-300 group">
                 <div className="relative overflow-hidden">
                   <img
@@ -146,6 +183,15 @@ export default function Games() {
             <DialogTitle>Tic Tac Toe Infinity</DialogTitle>
           </DialogHeader>
           <TicTacToe />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openSnake} onOpenChange={setOpenSnake}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Snake</DialogTitle>
+          </DialogHeader>
+          <SnakeGame />
         </DialogContent>
       </Dialog>
     </section>
