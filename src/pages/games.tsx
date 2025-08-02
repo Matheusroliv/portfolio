@@ -1,12 +1,12 @@
+import TicTacToe from "@/components/games/TicTacToe";
 import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, Github } from "lucide-react";
-import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import TicTacToe from "@/components/games/TicTacToe";
+import { useTranslation } from "react-i18next";
 
 export default function Games() {
   const { t } = useTranslation();
@@ -19,17 +19,16 @@ export default function Games() {
     tech: string[];
     demo?: string;
     code?: string;
-    kind?: "card"; // placeholder para outros jogos
+    kind?: "card";
   }[] = [
-    {
-      title: "Tic Tac Toe",
-      description: "Clássico jogo da velha feito em React + TypeScript.",
-      image: "/thumbs/tictactoe.png", // opcional (coloque um PNG/SVG na pasta public)
-      tech: ["React", "TypeScript", "shadcn/ui"],
-      kind: "card",
-    },
-    // …quando quiser, adicione outros jogos aqui
-  ];
+      {
+        title: "Tic Tac Toe Infinity",
+        description: "Clássico jogo da velha feito em React + TypeScript.",
+        image: "/thumbs/tictactoe.png",
+        tech: ["React", "TypeScript", "shadcn/ui"],
+        kind: "card",
+      },
+    ];
 
   return (
     <section id="games" className="py-20 px-6">
@@ -47,7 +46,6 @@ export default function Games() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* ---- Card TicTacToe (abre modal) ---- */}
           <Reveal dir="up" delay={0}>
             <Card className="glass-card overflow-hidden group">
               <button
@@ -56,7 +54,6 @@ export default function Games() {
               >
                 <div className="relative overflow-hidden">
                   <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-foreground/10 flex items-center justify-center">
-                    {/* mini preview simples */}
                     <div className="grid grid-cols-3 gap-2">
                       {Array.from({ length: 9 }).map((_, i) => (
                         <div
@@ -71,7 +68,7 @@ export default function Games() {
                 </div>
 
                 <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold">Tic Tac Toe</h3>
+                  <h3 className="text-xl font-bold">Tic Tac Toe Infinity</h3>
                   <p className="text-muted-foreground">
                     Clássico jogo da velha feito em React + TypeScript.
                   </p>
@@ -94,7 +91,6 @@ export default function Games() {
             </Card>
           </Reveal>
 
-          {/* ---- Se quiser, renderize outros jogos (cards padrão) ---- */}
           {games.slice(1).map((g, i) => (
             <Reveal key={g.title} dir="up" delay={(i + 1) * 0.15}>
               <Card className="glass-card overflow-hidden hover:scale-105 transition-transform duration-300 group">
@@ -147,7 +143,7 @@ export default function Games() {
       <Dialog open={openTTT} onOpenChange={setOpenTTT}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Tic Tac Toe</DialogTitle>
+            <DialogTitle>Tic Tac Toe Infinity</DialogTitle>
           </DialogHeader>
           <TicTacToe />
         </DialogContent>
