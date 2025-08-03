@@ -89,6 +89,8 @@ export default function SnakeGame() {
 
   const [firstMove, setFirstMove] = useState(true);
 
+  const [nextDirs, setNextDirs] = useState<Dir[]>([]);
+
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
 
@@ -137,14 +139,21 @@ export default function SnakeGame() {
     if (!running || gameOver || gameWon) return;
     const id = setInterval(() => {
       setSnake((curr) => {
-        const head = curr[curr.length - 1];
+        let currentDir = dir;
 
+        if (nextDirs.length > 0 && !opp(currentDir, nextDirs[0])) {
+          currentDir = nextDirs[0];
+          setDir(currentDir);
+          setNextDirs((dirs) => dirs.slice(1));
+        }
+
+        const head = curr[curr.length - 1];
         let next: Cell;
         if (level === "hard") {
-          next = { r: head.r + dir.r, c: head.c + dir.c };
+          next = { r: head.r + currentDir.r, c: head.c + currentDir.c };
           if (!inside(next)) { setGameOver(true); setRunning(false); return curr; }
         } else {
-          next = { r: (head.r + dir.r + ROWS) % ROWS, c: (head.c + dir.c + COLS) % COLS };
+          next = { r: (head.r + currentDir.r + ROWS) % ROWS, c: (head.c + currentDir.c + COLS) % COLS };
         }
 
         const tail = curr[0];
@@ -229,12 +238,11 @@ export default function SnakeGame() {
           }
         }
 
-
         return result;
       });
     }, TICK_MS);
     return () => clearInterval(id);
-  }, [running, dir, level, food, starFood, pepperFood, gameOver, gameWon, growth, power]);
+  }, [running, dir, nextDirs, level, food, starFood, pepperFood, gameOver, gameWon, growth, power]);
 
   useEffect(() => {
     if (!running || gameOver || gameWon) return;
@@ -275,37 +283,30 @@ export default function SnakeGame() {
     e.preventDefault();
     const nd = DIRS[k];
 
-    const isLeft = (k === "a" || k === "ArrowLeft");
+    const last = nextDirs.length > 0 ? nextDirs[nextDirs.length - 1] : dir;
+    if (opp(last, nd)) return;
 
     if (gameOver || gameWon) {
-      if (isLeft) return;
+      if (opp({ r: 0, c: 1 }, nd)) return;
       init(level);
-      setDir(nd);
       setRunning(true);
+      setNextDirs([nd]);
       return;
     }
 
     if (!running && snake.length === START_LEN && firstMove) {
-      if (isLeft) return;
-      if (nd.r !== 0 && nd.c === 0 && !opp(dir, nd)) {
-        setSnake((curr) => {
-          const head = curr[curr.length - 1];
-          const next: Cell = { r: head.r + nd.r, c: head.c + nd.c };
-          if (!inside(next)) return curr;
-          if (curr.some(p => eq(p, next))) return curr;
-          return [...curr, next].slice(1);
-        });
-        setDir(nd);
-        setFirstMove(false);
-        setRunning(true);
-      }
+      if (opp(dir, nd)) return;
+      setNextDirs([nd]);
+      setDir(nd);
+      setFirstMove(false);
+      setRunning(true);
       return;
     }
 
-    setDir((d) => (opp(d, nd) ? d : nd));
+    setNextDirs((curr) => curr.length < 2 ? [...curr, nd] : curr);
+
     if (!running) setRunning(true);
   };
-
 
   const gridCells = useMemo(() => {
     const cells: { r: number; c: number }[] = [];
