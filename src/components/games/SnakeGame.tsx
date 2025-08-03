@@ -470,7 +470,7 @@ export default function SnakeGame() {
       )}
       {gameWon && (
         <div className="text-center text-green-600 dark:text-green-400 font-semibold">
-          You win! The board is full 🎉
+          You win! 🎉
         </div>
       )}
 
