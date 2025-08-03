@@ -11,9 +11,9 @@ const ROWS = 10;
 const COLS = 10;
 
 const START_LEN = 4;
-const TICK_MS = 200;
+const TICK_MS = 240;
 
-const LEVEL_POINTS: Record<Level, number> = { easy: 4, medium: 2, hard: 1 };
+const LEVEL_POINTS: Record<Level, number> = { easy: 2, medium: 1, hard: 1 };
 const FOOD_EMOJIS = ["🍎", "🍓", "🍇", "🍌", "🍒", "🍑", "🍍", "🥝", "🍉", "🥕", "🌮", "🍕", "🍪", "🍩", "🥨", "🍰", "🧁"];
 
 const SPECIAL_ROLL_INTERVAL_MS = 1000;
@@ -22,7 +22,7 @@ const PEPPER_ROLL_CHANCE = 0.22;
 const STAR_POSTEAT_CHANCE = 0.14;
 const PEPPER_POSTEAT_CHANCE = 0.20;
 
-const POWER_DURATION_MS = 15000;
+const POWER_DURATION_MS = 12000;
 
 const DIRS = {
   ArrowUp: { r: -1, c: 0 },
@@ -76,7 +76,6 @@ export default function SnakeGame() {
 
   const [level, setLevel] = useState<Level>("easy");
   const [running, setRunning] = useState(false);
-  const [score, setScore] = useState(0);
   const [growth, setGrowth] = useState(0);
   const [dir, setDir] = useState<Dir>({ r: 0, c: 1 });
   const [snake, setSnake] = useState<Cell[]>([]);
@@ -87,6 +86,8 @@ export default function SnakeGame() {
 
   const [power, setPower] = useState<{ star: boolean; pepper: boolean } | null>(null);
   const powerTimeoutRef = useRef<number | null>(null);
+
+  const [firstMove, setFirstMove] = useState(true);
 
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
@@ -99,11 +100,6 @@ export default function SnakeGame() {
     return { light, dark };
   }, [snakeColor]);
 
-  const MAX_POINTS = useMemo(() => {
-    const step = LEVEL_POINTS[level];
-    return step * Math.ceil(((ROWS * COLS - START_LEN) / step));
-  }, [level]);
-
   const occupied = useMemo(() => {
     const s = new Set<string>();
     snake.forEach((p) => s.add(`${p.r}:${p.c}`));
@@ -111,6 +107,7 @@ export default function SnakeGame() {
   }, [snake]);
 
   const init = (lvl: Level) => {
+    setFirstMove(true);
     const midR = Math.floor(ROWS / 2);
     const start: Cell[] = Array.from({ length: START_LEN }).map((_, i) => ({
       r: midR,
@@ -118,7 +115,6 @@ export default function SnakeGame() {
     }));
     setSnake(start);
     setDir({ r: 0, c: 1 });
-    setScore(0);
     setGrowth(0);
     setGameOver(false);
     setGameWon(false);
@@ -173,10 +169,6 @@ export default function SnakeGame() {
         } else {
           if (ateStar) {
             const nextPower = { star: true, pepper: !!power?.pepper };
-            const newMult = nextPower.star && nextPower.pepper ? 3 : 2;
-            const bonus = LEVEL_POINTS[level] * newMult;
-            setScore((s) => s + bonus);
-            setGrowth((g) => g + bonus - 1);
             setStarFood(null);
             setPower(nextPower);
             if (powerTimeoutRef.current) clearTimeout(powerTimeoutRef.current);
@@ -184,10 +176,6 @@ export default function SnakeGame() {
           }
           if (atePepper) {
             const nextPower = { star: !!power?.star, pepper: true };
-            const newMult = nextPower.star && nextPower.pepper ? 3 : 2;
-            const bonus = LEVEL_POINTS[level] * newMult;
-            setScore((s) => s + bonus);
-            setGrowth((g) => g + bonus - 1);
             setPepperFood(null);
             setPower(nextPower);
             if (powerTimeoutRef.current) clearTimeout(powerTimeoutRef.current);
@@ -196,10 +184,16 @@ export default function SnakeGame() {
           if (ateNormal) {
             const mult = power ? (power.star && power.pepper ? 3 : 2) : 1;
             const growBy = LEVEL_POINTS[level] * mult;
-            const nextScore = score + growBy;
-            setScore(nextScore);
             setGrowth((g) => g + growBy - 1);
-            if (nextScore >= MAX_POINTS) {
+
+            const occ = new Set<string>(result.map((p) => `${p.r}:${p.c}`));
+            if (starFood) occ.add(`${starFood.r}:${starFood.c}`);
+            if (pepperFood) occ.add(`${pepperFood.r}:${pepperFood.c}`);
+            const pos = rndEmptyCell(occ);
+
+            if (pos) {
+              setFood({ pos, emoji: FOOD_EMOJIS[Math.floor(Math.random() * FOOD_EMOJIS.length)] });
+            } else {
               setGameWon(true);
               setRunning(false);
               setFood(null);
@@ -207,11 +201,14 @@ export default function SnakeGame() {
               setPepperFood(null);
               return result;
             }
-            const occ = new Set<string>(result.map((p) => `${p.r}:${p.c}`));
-            if (starFood) occ.add(`${starFood.r}:${starFood.c}`);
-            if (pepperFood) occ.add(`${pepperFood.r}:${pepperFood.c}`);
-            const pos = rndEmptyCell(occ);
-            setFood(pos ? { pos, emoji: FOOD_EMOJIS[Math.floor(Math.random() * FOOD_EMOJIS.length)] } : null);
+
+            if (result.length === ROWS * COLS) {
+              setGameWon(true);
+              setRunning(false);
+              setFood(null);
+              setStarFood(null);
+              setPepperFood(null);
+            }
 
             const r1 = Math.random();
             if (!starFood && r1 < STAR_POSTEAT_CHANCE) {
@@ -232,11 +229,12 @@ export default function SnakeGame() {
           }
         }
 
+
         return result;
       });
     }, TICK_MS);
     return () => clearInterval(id);
-  }, [running, dir, level, food, starFood, pepperFood, gameOver, gameWon, growth, score, MAX_POINTS, power]);
+  }, [running, dir, level, food, starFood, pepperFood, gameOver, gameWon, growth, power]);
 
   useEffect(() => {
     if (!running || gameOver || gameWon) return;
@@ -277,16 +275,37 @@ export default function SnakeGame() {
     e.preventDefault();
     const nd = DIRS[k];
 
+    const isLeft = (k === "a" || k === "ArrowLeft");
+
     if (gameOver || gameWon) {
+      if (isLeft) return;
       init(level);
       setDir(nd);
       setRunning(true);
       return;
     }
 
+    if (!running && snake.length === START_LEN && firstMove) {
+      if (isLeft) return;
+      if (nd.r !== 0 && nd.c === 0 && !opp(dir, nd)) {
+        setSnake((curr) => {
+          const head = curr[curr.length - 1];
+          const next: Cell = { r: head.r + nd.r, c: head.c + nd.c };
+          if (!inside(next)) return curr;
+          if (curr.some(p => eq(p, next))) return curr;
+          return [...curr, next].slice(1);
+        });
+        setDir(nd);
+        setFirstMove(false);
+        setRunning(true);
+      }
+      return;
+    }
+
     setDir((d) => (opp(d, nd) ? d : nd));
     if (!running) setRunning(true);
   };
+
 
   const gridCells = useMemo(() => {
     const cells: { r: number; c: number }[] = [];
@@ -324,12 +343,15 @@ export default function SnakeGame() {
                 : "🤖 Hard"}
           </Button>
         ))}
+      </div>
 
-        <span className="ml-2 text-sm opacity-70">
-          Score: <b>{score}</b> / {MAX_POINTS}
-        </span>
-
-        <label className="ml-4 text-sm flex items-center gap-2">
+      <div className="flex items-center justify-between mt-2 w-full max-w-xl mx-auto">
+        <div>
+          {powerBadge && (
+            <span className="text-sm font-semibold text-primary">{powerBadge}</span>
+          )}
+        </div>
+        <label className="text-sm flex items-center gap-2">
           <span className="opacity-70">Snake color</span>
           <input
             type="color"
@@ -341,8 +363,6 @@ export default function SnakeGame() {
             title="Pick snake color"
           />
         </label>
-
-        {powerBadge && <span className="ml-3 text-sm font-semibold text-primary">{powerBadge}</span>}
       </div>
 
       <Card
@@ -357,7 +377,6 @@ export default function SnakeGame() {
           } as React.CSSProperties
         }
       >
-        {/* wrapper para centralizar */}
         <div className="w-full flex items-center justify-center">
           <div
             className={`mx-auto grid gap-1 rounded-md ${level === "hard" ? "outline outline-2 outline-orange-500" : ""}`}
@@ -411,7 +430,6 @@ export default function SnakeGame() {
         )}
       </Card>
 
-
       {gameOver && !gameWon && (
         <div className="text-center text-red-600 dark:text-red-400 font-semibold">
           Game Over — press any move key to restart!
@@ -419,12 +437,12 @@ export default function SnakeGame() {
       )}
       {gameWon && (
         <div className="text-center text-green-600 dark:text-green-400 font-semibold">
-          You win! Target score reached 🎉
+          You win! The board is full 🎉
         </div>
       )}
 
       <div className="text-xs text-center opacity-60">
-        Use Arrow Keys or WASD. Base points: {LEVEL_POINTS[level]} (⭐ 2x, 🌶️ 2x, ⭐+🌶️ = 3x por 15s).
+        Use Arrow Keys or WASD.
       </div>
     </div>
   );
