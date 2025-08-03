@@ -181,7 +181,9 @@ export default function TicTacToe() {
             {LEVELS[l]}
           </Button>
         ))}
-        <span className="mx-1 hidden sm:inline-block opacity-60">•</span>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-2">
         {(["X", "O"] as Player[]).map((p) => (
           <Button
             key={p}

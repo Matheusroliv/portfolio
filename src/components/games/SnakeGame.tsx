@@ -2,6 +2,7 @@ import ConfettiRain from "@/components/ConfettiRain";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { DPadControl } from "../DPadControl";
 
 type Level = "easy" | "medium" | "hard";
 type Cell = { r: number; c: number };
@@ -34,6 +35,12 @@ const DIRS = {
   a: { r: 0, c: -1 },
   d: { r: 0, c: 1 },
 } as const;
+
+function isMobile() {
+  return typeof window !== "undefined" && (
+    /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)
+  );
+}
 
 function eq(a: Cell, b: Cell) { return a.r === b.r && a.c === b.c; }
 function opp(a: Dir, b: Dir) { return a.r === -b.r && a.c === -b.c; }
@@ -277,8 +284,15 @@ export default function SnakeGame() {
     };
   }, []);
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    const k = e.key as keyof typeof DIRS;
+  function handleMobileDir(key: keyof typeof DIRS) {
+    onKeyDown({
+      key,
+      preventDefault: () => { },
+    } as unknown as React.KeyboardEvent<HTMLDivElement>);
+  }
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement> | { key: string, preventDefault: () => void }) => {
+    const k = (e as any).key as keyof typeof DIRS;
     if (!(k in DIRS)) return;
     e.preventDefault();
     const nd = DIRS[k];
@@ -307,6 +321,20 @@ export default function SnakeGame() {
 
     if (!running) setRunning(true);
   };
+
+  function handleDPad(dir: "up" | "down" | "left" | "right") {
+    const keyMap = {
+      up: "ArrowUp",
+      down: "ArrowDown",
+      left: "ArrowLeft",
+      right: "ArrowRight",
+    } as const;
+
+    onKeyDown({
+      key: keyMap[dir],
+      preventDefault: () => { },
+    } as any);
+  }
 
   const gridCells = useMemo(() => {
     const cells: { r: number; c: number }[] = [];
@@ -446,9 +474,15 @@ export default function SnakeGame() {
         </div>
       )}
 
-      <div className="text-xs text-center opacity-60">
-        Use Arrow Keys or WASD.
-      </div>
+      {isMobile() ? (
+        <DPadControl onMove={handleDPad} />
+      ) : (
+        <div className="text-xs text-center opacity-60">
+          Use Arrow Keys or WASD.
+        </div>
+      )}
+
+
     </div>
   );
 }
