@@ -413,8 +413,12 @@ export default function SnakeGame() {
                     </>
                   )}
                   {isFood && <span className="text-lg select-none">{food!.emoji}</span>}
-                  {isStar && <span className="text-lg select-none">⭐</span>}
-                  {isPepper && <span className="text-lg select-none">🌶️</span>}
+                  {isStar && (
+                    <span className="text-lg select-none special-food-star">⭐</span>
+                  )}
+                  {isPepper && (
+                    <span className="text-lg select-none special-food-pepper">🌶️</span>
+                  )}
                 </div>
               );
             })}

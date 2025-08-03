@@ -36,6 +36,40 @@
 }
 
 @layer utilities {
+  @keyframes specialGlowPulse {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 8px hsl(50, 100%, 60%, 0.8)) drop-shadow(0 0 2px hsl(50, 100%, 60%, 0.5));
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      filter: drop-shadow(0 0 20px hsl(50, 100%, 70%, 1)) drop-shadow(0 0 6px hsl(50, 100%, 60%, 0.8));
+      transform: scale(1.14);
+      opacity: 0.9;
+    }
+  }
+  @keyframes specialGlowPulseRed {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 8px hsl(0, 90%, 62%, 0.7)) drop-shadow(0 0 2px hsl(0, 90%, 62%, 0.4));
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      filter: drop-shadow(0 0 20px hsl(0, 90%, 65%, 1)) drop-shadow(0 0 6px hsl(0, 90%, 62%, 0.8));
+      transform: scale(1.16);
+      opacity: 0.92;
+    }
+  }
+
+  .special-food-star {
+    animation: specialGlowPulse 1.2s infinite alternate;
+  }
+  .special-food-pepper {
+    animation: specialGlowPulseRed 1.2s infinite alternate;
+  }
+
   .snake-cell {
     width: 100%;
     height: 100%;
