@@ -94,20 +94,20 @@ export default function About() {
                   {
                     cargo: "Software Engineer",
                     empresa: "OKEGEN Exchange",
-                    periodo: "2024 – Presente",
-                    desc: "Micro-serviços e front-end whitelabel em Angular / React."
+                    periodo: "2024 - Presente",
+                    desc: "Desenvolvimento de APIs REST com NestJS e criação de componentes reutilizáveis em Angular e Ionic, reduzindo o tempo de entrega e aumentando a segurança da plataforma."
                   },
                   {
                     cargo: "Full Stack Developer",
                     empresa: "Code Tech",
-                    periodo: "2023 – Presente",
-                    desc: "Templates NestJS + Ionic que reduziram deploy em 80%."
+                    periodo: "2023 - Presente",
+                    desc: "Criação de templates white-label com NestJS e React, agilizando em até 80% o lançamento de novas aplicações para clientes."
                   },
                   {
                     cargo: "Frontend Developer",
                     empresa: "TGT Digital",
-                    periodo: "2021 – 2023",
-                    desc: "Apps React / RN e portais Angular para diversos clientes."
+                    periodo: "2021 - 2023",
+                    desc: "Construção de apps robustos em React, React Native e Angular, atuando em projetos variados que impactaram milhares de usuários finais."
                   }
                 ].map(({ cargo, empresa, periodo, desc }, i) => (
                   <div key={cargo} className={`border-l-2 ${i === 0 ? "border-primary" : "border-muted"} pl-6`}>

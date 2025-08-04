@@ -57,9 +57,9 @@ export default function Contact() {
 
             <Reveal dir="up" delay={0.45}>
               <div className="text-center pt-8">
-                <h3 className="text-xl font-semibold mb-4">Disponível para freelances</h3>
+                <h3 className="text-xl font-semibold mb-4">Vamos trabalhar juntos?</h3>
                 <p className="text-muted-foreground">
-                  Sempre aberto a novos projetos e desafios interessantes 🚀
+                  Estou sempre aberto a trocar ideias e colaborar em novos projetos criativos. 🚀
                 </p>
               </div>
             </Reveal>

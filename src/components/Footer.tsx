@@ -10,13 +10,16 @@ export default function Footer() {
     <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-6 py-12 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          
           <Reveal dir="left">
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">
                 <span className="gradient-text">Matheus&nbsp;Oliveira</span>
               </h3>
 
-              <p className="text-muted-foreground">{t("hero.bio")}</p>
+              <p className="text-muted-foreground">
+                Criando soluções digitais com Angular, React e NestJS. 💻✨
+              </p>
 
               <div className="flex gap-4">
                 <a
