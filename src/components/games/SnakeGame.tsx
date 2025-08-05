@@ -478,7 +478,6 @@ export default function SnakeGame() {
         </div>
       )}
 
-
     </div>
   );
 }
