@@ -38,7 +38,7 @@ export default function Contact() {
             {[
               { icon: Mail, label: "Email", value: "matheus@email.com" },
               { icon: Phone, label: "Telefone", value: "+55 (11) 99999-9999" },
-              { icon: MapPin, label: "Localização", value: "São Paulo, Brasil" }
+              { icon: MapPin, label: "Localização", value: "Brasil" }
             ].map((item, i) => (
               <Reveal key={item.label} dir="left" delay={i * 0.15}>
                 <Card className="glass-card p-6 hover:scale-105 transition-transform">

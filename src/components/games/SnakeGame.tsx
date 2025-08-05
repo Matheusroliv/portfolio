@@ -4,17 +4,17 @@ import { Card } from "@/components/ui/card";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DPadControl } from "../DPadControl";
 
-type Level = "easy" | "medium" | "hard";
+type Level = "normal" | "hard";
 type Cell = { r: number; c: number };
 type Dir = { r: number; c: number };
 
 const ROWS = 10;
 const COLS = 10;
 
-const START_LEN = 4;
+const START_LEN = 2;
 const TICK_MS = 240;
 
-const LEVEL_POINTS: Record<Level, number> = { easy: 2, medium: 1, hard: 1 };
+const LEVEL_POINTS: Record<Level, number> = { normal: 1, hard: 1 };
 const FOOD_EMOJIS = ["🍎", "🍓", "🍇", "🍌", "🍒", "🍑", "🍍", "🥝", "🍉", "🥕", "🌮", "🍕", "🍪", "🍩", "🥨", "🍰", "🧁"];
 
 const SPECIAL_ROLL_INTERVAL_MS = 1000;
@@ -23,7 +23,7 @@ const PEPPER_ROLL_CHANCE = 0.22;
 const STAR_POSTEAT_CHANCE = 0.14;
 const PEPPER_POSTEAT_CHANCE = 0.20;
 
-const POWER_DURATION_MS = 12000;
+const POWER_DURATION_MS = 8000;
 
 const DIRS = {
   ArrowUp: { r: -1, c: 0 },
@@ -81,7 +81,7 @@ function hslStr(h: number, s: number, l: number) { return `hsl(${h} ${s}% ${l}%)
 export default function SnakeGame() {
   const boardRef = useRef<HTMLDivElement>(null);
 
-  const [level, setLevel] = useState<Level>("easy");
+  const [level, setLevel] = useState<Level>("normal");
   const [running, setRunning] = useState(false);
   const [growth, setGrowth] = useState(0);
   const [dir, setDir] = useState<Dir>({ r: 0, c: 1 });
@@ -120,7 +120,7 @@ export default function SnakeGame() {
     const midR = Math.floor(ROWS / 2);
     const start: Cell[] = Array.from({ length: START_LEN }).map((_, i) => ({
       r: midR,
-      c: Math.floor(COLS / 2) - (START_LEN - 1) + i,
+      c: Math.floor(COLS / 4) - (START_LEN - 1) + i,
     }));
     setSnake(start);
     setDir({ r: 0, c: 1 });
@@ -357,7 +357,7 @@ export default function SnakeGame() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-center gap-2">
-        {(["easy", "medium", "hard"] as Level[]).map((l) => (
+        {(["normal", "hard"] as Level[]).map((l) => (
           <Button
             key={l}
             size="sm"
@@ -365,11 +365,7 @@ export default function SnakeGame() {
             onClick={() => { if (!running) setLevel(l); }}
             disabled={running}
           >
-            {l === "easy"
-              ? "😴 Easy"
-              : l === "medium"
-                ? "🙂 Medium"
-                : "🤖 Hard"}
+            {l === "hard" ? "🤖 Hard" : "🙂 Normal"}
           </Button>
         ))}
       </div>
