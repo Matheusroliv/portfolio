@@ -211,17 +211,49 @@ export default function CheckersGame() {
     if (level === "easy") {
       move = movesToUse[Math.floor(Math.random() * movesToUse.length)];
     } else {
-      if (allCaptures.length) {
-        move = allCaptures[Math.floor(Math.random() * allCaptures.length)];
-      } else {
-        const promotions = movesToUse.filter(m => {
-          const [toR] = m.to;
-          return board[m.from[0]][m.from[1]]?.kind === "man"
-            && ((botPlayer === "white" && toR === 0) || (botPlayer === "black" && toR === BOARD_SIZE - 1));
-        });
-        if (promotions.length) move = promotions[0];
-        else move = movesToUse[Math.floor(Math.random() * movesToUse.length)];
+      let bestScore = -Infinity;
+      let bestMoves: typeof movesToUse = [];
+      for (const m of movesToUse) {
+        const newBoard = board.map(row => row.slice());
+        const [sr, sc] = m.from;
+        const [r, c] = m.to;
+        const piece = board[sr][sc];
+        if (!piece) continue;
+        newBoard[sr][sc] = null;
+        let captured = false;
+        if (m.capture) {
+          const [cr, cc] = m.capture;
+          newBoard[cr][cc] = null;
+          captured = true;
+        }
+        const becomeKing = piece.kind === "man" &&
+          ((piece.player === "white" && r === 0) || (piece.player === "black" && r === BOARD_SIZE - 1));
+        const movedPiece: Piece = becomeKing ? { ...piece, kind: "king" } : piece;
+        newBoard[r][c] = movedPiece;
+
+        let score = 0;
+        if (m.capture) score += 10;
+        if (becomeKing) score += 8;
+        if (movedPiece.kind === "king") score += 2;
+
+        if (captured) {
+          const chain = getCaptures(newBoard, r, c);
+          if (chain.length) score += 5 + chain.length;
+        }
+
+        const centerDist = Math.abs(3.5 - r) + Math.abs(3.5 - c);
+        score += Math.max(0, 3 - centerDist) * 0.5;
+
+        const opp: Player = botPlayer === "white" ? "black" : "white";
+        const oppCaps = getAllMoves(newBoard, opp).filter(mm => mm.capture);
+        if (oppCaps.length) score -= 7;
+
+        if (score > bestScore) { bestScore = score; bestMoves = [m]; }
+        else if (score === bestScore) { bestMoves.push(m); }
       }
+      move = bestMoves.length
+        ? bestMoves[Math.floor(Math.random() * bestMoves.length)]
+        : movesToUse[Math.floor(Math.random() * movesToUse.length)];
     }
     if (!move) return;
     setTimeout(() => {
