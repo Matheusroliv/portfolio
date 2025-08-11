@@ -8,8 +8,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import CheckersGame from "../components/games/Checkers";
+import RestaUm from "../components/games/RestaUm";
 
-type GameKind = "tictactoe" | "snake" | "checkers";
+type GameKind = "tictactoe" | "snake" | "checkers" | "restaum";
 
 const gameThumbs: Record<GameKind, React.ReactNode> = {
   tictactoe: (
@@ -54,6 +55,24 @@ const gameThumbs: Record<GameKind, React.ReactNode> = {
       })}
     </div>
   ),
+  restaum: (
+    <div className="grid grid-cols-7 gap-1">
+      {Array.from({ length: 49 }).map((_, i) => {
+        const r = Math.floor(i / 7);
+        const c = i % 7;
+        const invalid = (r < 2 && c < 2) || (r < 2 && c > 4) || (r > 4 && c < 2) || (r > 4 && c > 4);
+        const hasPeg = !invalid && !(r === 3 && c === 3);
+        return (
+          <div
+            key={i}
+            className={`size-5 rounded-[2px] border border-border flex items-center justify-center text-xs ${invalid ? 'bg-transparent' : 'bg-[#e3bb7a]'}`}
+          >
+            {hasPeg ? <span className="text-neutral-900">⬤</span> : ""}
+          </div>
+        );
+      })}
+    </div>
+  ),
 };
 
 export default function Games() {
@@ -88,6 +107,14 @@ export default function Games() {
         kind: "checkers",
         title: "Checkers",
         description: "Clássico jogo de damas (checkers) com lógica de dama, captura e promoção.",
+        tech: ["React", "TypeScript", "shadcn/ui"],
+        code: undefined,
+        demo: undefined,
+      },
+      {
+        kind: "restaum",
+        title: "Resta 1",
+        description: "Peg Solitaire (Resta 1) com lógica de saltos e desfazer.",
         tech: ["React", "TypeScript", "shadcn/ui"],
         code: undefined,
         demo: undefined,
@@ -182,6 +209,15 @@ export default function Games() {
             <DialogTitle>Checkers</DialogTitle>
           </DialogHeader>
           <CheckersGame />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openGame === "restaum"} onOpenChange={() => setOpenGame(null)}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Resta 1</DialogTitle>
+          </DialogHeader>
+          <RestaUm />
         </DialogContent>
       </Dialog>
     </section>
