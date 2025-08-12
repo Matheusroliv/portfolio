@@ -13,7 +13,7 @@
     "made_with": "Feito com ❤, ☕ e umas boas linhas de TypeScript.",
     "links": {
       "about": "Sobre",
-      "skills": "Skills",
+      "skills": "Habilidades",
       "projects": "Projetos",
       "contact": "Contato"
     },
@@ -22,6 +22,58 @@
       "api": "APIs REST / NestJS",
       "consulting": "Consultoria de Arquitetura",
       "mentoring": "Mentoria Técnica"
+    }
+  },
+  "contact": {
+    "title_prefix": "Entre em",
+    "title_highlight": "Contato",
+    "subtitle": "Tem um projeto em mente? Vamos conversar e transformar suas ideias em realidade.",
+    "email_label": "Email",
+    "phone_label": "Telefone",
+    "location_label": "Localização",
+    "location_value": "Brasil",
+    "cta_title": "Vamos trabalhar juntos?",
+    "cta_body": "Estou sempre aberto a trocar ideias e colaborar em novos projetos criativos. ",
+    "form": {
+      "name_label": "Nome",
+      "email_label": "Email",
+      "message_label": "Mensagem",
+      "name_placeholder": "Seu nome completo",
+      "email_placeholder": "seu@email.com",
+      "message_placeholder": "Conte-me sobre seu projeto...",
+      "submit": "Enviar Mensagem"
+    }
+  },
+  "skills": {
+    "title": "Tecnologias"
+  },
+  "nav": {
+    "about": "Sobre",
+    "contact": "Contato",
+    "games": "Games"
+  },
+  "games": {
+    "title": "Meus",
+    "highlight": "Jogos",
+    "subtitle": "Uma coleção de jogos e experimentos onde misturo código, design e diversão.",
+    "play_now": "Jogar agora",
+    "cards": {
+      "tictactoe": {
+        "title": "Jogo da Velha Infinito",
+        "description": "Uma versão moderna e infinita do jogo da velha."
+      },
+      "snake": {
+        "title": "Cobrinha",
+        "description": "Cobrinha fofa, comidas em emoji e níveis com crescimento variável."
+      },
+      "checkers": {
+        "title": "Damas",
+        "description": "Clássico jogo de damas (checkers) com lógica de dama, captura e promoção."
+      },
+      "restaum": {
+        "title": "Resta 1",
+        "description": "Resta 1 com lógica de saltos e desfazer."
+      }
     }
   }
 }

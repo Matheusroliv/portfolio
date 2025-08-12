@@ -2,7 +2,7 @@
   "title": "Matheus Oliveira • Portfolio",
   "hero": {
     "role": "Software Engineer • Angular & React Specialist",
-    "bio": "For 5+ years I’ve turned ideas into production apps with Angular, React, Ionic and NestJS. Clean-code advocate, UX enthusiast, pepperoni-pizza lover and proud dog dad.",
+    "bio": "For over 5 years, I’ve been transforming ideas into remarkable digital products using Angular, React, Ionic, and NestJS. Passionate about clean code and crafting interfaces that captivate users.",
     "cta_projects": "View projects",
     "cta_contact": "Get in touch"
   },
@@ -22,6 +22,58 @@
       "api": "REST APIs / NestJS",
       "consulting": "Architecture Consulting",
       "mentoring": "Technical Mentoring"
+    }
+  },
+  "contact": {
+    "title_prefix": "Get in",
+    "title_highlight": "Touch",
+    "subtitle": "Have a project in mind? Let’s talk and turn your ideas into reality.",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "location_label": "Location",
+    "location_value": "Brazil",
+    "cta_title": "Shall we work together?",
+    "cta_body": "I’m always open to chat and collaborate on new creative projects. 🚀",
+    "form": {
+      "name_label": "Name",
+      "email_label": "Email",
+      "message_label": "Message",
+      "name_placeholder": "Your full name",
+      "email_placeholder": "you@email.com",
+      "message_placeholder": "Tell me about your project...",
+      "submit": "Send Message"
+    }
+  },
+  "skills": {
+    "title": "Tech Stack"
+  },
+  "nav": {
+    "about": "About",
+    "contact": "Contact",
+    "games": "Games"
+  },
+  "games": {
+    "title": "My",
+    "highlight": "Games",
+    "subtitle": "A curated collection of small games and experiments where I blend code, design, and fun.",
+    "play_now": "Play now",
+    "cards": {
+      "tictactoe": {
+        "title": "Tic Tac Toe Infinity",
+        "description": "A modern, infinite take on tic-tac-toe."
+      },
+      "snake": {
+        "title": "Snake",
+        "description": "Cute snake, emoji food and levels with variable growth."
+      },
+      "checkers": {
+        "title": "Checkers",
+        "description": "Classic checkers with piece capture and king promotion."
+      },
+      "restaum": {
+        "title": "Peg Solitaire",
+        "description": "Peg Solitaire with jump logic and undo."
+      }
     }
   }
 }

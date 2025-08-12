@@ -1,6 +1,5 @@
 import SnakeGame from "@/components/games/SnakeGame";
 import TicTacToe from "@/components/games/TicTacToe";
-import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -126,7 +125,7 @@ export default function Games() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            {t("games.title", "My ")}
+            {t("games.title", "My")} {" "}
             <span className="gradient-text">
               {t("games.highlight", "Games")}
             </span>
@@ -145,41 +144,33 @@ export default function Games() {
   "
         >
           {games.map((g, i) => (
-            <Reveal key={g.title} dir="up" delay={i * 0.15}>
-              <Card className="glass-card overflow-hidden group w-[320px] md:w-[340px] h-[460px] flex flex-col justify-between">
-                <button onClick={() => setOpenGame(g.kind)} className="w-full text-left h-full flex flex-col">
-                  <div className="relative overflow-hidden">
-                    <div className="w-full h-[180px] bg-gradient-to-br from-primary/20 to-foreground/10 flex items-center justify-center">
-                      {gameThumbs[g.kind]}
-                    </div>
+            <Card className="glass-card overflow-hidden group w-[320px] md:w-[340px] h-[460px] flex flex-col justify-between">
+              <button onClick={() => setOpenGame(g.kind)} className="w-full text-left h-full flex flex-col">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-[180px] bg-gradient-to-br from-primary/20 to-foreground/10 flex items-center justify-center">
+                    {gameThumbs[g.kind]}
                   </div>
-                  <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold">{g.title}</h3>
-                      <p className="text-muted-foreground">{g.description}</p>
-                    </div>
-                    <div>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {g.tech.map((tech) => (
-                          <Badge key={tech} variant="secondary" className="text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                      <Button className="gradient-button w-full" size="sm">
-                        Jogar agora
-                      </Button>
-                    </div>
-                    {(g.demo || g.code) && (
-                      <div className="flex gap-3 pt-4">
-                        {/* ... seus botões de demo e code ... */}
-                      </div>
-                    )}
+                </div>
+                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold">{t(`games.cards.${g.kind}.title`, g.title)}</h3>
+                    <p className="text-muted-foreground">{t(`games.cards.${g.kind}.description`, g.description)}</p>
                   </div>
-                </button>
-              </Card>
-
-            </Reveal>
+                  <div>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {g.tech.map((tech) => (
+                        <Badge key={tech} variant="secondary" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Button className="gradient-button w-full" size="sm">
+                      {t("games.play_now", "Jogar agora")}
+                    </Button>
+                  </div>
+                </div>
+              </button>
+            </Card>
           ))}
         </div>
 
@@ -188,7 +179,7 @@ export default function Games() {
       <Dialog open={openGame === "tictactoe"} onOpenChange={() => setOpenGame(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Tic Tac Toe Infinity</DialogTitle>
+            <DialogTitle>{t("games.cards.tictactoe.title", "Tic Tac Toe Infinity")}</DialogTitle>
           </DialogHeader>
           <TicTacToe />
         </DialogContent>
@@ -197,7 +188,7 @@ export default function Games() {
       <Dialog open={openGame === "snake"} onOpenChange={() => setOpenGame(null)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Snake</DialogTitle>
+            <DialogTitle>{t("games.cards.snake.title", "Snake")}</DialogTitle>
           </DialogHeader>
           <SnakeGame />
         </DialogContent>
@@ -206,7 +197,7 @@ export default function Games() {
       <Dialog open={openGame === "checkers"} onOpenChange={() => setOpenGame(null)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Checkers</DialogTitle>
+            <DialogTitle>{t("games.cards.checkers.title", "Checkers")}</DialogTitle>
           </DialogHeader>
           <CheckersGame />
         </DialogContent>
@@ -215,7 +206,7 @@ export default function Games() {
       <Dialog open={openGame === "restaum"} onOpenChange={() => setOpenGame(null)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Resta 1</DialogTitle>
+            <DialogTitle>{t("games.cards.restaum.title", "Resta 1")}</DialogTitle>
           </DialogHeader>
           <RestaUm />
         </DialogContent>

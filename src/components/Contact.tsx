@@ -1,13 +1,12 @@
 import Reveal from "@/components/Reveal";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const { t } = useTranslation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,28 +19,29 @@ export default function Contact() {
   ) => setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   return (
-    <section className="py-20 px-1 bg-muted/30">
+    <section id="contact" className="py-20 px-1 bg-muted/30 scroll-mt-24">
       <div className="container mx-auto">
         <Reveal dir="up">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Entre em <span className="gradient-text">Contato</span>
+              {t("contact.title_prefix", "Entre em")} {" "}
+              <span className="gradient-text">{t("contact.title_highlight", "Contato")}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Tem um projeto em mente? Vamos conversar e transformar suas ideias em realidade
+              {t("contact.subtitle", "Tem um projeto em mente? Vamos conversar e transformar suas ideias em realidade.")}
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 gap-12 justify-items-center">
+          <div className="space-y-8 w-full max-w-xl">
             {[
-              { icon: Mail, label: "Email", value: "matheus@email.com" },
-              { icon: Phone, label: "Telefone", value: "+55 (11) 99999-9999" },
-              { icon: MapPin, label: "Localização", value: "Brasil" }
+              { icon: Mail, label: t("contact.email_label", "Email"), value: "matheusrdeoliv1@gmail.com" },
+              { icon: Phone, label: t("contact.phone_label", "Telefone"), value: "+55 (11) 98565-6805" },
+              { icon: MapPin, label: t("contact.location_label", "Localização"), value: t("contact.location_value", "Brasil") }
             ].map((item, i) => (
               <Reveal key={item.label} dir="left" delay={i * 0.15}>
-                <Card className="glass-card p-6 hover:scale-105 transition-transform">
+                <Card className="glass-card p-6 w-full hover:scale-105 transition-transform">
                   <div className="flex items-center gap-4">
                     <div className="p-3 glass-card">
                       <item.icon className="w-6 h-6 text-primary" />
@@ -57,15 +57,15 @@ export default function Contact() {
 
             <Reveal dir="up" delay={0.45}>
               <div className="text-center pt-8">
-                <h3 className="text-xl font-semibold mb-4">Vamos trabalhar juntos?</h3>
+                <h3 className="text-xl font-semibold mb-4">{t("contact.cta_title", "Vamos trabalhar juntos?")}</h3>
                 <p className="text-muted-foreground">
-                  Estou sempre aberto a trocar ideias e colaborar em novos projetos criativos. 🚀
+                  {t("contact.cta_body", "Estou sempre aberto a trocar ideias e colaborar em novos projetos criativos. 🚀")}
                 </p>
               </div>
             </Reveal>
           </div>
 
-          <Reveal dir="right" delay={0.2}>
+          {/* <Reveal dir="right" delay={0.2}>
             <Card className="glass-card p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -121,7 +121,7 @@ export default function Contact() {
                 </Button>
               </form>
             </Card>
-          </Reveal>
+          </Reveal> */}
         </div>
       </div>
     </section>
