@@ -1,6 +1,7 @@
 import Reveal from "@/components/Reveal";
 import { Github, Heart, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -10,7 +11,7 @@ export default function Footer() {
     <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-6 py-12 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          
+
           <Reveal dir="left">
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">
@@ -18,7 +19,7 @@ export default function Footer() {
               </h3>
 
               <p className="text-muted-foreground">
-                Criando soluções digitais com Angular, React e NestJS. 💻✨
+                {t("footer.tagline", "Criando soluções digitais com Angular, React e NestJS. 💻✨")}
               </p>
 
               <div className="flex gap-4">
@@ -51,14 +52,23 @@ export default function Footer() {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">{t("footer.quick_links")}</h4>
               <ul className="space-y-2">
-                {(["about", "skills", "projects", "contact"] as const).map((k) => (
+                {(["about", "contact", "games"] as const).map((k) => (
                   <li key={k}>
-                    <a
-                      href={`#${k}`}
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {t(`footer.links.${k}`)}
-                    </a>
+                    {k === "games" ? (
+                      <Link
+                        to="/games"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {t(`nav.${k}`)}
+                      </Link>
+                    ) : (
+                      <a
+                        href={`#${k}`}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {t(`nav.${k}`)}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -69,7 +79,7 @@ export default function Footer() {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">{t("footer.services")}</h4>
               <ul className="space-y-2 text-muted-foreground">
-                {(["web", "api", "consulting", "mentoring"] as const).map((k) => (
+                {(["web", "api"] as const).map((k) => (
                   <li key={k}>{t(`footer.services_list.${k}`)}</li>
                 ))}
               </ul>

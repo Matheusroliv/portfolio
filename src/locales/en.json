@@ -7,6 +7,7 @@
     "cta_contact": "Get in touch"
   },
   "footer": {
+    "tagline": "Building digital solutions with Angular, React and NestJS. 💻✨",
     "quick_links": "Quick links",
     "services": "Services",
     "rights": "© {{year}} Matheus Oliveira. All rights reserved.",
@@ -20,8 +21,7 @@
     "services_list": {
       "web": "Web & Mobile",
       "api": "REST APIs / NestJS",
-      "consulting": "Architecture Consulting",
-      "mentoring": "Technical Mentoring"
+      "mentoring": "1:1 Career Mentoring"
     }
   },
   "contact": {
@@ -51,6 +51,53 @@
     "about": "About",
     "contact": "Contact",
     "games": "Games"
+  },
+  "about": {
+    "title_prefix": "About",
+    "highlight": "Me",
+    "subtitle": "Passionate developer creating innovative solutions and interfaces that connect people to technology",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "cards": {
+      "development": {
+        "title": "Development",
+        "description": "Specialist in React, TypeScript, Node.js and modern technologies — focused on performance and UX."
+      },
+      "design": {
+        "title": "Design",
+        "description": "I blend functionality with aesthetics, crafting intuitive and appealing interfaces."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Always seeking the latest trends and technologies to solve complex challenges."
+      }
+    },
+    "experience": {
+      "title": "Experience",
+      "items": {
+        "okegen": {
+          "role": "Software Engineer",
+          "company": "OKEGEN Exchange",
+          "period": "2024 - Present",
+          "description": "Development of REST APIs with NestJS and creation of reusable components in Angular and Ionic, reducing delivery time and increasing the platform's security."
+        },
+        "codetech": {
+          "role": "Full Stack Developer",
+          "company": "Code Tech",
+          "period": "2023 - Present",
+          "description": "Creation of white-label templates with NestJS and React, speeding up the launch of new client applications by up to 80%."
+        },
+        "tgt": {
+          "role": "Frontend Developer",
+          "company": "TGT Digital",
+          "period": "2021 - 2023",
+          "description": "Built robust apps with React, React Native and Angular, contributing to diverse projects that impacted thousands of end users."
+        }
+      }
+    }
   },
   "games": {
     "title": "My",
