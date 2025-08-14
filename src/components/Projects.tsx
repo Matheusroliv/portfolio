@@ -3,40 +3,42 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ExternalLink, Github } from "lucide-react";
 import Reveal from "./Reveal";
+import { useTranslation } from "react-i18next";
 
 const Projects = () => {
+  const { t } = useTranslation();
   const projects = [
     {
       title: "E-commerce Platform",
       description: "Plataforma completa de e-commerce com painel administrativo, carrinho de compras e integração de pagamentos.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
       tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      demo: "#",
-      code: "#"
+      demo: undefined,
+      code: undefined
     },
     {
       title: "Task Management App",
       description: "Aplicativo de gerenciamento de tarefas com colaboração em tempo real e sincronização em nuvem.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
       tech: ["React", "Firebase", "TypeScript", "Tailwind"],
-      demo: "#",
-      code: "#"
+      demo: undefined,
+      code: undefined
     },
     {
       title: "Analytics Dashboard",
       description: "Dashboard avançado de analytics com visualizações interativas e relatórios em tempo real.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
       tech: ["React", "D3.js", "Python", "FastAPI"],
-      demo: "#",
-      code: "#"
+      demo: undefined,
+      code: undefined
     },
     {
       title: "Mobile Banking App",
       description: "Aplicativo mobile de banco digital com transferências, investimentos e controle financeiro.",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop",
       tech: ["React Native", "Node.js", "MongoDB", "JWT"],
-      demo: "#",
-      code: "#"
+      demo: undefined,
+      code: undefined
     }
   ];
 
@@ -45,10 +47,11 @@ const Projects = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Meus <span className="gradient-text">Projetos</span>
+            {t("projects.title_prefix", "Meus")} {" "}
+            <span className="gradient-text">{t("projects.title_highlight", "Projetos")}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Alguns dos projetos que desenvolvi, mostrando minhas habilidades e paixão pela programação
+            {t("projects.subtitle", "Alguns dos projetos que desenvolvi, mostrando minhas habilidades e paixão pela programação")}
           </p>
         </div>
 
@@ -80,14 +83,33 @@ const Projects = () => {
                   </div>
 
                   <div className="flex gap-3 pt-4">
-                    <Button size="sm" className="gradient-button">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Demo
-                    </Button>
-                    <Button size="sm" variant="outline">
-                      <Github className="w-4 h-4 mr-2" />
-                      Código
-                    </Button>
+                    {project.demo ? (
+                      <a href={project.demo} target="_blank" rel="noreferrer">
+                        <Button size="sm" className="gradient-button">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          {t("projects.buttons.demo", "Demo")}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button size="sm" className="gradient-button" disabled>
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        {t("projects.buttons.demo", "Demo")}
+                      </Button>
+                    )}
+
+                    {project.code ? (
+                      <a href={project.code} target="_blank" rel="noreferrer">
+                        <Button size="sm" variant="outline">
+                          <Github className="w-4 h-4 mr-2" />
+                          {t("projects.buttons.code", "Código")}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button size="sm" variant="outline" disabled>
+                        <Github className="w-4 h-4 mr-2" />
+                        {t("projects.buttons.code", "Código")}
+                      </Button>
+                    )}
                   </div>
                 </div>
               </Card>
@@ -97,7 +119,7 @@ const Projects = () => {
 
         <div className="text-center mt-12">
           <Button size="lg" variant="outline" className="px-8">
-            Ver Todos os Projetos
+            {t("projects.view_all", "Ver Todos os Projetos")}
           </Button>
         </div>
       </div>

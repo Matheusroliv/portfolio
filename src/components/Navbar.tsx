@@ -64,7 +64,7 @@ export default function Navbar() {
         <div className="container mx-auto flex items-center justify-between py-4">
           <Link to="/" className="flex items-center gap-2">
             <img src={logoSrc} alt="logo" className="h-6 w-6" />
-            <span className="sr-only">Home</span>
+            <span className="sr-only">{t("nav.home", "Home")}</span>
           </Link>
 
           <ul className="hidden md:flex gap-6 text-sm font-medium">

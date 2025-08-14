@@ -26,7 +26,7 @@ export default function About() {
         <Reveal dir="up" delay={0.6}>
           <div className="flex justify-center gap-6 mb-8">
             <a
-              href="https://github.com/seu-usuario"
+              href="https://github.com/Matheusroliv"
               className="p-3 glass-card hover:scale-110 transition-transform"
               aria-label={t("about.social.github", "GitHub")}
               target="_blank"
@@ -35,7 +35,7 @@ export default function About() {
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com/in/seu-usuario"
+              href="https://www.linkedin.com/in/matheusroliv/"
               className="p-3 glass-card hover:scale-110 transition-transform"
               aria-label={t("about.social.linkedin", "LinkedIn")}
               target="_blank"
@@ -44,7 +44,7 @@ export default function About() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="mailto:seuemail@exemplo.com"
+              href="mailto:matheusrdeoliv1@gmail.com?subject=Contato%20via%20Portfolio&body=Ol%C3%A1%20Matheus%2C%0D%0A"
               className="p-3 glass-card hover:scale-110 transition-transform"
               aria-label={t("about.social.email", "Email")}
             >

@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import CheckersGame from "../components/games/Checkers";
-import RestaUm from "../components/games/RestaUm";
+import PegSolitaire from "../components/games/PegSolitaire";
 
 type GameKind = "tictactoe" | "snake" | "checkers" | "restaum";
 
@@ -208,7 +208,7 @@ export default function Games() {
           <DialogHeader>
             <DialogTitle>{t("games.cards.restaum.title", "Resta 1")}</DialogTitle>
           </DialogHeader>
-          <RestaUm />
+          <PegSolitaire />
         </DialogContent>
       </Dialog>
     </section>

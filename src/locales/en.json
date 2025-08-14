@@ -47,7 +47,23 @@
   "skills": {
     "title": "Tech Stack"
   },
+  "projects": {
+    "title_prefix": "My",
+    "title_highlight": "Projects",
+    "subtitle": "Some of the projects I've built, showcasing my skills and passion for programming",
+    "buttons": {
+      "demo": "Demo",
+      "code": "Code"
+    },
+    "view_all": "View All Projects"
+  },
+  "notfound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "back_home": "Return to Home"
+  },
   "nav": {
+    "home": "Home",
     "about": "About",
     "contact": "Contact",
     "games": "Games"
@@ -120,6 +136,75 @@
       "restaum": {
         "title": "Peg Solitaire",
         "description": "Peg Solitaire with jump logic and undo."
+      }
+    }
+  },
+  "game_ui": {
+    "common": {
+      "reset": "Reset",
+      "undo": "Undo"
+    },
+    "snake": {
+      "levels": {
+        "normal": "🙂 Normal",
+        "hard": "🤖 Hard"
+      },
+      "labels": {
+        "snake_color": "Snake color"
+      },
+      "aria": {
+        "pick_snake_color": "Pick snake color"
+      },
+      "tooltip": {
+        "pick_snake_color": "Pick snake color"
+      },
+      "messages": {
+        "game_over": "Game Over — press any move key to restart!",
+        "you_win": "You win! 🎉"
+      },
+      "hint": {
+        "controls": "Use Arrow Keys or WASD."
+      },
+      "badges": {
+        "combo_3x": "🌶️⭐ 3x combo!",
+        "combo_2x": "✨ 2x combo!"
+      }
+    },
+    "tictactoe": {
+      "levels": {
+        "easy": "😴 Easy",
+        "medium": "🙂 Medium",
+        "hard": "🤖 Hard"
+      },
+      "status": {
+        "winner": "🏆 {{player}} won!",
+        "turn": "Turn of {{player}}"
+      }
+    },
+    "checkers": {
+      "modes": {
+        "pvp": "PvP",
+        "easy": "Easy 🤖",
+        "hard": "Hard 🤖"
+      },
+      "players": {
+        "white": "White",
+        "black": "Black"
+      },
+      "status": {
+        "winner": "🏆 {{player}} won!",
+        "draw": "Draw (Stalemate)",
+        "turn": "Turn of {{player}}"
+      },
+      "messages": {
+        "must_capture": "Mandatory capture!"
+      }
+    },
+    "restaum": {
+      "status": {
+        "won": "🏆 You won! Only 1 peg left.",
+        "stuck": "No moves available.",
+        "remaining": "Remaining pegs: {{count}}"
       }
     }
   }

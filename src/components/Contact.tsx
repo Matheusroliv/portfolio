@@ -70,14 +70,14 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Nome
+                    {t("contact.form.name_label", "Nome")}
                   </label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Seu nome completo"
+                    placeholder={t("contact.form.name_placeholder", "Seu nome completo")}
                     required
                     className="bg-background/50 border-border"
                   />
@@ -85,7 +85,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email
+                    {t("contact.form.email_label", "Email")}
                   </label>
                   <Input
                     id="email"
@@ -93,7 +93,7 @@ export default function Contact() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="seu@email.com"
+                    placeholder={t("contact.form.email_placeholder", "seu@email.com")}
                     required
                     className="bg-background/50 border-border"
                   />
@@ -101,14 +101,14 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensagem
+                    {t("contact.form.message_label", "Mensagem")}
                   </label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Conte-me sobre seu projeto..."
+                    placeholder={t("contact.form.message_placeholder", "Conte-me sobre seu projeto...")}
                     rows={6}
                     required
                     className="bg-background/50 border-border resize-none"
@@ -117,7 +117,7 @@ export default function Contact() {
 
                 <Button type="submit" className="w-full gradient-button py-3">
                   <Send className="w-4 h-4 mr-2" />
-                  Enviar Mensagem
+                  {t("contact.form.submit", "Enviar Mensagem")}
                 </Button>
               </form>
             </Card>

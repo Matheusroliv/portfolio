@@ -24,21 +24,25 @@ export default function Footer() {
 
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/seu-usuario"
+                  href="https://github.com/Matheusroliv"
                   aria-label="GitHub"
                   className="p-2 glass-card hover:scale-110 transition-transform"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/seu-usuario"
+                  href="https://www.linkedin.com/in/matheusroliv/"
                   aria-label="LinkedIn"
                   className="p-2 glass-card hover:scale-110 transition-transform"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:seuemail@exemplo.com"
+                  href="mailto:matheusrdeoliv1@gmail.com?subject=Contato%20via%20Portfolio&body=Ol%C3%A1%20Matheus%2C%0D%0A"
                   aria-label="Email"
                   className="p-2 glass-card hover:scale-110 transition-transform"
                 >

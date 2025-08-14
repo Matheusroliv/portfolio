@@ -2,6 +2,7 @@ import ConfettiRain from "@/components/ConfettiRain";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
+import { useTranslation } from "react-i18next";
 
 // Peg Solitaire (Resta 1)
 // Board representation: -1 = invalid, 0 = empty, 1 = peg
@@ -65,7 +66,8 @@ function getAllMoves(board: Board): { from: [number, number]; to: [number, numbe
   return moves;
 }
 
-export default function RestaUm() {
+export default function PegSolitaire() {
+  const { t } = useTranslation();
   const [board, setBoard] = useState<Board>(createInitialBoard());
   const [selected, setSelected] = useState<[number, number] | null>(null);
   const [validTo, setValidTo] = useState<[number, number][]>([]);
@@ -149,19 +151,19 @@ export default function RestaUm() {
   }
 
   const status = won
-    ? "🏆 Você venceu! Restou apenas 1 peça."
+    ? t("game_ui.restaum.status.won")
     : stuck
-    ? "Sem movimentos disponíveis."
-    : `Peças restantes: ${pegs}`;
+    ? t("game_ui.restaum.status.stuck")
+    : t("game_ui.restaum.status.remaining", { count: pegs });
 
   return (
     <Card className="p-4">
-      <h3 className="font-bold text-lg mb-2">Resta 1</h3>
+      <h3 className="font-bold text-lg mb-2">{t("games.cards.restaum.title")}</h3>
       <div className="flex gap-2 mb-4">
         <Button size="sm" variant="outline" onClick={undo} disabled={history.length === 0}>
-          Desfazer
+          {t("game_ui.common.undo")}
         </Button>
-        <Button size="sm" onClick={reset}>Reiniciar</Button>
+        <Button size="sm" onClick={reset}>{t("game_ui.common.reset")}</Button>
       </div>
 
       <div className="relative mx-auto w-fit">

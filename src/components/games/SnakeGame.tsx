@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DPadControl } from "../DPadControl";
+import { useTranslation } from "react-i18next";
 
 type Level = "normal" | "hard";
 type Cell = { r: number; c: number };
@@ -79,6 +80,7 @@ function hexToHsl(hex: string) {
 function hslStr(h: number, s: number, l: number) { return `hsl(${h} ${s}% ${l}%)`; }
 
 export default function SnakeGame() {
+  const { t } = useTranslation();
   const boardRef = useRef<HTMLDivElement>(null);
 
   const [level, setLevel] = useState<Level>("normal");
@@ -346,9 +348,11 @@ export default function SnakeGame() {
   const headIndex = head ? head.r * COLS + head.c : -1;
 
   const multiplier = power ? (power.star && power.pepper ? 3 : 2) : 1;
-  const powerBadge =
-    multiplier === 3 ? "🌶️⭐ 3x combo!" :
-      multiplier === 2 ? "✨ 2x combo!" : null;
+  const powerBadge = useMemo(() => {
+    if (multiplier === 3) return t("game_ui.snake.badges.combo_3x");
+    if (multiplier === 2) return t("game_ui.snake.badges.combo_2x");
+    return null;
+  }, [multiplier, t]);
 
   const poweredClass =
     multiplier === 3 ? "snake-powered-3x" :
@@ -365,7 +369,7 @@ export default function SnakeGame() {
             onClick={() => { if (!running) setLevel(l); }}
             disabled={running}
           >
-            {l === "hard" ? "🤖 Hard" : "🙂 Normal"}
+            {t(`game_ui.snake.levels.${l}`)}
           </Button>
         ))}
       </div>
@@ -377,15 +381,15 @@ export default function SnakeGame() {
           )}
         </div>
         <label className="text-sm flex items-center gap-2">
-          <span className="opacity-70">Snake color</span>
+          <span className="opacity-70">{t("game_ui.snake.labels.snake_color")}</span>
           <input
             type="color"
             value={snakeColor}
             onChange={(e) => setSnakeColor(e.target.value)}
             className="size-6 rounded overflow-hidden border border-border cursor-pointer"
             disabled={running && !gameOver && !gameWon}
-            aria-label="Pick snake color"
-            title="Pick snake color"
+            aria-label={t("game_ui.snake.aria.pick_snake_color")}
+            title={t("game_ui.snake.tooltip.pick_snake_color")}
           />
         </label>
       </div>
@@ -461,12 +465,12 @@ export default function SnakeGame() {
 
       {gameOver && !gameWon && (
         <div className="text-center text-red-600 dark:text-red-400 font-semibold">
-          Game Over — press any move key to restart!
+          {t("game_ui.snake.messages.game_over")}
         </div>
       )}
       {gameWon && (
         <div className="text-center text-green-600 dark:text-green-400 font-semibold">
-          You win! 🎉
+          {t("game_ui.snake.messages.you_win")}
         </div>
       )}
 
@@ -474,7 +478,7 @@ export default function SnakeGame() {
         <DPadControl onMove={handleDPad} />
       ) : (
         <div className="text-xs text-center opacity-60">
-          Use Arrow Keys or WASD.
+          {t("game_ui.snake.hint.controls")}
         </div>
       )}
 
