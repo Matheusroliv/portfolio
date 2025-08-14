@@ -37,7 +37,7 @@ export default function Contact() {
           <div className="space-y-8 w-full max-w-xl">
             {[
               { icon: Mail, label: t("contact.email_label", "Email"), value: "matheusrdeoliv1@gmail.com" },
-              { icon: Phone, label: t("contact.phone_label", "Telefone"), value: "+55 (11) 98565-6805" },
+              { icon: Phone, label: t("contact.phone_label", "Telefone"), value: "+55 (61) 98565-6805" },
               { icon: MapPin, label: t("contact.location_label", "Localização"), value: t("contact.location_value", "Brasil") }
             ].map((item, i) => (
               <Reveal key={item.label} dir="left" delay={i * 0.15}>
