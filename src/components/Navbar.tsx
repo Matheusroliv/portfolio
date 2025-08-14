@@ -61,13 +61,13 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <nav className={`transition-colors duration-300 ${navBg}`}>
-        <div className="container mx-auto flex items-center justify-between py-4">
+        <div className="container mx-auto grid grid-cols-2 md:grid-cols-3 items-center py-4">
           <Link to="/" className="flex items-center gap-2">
             <img src={logoSrc} alt="logo" className="h-6 w-6" />
             <span className="sr-only">{t("nav.home", "Home")}</span>
           </Link>
 
-          <ul className="hidden md:flex gap-6 text-sm font-medium">
+          <ul className="hidden md:flex gap-6 text-sm font-medium justify-self-center">
             {navItems.map((item) =>
               item.to ? (
                 <li key={item.id}>
@@ -95,7 +95,7 @@ export default function Navbar() {
             )}
           </ul>
 
-          <div className="flex items-center gap-4 md:gap-6">
+          <div className="flex items-center gap-4 md:gap-6 justify-self-end">
             <LanguageSwitch />
             <ThemeSwitch />
             <button
