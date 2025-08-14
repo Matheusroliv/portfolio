@@ -1,27 +1,212 @@
 {
   "title": "Matheus Oliveira • Portfólio",
   "hero": {
-    "role": "Engenheiro de Software • Angular & React Specialist",
-    "bio": "Há mais de 5 anos transformo ideias em produtos digitais usando Angular, React, Ionic e NestJS. Amante de clean code, UX sem fricção, pizza de pepperoni e longas caminhadas com meus cães.",
+    "role": "Engenheiro de Software • Especialista em Angular & React",
+    "bio": "Há mais de 5 anos transformo ideias em produtos digitais incríveis com Angular, React, Ionic e NestJS. Apaixonado por código limpo e interfaces que encantam usuários.",
     "cta_projects": "Ver projetos",
     "cta_contact": "Falar comigo"
   },
   "footer": {
+    "tagline": "Criando soluções digitais com Angular, React e NestJS. 💻✨",
     "quick_links": "Links rápidos",
     "services": "Serviços",
     "rights": "© {{year}} Matheus Oliveira. Todos os direitos reservados.",
-    "made_with": "Feito com ❤, ☕ e umas linhas de TypeScript.",
+    "made_with": "Feito com ❤, ☕ e umas boas linhas de TypeScript.",
     "links": {
       "about": "Sobre",
-      "skills": "Skills",
+      "skills": "Habilidades",
       "projects": "Projetos",
       "contact": "Contato"
     },
     "services_list": {
       "web": "Web & Mobile",
       "api": "APIs REST / NestJS",
-      "consulting": "Consultoria de Arquitetura",
-      "mentoring": "Mentoria Técnica"
+      "mentoring": "Mentoria 1:1 de Carreira"
+    }
+  },
+  "contact": {
+    "title_prefix": "Entre em",
+    "title_highlight": "Contato",
+    "subtitle": "Tem um projeto em mente? Vamos conversar e transformar suas ideias em realidade.",
+    "email_label": "Email",
+    "phone_label": "Telefone",
+    "location_label": "Localização",
+    "location_value": "Brasil",
+    "cta_title": "Vamos trabalhar juntos?",
+    "cta_body": "Estou sempre aberto a trocar ideias e colaborar em novos projetos criativos. ",
+    "form": {
+      "name_label": "Nome",
+      "email_label": "Email",
+      "message_label": "Mensagem",
+      "name_placeholder": "Seu nome completo",
+      "email_placeholder": "seu@email.com",
+      "message_placeholder": "Conte-me sobre seu projeto...",
+      "submit": "Enviar Mensagem"
+    }
+  },
+  "skills": {
+    "title": "Tecnologias"
+  },
+  "projects": {
+    "title_prefix": "Meus",
+    "title_highlight": "Projetos",
+    "subtitle": "Alguns dos projetos que desenvolvi, mostrando minhas habilidades e paixão pela programação",
+    "buttons": {
+      "demo": "Demo",
+      "code": "Código"
+    },
+    "view_all": "Ver Todos os Projetos"
+  },
+  "notfound": {
+    "title": "404",
+    "message": "Ops! Página não encontrada",
+    "back_home": "Voltar para a Home"
+  },
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "contact": "Contato",
+    "games": "Games"
+  },
+  
+  "about": {
+    "title_prefix": "Sobre",
+    "highlight": "Mim",
+    "subtitle": "Desenvolvedor apaixonado por criar soluções inovadoras e interfaces que conectam pessoas à tecnologia",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "cards": {
+      "development": {
+        "title": "Desenvolvimento",
+        "description": "Especialista em React, TypeScript, Node.js e tecnologias modernas — focado em performance e UX."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Combino funcionalidade com estética, criando interfaces intuitivas e atraentes."
+      },
+      "innovation": {
+        "title": "Inovação",
+        "description": "Sempre em busca das últimas tendências e tecnologias para solucionar desafios complexos."
+      }
+    },
+    "experience": {
+      "title": "Experiência",
+      "items": {
+        "okegen": {
+          "role": "Software Engineer",
+          "company": "OKEGEN Exchange",
+          "period": "2024 - Presente",
+          "description": "Desenvolvimento de APIs REST com NestJS e criação de componentes reutilizáveis em Angular e Ionic, reduzindo o tempo de entrega e aumentando a segurança da plataforma."
+        },
+        "codetech": {
+          "role": "Full Stack Developer",
+          "company": "Code Tech",
+          "period": "2023 - Presente",
+          "description": "Criação de templates white-label com NestJS e React, agilizando em até 80% o lançamento de novas aplicações para clientes."
+        },
+        "tgt": {
+          "role": "Frontend Developer",
+          "company": "TGT Digital",
+          "period": "2021 - 2023",
+          "description": "Construção de apps robustos em React, React Native e Angular, atuando em projetos variados que impactaram milhares de usuários finais."
+        }
+      }
+    }
+  },
+  "games": {
+    "title": "Meus",
+    "highlight": "Jogos",
+    "subtitle": "Uma coleção de jogos e experimentos onde misturo código, design e diversão.",
+    "play_now": "Jogar agora",
+    "cards": {
+      "tictactoe": {
+        "title": "Jogo da Velha Infinito",
+        "description": "Uma versão moderna e infinita do jogo da velha."
+      },
+      "snake": {
+        "title": "Cobrinha",
+        "description": "Cobrinha fofa, comidas em emoji e níveis com crescimento variável."
+      },
+      "checkers": {
+        "title": "Damas",
+        "description": "Clássico jogo de damas (checkers) com lógica de dama, captura e promoção."
+      },
+      "restaum": {
+        "title": "Resta 1",
+        "description": "Resta 1 com lógica de saltos e desfazer."
+      }
+    }
+  },
+  "game_ui": {
+    "common": {
+      "reset": "Reiniciar",
+      "undo": "Desfazer"
+    },
+    "snake": {
+      "levels": {
+        "normal": "🙂 Normal",
+        "hard": "🤖 Difícil"
+      },
+      "labels": {
+        "snake_color": "Cor da cobrinha"
+      },
+      "aria": {
+        "pick_snake_color": "Escolher cor da cobrinha"
+      },
+      "tooltip": {
+        "pick_snake_color": "Escolher cor da cobrinha"
+      },
+      "messages": {
+        "game_over": "Fim de jogo — pressione qualquer tecla de movimento para reiniciar!",
+        "you_win": "Você venceu! 🎉"
+      },
+      "hint": {
+        "controls": "Use as setas ou WASD."
+      },
+      "badges": {
+        "combo_3x": "🌶️⭐ Combo 3x!",
+        "combo_2x": "✨ Combo 2x!"
+      }
+    },
+    "tictactoe": {
+      "levels": {
+        "easy": "😴 Fácil",
+        "medium": "🙂 Médio",
+        "hard": "🤖 Difícil"
+      },
+      "status": {
+        "winner": "🏆 {{player}} venceu!",
+        "turn": "Vez de {{player}}"
+      }
+    },
+    "checkers": {
+      "modes": {
+        "pvp": "PvP",
+        "easy": "Fácil 🤖",
+        "hard": "Difícil 🤖"
+      },
+      "players": {
+        "white": "Brancas",
+        "black": "Pretas"
+      },
+      "status": {
+        "winner": "🏆 {{player}} venceram!",
+        "draw": "Empate (Afogamento)",
+        "turn": "Vez das {{player}}"
+      },
+      "messages": {
+        "must_capture": "Captura obrigatória!"
+      }
+    },
+    "restaum": {
+      "status": {
+        "won": "🏆 Você venceu! Restou apenas 1 peça.",
+        "stuck": "Sem movimentos disponíveis.",
+        "remaining": "Peças restantes: {{count}}"
+      }
     }
   }
 }

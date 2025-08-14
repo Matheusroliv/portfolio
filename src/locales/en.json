@@ -2,11 +2,12 @@
   "title": "Matheus Oliveira • Portfolio",
   "hero": {
     "role": "Software Engineer • Angular & React Specialist",
-    "bio": "For 5+ years I’ve turned ideas into production apps with Angular, React, Ionic and NestJS. Clean-code advocate, UX enthusiast, pepperoni-pizza lover and proud dog dad.",
+    "bio": "For over 5 years, I’ve been transforming ideas into remarkable digital products using Angular, React, Ionic, and NestJS. Passionate about clean code and crafting interfaces that captivate users.",
     "cta_projects": "View projects",
     "cta_contact": "Get in touch"
   },
   "footer": {
+    "tagline": "Building digital solutions with Angular, React and NestJS. 💻✨",
     "quick_links": "Quick links",
     "services": "Services",
     "rights": "© {{year}} Matheus Oliveira. All rights reserved.",
@@ -20,8 +21,191 @@
     "services_list": {
       "web": "Web & Mobile",
       "api": "REST APIs / NestJS",
-      "consulting": "Architecture Consulting",
-      "mentoring": "Technical Mentoring"
+      "mentoring": "1:1 Career Mentoring"
+    }
+  },
+  "contact": {
+    "title_prefix": "Get in",
+    "title_highlight": "Touch",
+    "subtitle": "Have a project in mind? Let’s talk and turn your ideas into reality.",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "location_label": "Location",
+    "location_value": "Brazil",
+    "cta_title": "Shall we work together?",
+    "cta_body": "I’m always open to chat and collaborate on new creative projects. 🚀",
+    "form": {
+      "name_label": "Name",
+      "email_label": "Email",
+      "message_label": "Message",
+      "name_placeholder": "Your full name",
+      "email_placeholder": "you@email.com",
+      "message_placeholder": "Tell me about your project...",
+      "submit": "Send Message"
+    }
+  },
+  "skills": {
+    "title": "Tech Stack"
+  },
+  "projects": {
+    "title_prefix": "My",
+    "title_highlight": "Projects",
+    "subtitle": "Some of the projects I've built, showcasing my skills and passion for programming",
+    "buttons": {
+      "demo": "Demo",
+      "code": "Code"
+    },
+    "view_all": "View All Projects"
+  },
+  "notfound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "back_home": "Return to Home"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "games": "Games"
+  },
+  "about": {
+    "title_prefix": "About",
+    "highlight": "Me",
+    "subtitle": "Passionate developer creating innovative solutions and interfaces that connect people to technology",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "cards": {
+      "development": {
+        "title": "Development",
+        "description": "Specialist in React, TypeScript, Node.js and modern technologies — focused on performance and UX."
+      },
+      "design": {
+        "title": "Design",
+        "description": "I blend functionality with aesthetics, crafting intuitive and appealing interfaces."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Always seeking the latest trends and technologies to solve complex challenges."
+      }
+    },
+    "experience": {
+      "title": "Experience",
+      "items": {
+        "okegen": {
+          "role": "Software Engineer",
+          "company": "OKEGEN Exchange",
+          "period": "2024 - Present",
+          "description": "Development of REST APIs with NestJS and creation of reusable components in Angular and Ionic, reducing delivery time and increasing the platform's security."
+        },
+        "codetech": {
+          "role": "Full Stack Developer",
+          "company": "Code Tech",
+          "period": "2023 - Present",
+          "description": "Creation of white-label templates with NestJS and React, speeding up the launch of new client applications by up to 80%."
+        },
+        "tgt": {
+          "role": "Frontend Developer",
+          "company": "TGT Digital",
+          "period": "2021 - 2023",
+          "description": "Built robust apps with React, React Native and Angular, contributing to diverse projects that impacted thousands of end users."
+        }
+      }
+    }
+  },
+  "games": {
+    "title": "My",
+    "highlight": "Games",
+    "subtitle": "A curated collection of small games and experiments where I blend code, design, and fun.",
+    "play_now": "Play now",
+    "cards": {
+      "tictactoe": {
+        "title": "Tic Tac Toe Infinity",
+        "description": "A modern, infinite take on tic-tac-toe."
+      },
+      "snake": {
+        "title": "Snake",
+        "description": "Cute snake, emoji food and levels with variable growth."
+      },
+      "checkers": {
+        "title": "Checkers",
+        "description": "Classic checkers with piece capture and king promotion."
+      },
+      "restaum": {
+        "title": "Peg Solitaire",
+        "description": "Peg Solitaire with jump logic and undo."
+      }
+    }
+  },
+  "game_ui": {
+    "common": {
+      "reset": "Reset",
+      "undo": "Undo"
+    },
+    "snake": {
+      "levels": {
+        "normal": "🙂 Normal",
+        "hard": "🤖 Hard"
+      },
+      "labels": {
+        "snake_color": "Snake color"
+      },
+      "aria": {
+        "pick_snake_color": "Pick snake color"
+      },
+      "tooltip": {
+        "pick_snake_color": "Pick snake color"
+      },
+      "messages": {
+        "game_over": "Game Over — press any move key to restart!",
+        "you_win": "You win! 🎉"
+      },
+      "hint": {
+        "controls": "Use Arrow Keys or WASD."
+      },
+      "badges": {
+        "combo_3x": "🌶️⭐ 3x combo!",
+        "combo_2x": "✨ 2x combo!"
+      }
+    },
+    "tictactoe": {
+      "levels": {
+        "easy": "😴 Easy",
+        "medium": "🙂 Medium",
+        "hard": "🤖 Hard"
+      },
+      "status": {
+        "winner": "🏆 {{player}} won!",
+        "turn": "Turn of {{player}}"
+      }
+    },
+    "checkers": {
+      "modes": {
+        "pvp": "PvP",
+        "easy": "Easy 🤖",
+        "hard": "Hard 🤖"
+      },
+      "players": {
+        "white": "White",
+        "black": "Black"
+      },
+      "status": {
+        "winner": "🏆 {{player}} won!",
+        "draw": "Draw (Stalemate)",
+        "turn": "Turn of {{player}}"
+      },
+      "messages": {
+        "must_capture": "Mandatory capture!"
+      }
+    },
+    "restaum": {
+      "status": {
+        "won": "🏆 You won! Only 1 peg left.",
+        "stuck": "No moves available.",
+        "remaining": "Remaining pegs: {{count}}"
+      }
     }
   }
 }

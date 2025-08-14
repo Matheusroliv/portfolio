@@ -1,16 +1,15 @@
 import SnakeGame from "@/components/games/SnakeGame";
 import TicTacToe from "@/components/games/TicTacToe";
-import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import CheckersGame from "../components/games/Checkers";
+import PegSolitaire from "../components/games/PegSolitaire";
 
-type GameKind = "tictactoe" | "snake" | "checkers";
+type GameKind = "tictactoe" | "snake" | "checkers" | "restaum";
 
 const gameThumbs: Record<GameKind, React.ReactNode> = {
   tictactoe: (
@@ -55,6 +54,24 @@ const gameThumbs: Record<GameKind, React.ReactNode> = {
       })}
     </div>
   ),
+  restaum: (
+    <div className="grid grid-cols-7 gap-1">
+      {Array.from({ length: 49 }).map((_, i) => {
+        const r = Math.floor(i / 7);
+        const c = i % 7;
+        const invalid = (r < 2 && c < 2) || (r < 2 && c > 4) || (r > 4 && c < 2) || (r > 4 && c > 4);
+        const hasPeg = !invalid && !(r === 3 && c === 3);
+        return (
+          <div
+            key={i}
+            className={`size-5 rounded-[2px] border border-border flex items-center justify-center text-xs ${invalid ? 'bg-transparent' : 'bg-[#e3bb7a]'}`}
+          >
+            {hasPeg ? <span className="text-neutral-900">⬤</span> : ""}
+          </div>
+        );
+      })}
+    </div>
+  ),
 };
 
 export default function Games() {
@@ -93,6 +110,14 @@ export default function Games() {
         code: undefined,
         demo: undefined,
       },
+      {
+        kind: "restaum",
+        title: "Resta 1",
+        description: "Peg Solitaire (Resta 1) com lógica de saltos e desfazer.",
+        tech: ["React", "TypeScript", "shadcn/ui"],
+        code: undefined,
+        demo: undefined,
+      },
     ];
 
   return (
@@ -100,7 +125,7 @@ export default function Games() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            {t("games.title", "My ")}
+            {t("games.title", "My")} {" "}
             <span className="gradient-text">
               {t("games.highlight", "Games")}
             </span>
@@ -110,63 +135,51 @@ export default function Games() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          className="
+    flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth
+    [&::-webkit-scrollbar]{display:none;}
+    md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:snap-none
+    lg:grid-cols-3 lg:gap-10
+  "
+        >
           {games.map((g, i) => (
-            <Reveal key={g.title} dir="up" delay={i * 0.15}>
-              <Card className="glass-card overflow-hidden group">
-                <button onClick={() => setOpenGame(g.kind)} className="w-full text-left">
-                  <div className="relative overflow-hidden">
-                    <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-foreground/10 flex items-center justify-center">
-                      {gameThumbs[g.kind]}
-                    </div>
+            <Card className="glass-card overflow-hidden group w-[320px] md:w-[340px] h-[460px] flex flex-col justify-between">
+              <button onClick={() => setOpenGame(g.kind)} className="w-full text-left h-full flex flex-col">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-[180px] bg-gradient-to-br from-primary/20 to-foreground/10 flex items-center justify-center">
+                    {gameThumbs[g.kind]}
                   </div>
-                  <div className="p-6 space-y-4">
-                    <h3 className="text-xl font-bold">{g.title}</h3>
-                    <p className="text-muted-foreground">{g.description}</p>
-                    <div className="flex flex-wrap gap-2">
+                </div>
+                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold">{t(`games.cards.${g.kind}.title`, g.title)}</h3>
+                    <p className="text-muted-foreground">{t(`games.cards.${g.kind}.description`, g.description)}</p>
+                  </div>
+                  <div>
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {g.tech.map((tech) => (
                         <Badge key={tech} variant="secondary" className="text-xs">
                           {tech}
                         </Badge>
                       ))}
                     </div>
-                    <div className="pt-2">
-                      <Button className="gradient-button" size="sm">
-                        Jogar agora
-                      </Button>
-                    </div>
-                    {(g.demo || g.code) && (
-                      <div className="flex gap-3 pt-4">
-                        {g.demo && (
-                          <Button size="sm" className="gradient-button" asChild>
-                            <a href={g.demo} target="_blank" rel="noreferrer">
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              Demo
-                            </a>
-                          </Button>
-                        )}
-                        {g.code && (
-                          <Button size="sm" variant="outline" asChild>
-                            <a href={g.code} target="_blank" rel="noreferrer">
-                              <Github className="w-4 h-4 mr-2" />
-                              Code
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-                    )}
+                    <Button className="gradient-button w-full" size="sm">
+                      {t("games.play_now", "Jogar agora")}
+                    </Button>
                   </div>
-                </button>
-              </Card>
-            </Reveal>
+                </div>
+              </button>
+            </Card>
           ))}
         </div>
+
       </div>
 
       <Dialog open={openGame === "tictactoe"} onOpenChange={() => setOpenGame(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Tic Tac Toe Infinity</DialogTitle>
+            <DialogTitle>{t("games.cards.tictactoe.title", "Tic Tac Toe Infinity")}</DialogTitle>
           </DialogHeader>
           <TicTacToe />
         </DialogContent>
@@ -175,7 +188,7 @@ export default function Games() {
       <Dialog open={openGame === "snake"} onOpenChange={() => setOpenGame(null)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Snake</DialogTitle>
+            <DialogTitle>{t("games.cards.snake.title", "Snake")}</DialogTitle>
           </DialogHeader>
           <SnakeGame />
         </DialogContent>
@@ -184,9 +197,18 @@ export default function Games() {
       <Dialog open={openGame === "checkers"} onOpenChange={() => setOpenGame(null)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Checkers</DialogTitle>
+            <DialogTitle>{t("games.cards.checkers.title", "Checkers")}</DialogTitle>
           </DialogHeader>
           <CheckersGame />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openGame === "restaum"} onOpenChange={() => setOpenGame(null)}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>{t("games.cards.restaum.title", "Resta 1")}</DialogTitle>
+          </DialogHeader>
+          <PegSolitaire />
         </DialogContent>
       </Dialog>
     </section>

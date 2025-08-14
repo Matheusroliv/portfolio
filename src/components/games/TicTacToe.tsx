@@ -2,6 +2,7 @@ import ConfettiRain from "@/components/ConfettiRain";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Player = "X" | "O";
 type Cell = Player | null;
@@ -27,6 +28,7 @@ const getWinLine = (board: Cell[], p: Player): Line | null =>
 const opposite = (p: Player): Player => (p === "X" ? "O" : "X");
 
 export default function TicTacToe() {
+  const { t } = useTranslation();
   const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
   const [moves, setMoves] = useState<Record<Player, number[]>>({ X: [], O: [] });
   const [turn, setTurn] = useState<Player>("X");
@@ -164,7 +166,9 @@ export default function TicTacToe() {
     setPlayerAs(nextPlayerAs);
   };
 
-  const status = winner ? `🏆 ${winner} venceu!` : `Vez de ${turn}`;
+  const status = winner
+    ? t("game_ui.tictactoe.status.winner", { player: winner })
+    : t("game_ui.tictactoe.status.turn", { player: turn });
   const winEmoji = winner ? (winner === playerAs ? "🏆" : "😭") : "🏆";
 
   return (
@@ -178,7 +182,7 @@ export default function TicTacToe() {
             disabled={locked}
             onClick={() => setLevel(l)}
           >
-            {LEVELS[l]}
+            {t(`game_ui.tictactoe.levels.${l}`)}
           </Button>
         ))}
       </div>
@@ -262,7 +266,7 @@ export default function TicTacToe() {
       </div>
 
       <Button onClick={() => reset()} className="w-full">
-        Reiniciar
+        {t("game_ui.common.reset")}
       </Button>
     </div>
   );

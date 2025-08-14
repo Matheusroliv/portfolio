@@ -3,18 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DPadControl } from "../DPadControl";
+import { useTranslation } from "react-i18next";
 
-type Level = "easy" | "medium" | "hard";
+type Level = "normal" | "hard";
 type Cell = { r: number; c: number };
 type Dir = { r: number; c: number };
 
 const ROWS = 10;
 const COLS = 10;
 
-const START_LEN = 4;
+const START_LEN = 2;
 const TICK_MS = 240;
 
-const LEVEL_POINTS: Record<Level, number> = { easy: 2, medium: 1, hard: 1 };
+const LEVEL_POINTS: Record<Level, number> = { normal: 1, hard: 1 };
 const FOOD_EMOJIS = ["🍎", "🍓", "🍇", "🍌", "🍒", "🍑", "🍍", "🥝", "🍉", "🥕", "🌮", "🍕", "🍪", "🍩", "🥨", "🍰", "🧁"];
 
 const SPECIAL_ROLL_INTERVAL_MS = 1000;
@@ -23,7 +24,7 @@ const PEPPER_ROLL_CHANCE = 0.22;
 const STAR_POSTEAT_CHANCE = 0.14;
 const PEPPER_POSTEAT_CHANCE = 0.20;
 
-const POWER_DURATION_MS = 12000;
+const POWER_DURATION_MS = 8000;
 
 const DIRS = {
   ArrowUp: { r: -1, c: 0 },
@@ -79,9 +80,10 @@ function hexToHsl(hex: string) {
 function hslStr(h: number, s: number, l: number) { return `hsl(${h} ${s}% ${l}%)`; }
 
 export default function SnakeGame() {
+  const { t } = useTranslation();
   const boardRef = useRef<HTMLDivElement>(null);
 
-  const [level, setLevel] = useState<Level>("easy");
+  const [level, setLevel] = useState<Level>("normal");
   const [running, setRunning] = useState(false);
   const [growth, setGrowth] = useState(0);
   const [dir, setDir] = useState<Dir>({ r: 0, c: 1 });
@@ -120,7 +122,7 @@ export default function SnakeGame() {
     const midR = Math.floor(ROWS / 2);
     const start: Cell[] = Array.from({ length: START_LEN }).map((_, i) => ({
       r: midR,
-      c: Math.floor(COLS / 2) - (START_LEN - 1) + i,
+      c: Math.floor(COLS / 4) - (START_LEN - 1) + i,
     }));
     setSnake(start);
     setDir({ r: 0, c: 1 });
@@ -346,9 +348,11 @@ export default function SnakeGame() {
   const headIndex = head ? head.r * COLS + head.c : -1;
 
   const multiplier = power ? (power.star && power.pepper ? 3 : 2) : 1;
-  const powerBadge =
-    multiplier === 3 ? "🌶️⭐ 3x combo!" :
-      multiplier === 2 ? "✨ 2x combo!" : null;
+  const powerBadge = useMemo(() => {
+    if (multiplier === 3) return t("game_ui.snake.badges.combo_3x");
+    if (multiplier === 2) return t("game_ui.snake.badges.combo_2x");
+    return null;
+  }, [multiplier, t]);
 
   const poweredClass =
     multiplier === 3 ? "snake-powered-3x" :
@@ -357,7 +361,7 @@ export default function SnakeGame() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-center gap-2">
-        {(["easy", "medium", "hard"] as Level[]).map((l) => (
+        {(["normal", "hard"] as Level[]).map((l) => (
           <Button
             key={l}
             size="sm"
@@ -365,11 +369,7 @@ export default function SnakeGame() {
             onClick={() => { if (!running) setLevel(l); }}
             disabled={running}
           >
-            {l === "easy"
-              ? "😴 Easy"
-              : l === "medium"
-                ? "🙂 Medium"
-                : "🤖 Hard"}
+            {t(`game_ui.snake.levels.${l}`)}
           </Button>
         ))}
       </div>
@@ -381,15 +381,15 @@ export default function SnakeGame() {
           )}
         </div>
         <label className="text-sm flex items-center gap-2">
-          <span className="opacity-70">Snake color</span>
+          <span className="opacity-70">{t("game_ui.snake.labels.snake_color")}</span>
           <input
             type="color"
             value={snakeColor}
             onChange={(e) => setSnakeColor(e.target.value)}
             className="size-6 rounded overflow-hidden border border-border cursor-pointer"
             disabled={running && !gameOver && !gameWon}
-            aria-label="Pick snake color"
-            title="Pick snake color"
+            aria-label={t("game_ui.snake.aria.pick_snake_color")}
+            title={t("game_ui.snake.tooltip.pick_snake_color")}
           />
         </label>
       </div>
@@ -465,12 +465,12 @@ export default function SnakeGame() {
 
       {gameOver && !gameWon && (
         <div className="text-center text-red-600 dark:text-red-400 font-semibold">
-          Game Over — press any move key to restart!
+          {t("game_ui.snake.messages.game_over")}
         </div>
       )}
       {gameWon && (
         <div className="text-center text-green-600 dark:text-green-400 font-semibold">
-          You win! 🎉
+          {t("game_ui.snake.messages.you_win")}
         </div>
       )}
 
@@ -478,10 +478,9 @@ export default function SnakeGame() {
         <DPadControl onMove={handleDPad} />
       ) : (
         <div className="text-xs text-center opacity-60">
-          Use Arrow Keys or WASD.
+          {t("game_ui.snake.hint.controls")}
         </div>
       )}
-
 
     </div>
   );

@@ -2,6 +2,7 @@ import ConfettiRain from "@/components/ConfettiRain";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
+import { useTranslation } from "react-i18next";
 
 type PieceKind = "man" | "king";
 type Player = "white" | "black";
@@ -117,6 +118,7 @@ function getAllMoves(board: Board, player: Player) {
 }
 
 export default function CheckersGame() {
+  const { t } = useTranslation();
   const [board, setBoard] = useState<Board>(initialBoard());
   const [turn, setTurn] = useState<Player>("white");
   const [selected, setSelected] = useState<[number, number] | null>(null);
@@ -211,17 +213,49 @@ export default function CheckersGame() {
     if (level === "easy") {
       move = movesToUse[Math.floor(Math.random() * movesToUse.length)];
     } else {
-      if (allCaptures.length) {
-        move = allCaptures[Math.floor(Math.random() * allCaptures.length)];
-      } else {
-        const promotions = movesToUse.filter(m => {
-          const [toR] = m.to;
-          return board[m.from[0]][m.from[1]]?.kind === "man"
-            && ((botPlayer === "white" && toR === 0) || (botPlayer === "black" && toR === BOARD_SIZE - 1));
-        });
-        if (promotions.length) move = promotions[0];
-        else move = movesToUse[Math.floor(Math.random() * movesToUse.length)];
+      let bestScore = -Infinity;
+      let bestMoves: typeof movesToUse = [];
+      for (const m of movesToUse) {
+        const newBoard = board.map(row => row.slice());
+        const [sr, sc] = m.from;
+        const [r, c] = m.to;
+        const piece = board[sr][sc];
+        if (!piece) continue;
+        newBoard[sr][sc] = null;
+        let captured = false;
+        if (m.capture) {
+          const [cr, cc] = m.capture;
+          newBoard[cr][cc] = null;
+          captured = true;
+        }
+        const becomeKing = piece.kind === "man" &&
+          ((piece.player === "white" && r === 0) || (piece.player === "black" && r === BOARD_SIZE - 1));
+        const movedPiece: Piece = becomeKing ? { ...piece, kind: "king" } : piece;
+        newBoard[r][c] = movedPiece;
+
+        let score = 0;
+        if (m.capture) score += 10;
+        if (becomeKing) score += 8;
+        if (movedPiece.kind === "king") score += 2;
+
+        if (captured) {
+          const chain = getCaptures(newBoard, r, c);
+          if (chain.length) score += 5 + chain.length;
+        }
+
+        const centerDist = Math.abs(3.5 - r) + Math.abs(3.5 - c);
+        score += Math.max(0, 3 - centerDist) * 0.5;
+
+        const opp: Player = botPlayer === "white" ? "black" : "white";
+        const oppCaps = getAllMoves(newBoard, opp).filter(mm => mm.capture);
+        if (oppCaps.length) score -= 7;
+
+        if (score > bestScore) { bestScore = score; bestMoves = [m]; }
+        else if (score === bestScore) { bestMoves.push(m); }
       }
+      move = bestMoves.length
+        ? bestMoves[Math.floor(Math.random() * bestMoves.length)]
+        : movesToUse[Math.floor(Math.random() * movesToUse.length)];
     }
     if (!move) return;
     setTimeout(() => {
@@ -288,13 +322,15 @@ export default function CheckersGame() {
   }, [board, turn, winner, draw]);
 
 
+  const playerLabel = (p: Player) => p === "white"
+    ? t("game_ui.checkers.players.white")
+    : t("game_ui.checkers.players.black");
+
   const status = winner
-    ? winner === "white"
-      ? "🏆 Brancas venceram!"
-      : "🏆 Pretas venceram!"
+    ? t("game_ui.checkers.status.winner", { player: playerLabel(winner) })
     : draw
-      ? "Empate (Afogamento)"
-      : `Vez das ${turn === "white" ? "Brancas" : "Pretas"}`;
+      ? t("game_ui.checkers.status.draw")
+      : t("game_ui.checkers.status.turn", { player: playerLabel(turn) });
 
   const emoji = winner
     ? winner === "white"
@@ -306,11 +342,11 @@ export default function CheckersGame() {
 
   return (
     <Card className="p-4">
-      <h3 className="font-bold text-lg mb-2">Checkers</h3>
+      <h3 className="font-bold text-lg mb-2">{t("games.cards.checkers.title")}</h3>
       <div className="flex gap-2 mb-4">
-        <Button size="sm" variant={mode === "pvp" ? "default" : "outline"} onClick={() => setMode("pvp")} disabled={started}>PvP</Button>
-        <Button size="sm" variant={mode === "easy" ? "default" : "outline"} onClick={() => setMode("easy")} disabled={started}>Fácil 🤖</Button>
-        <Button size="sm" variant={mode === "hard" ? "default" : "outline"} onClick={() => setMode("hard")} disabled={started}>Difícil 🤖</Button>
+        <Button size="sm" variant={mode === "pvp" ? "default" : "outline"} onClick={() => setMode("pvp")} disabled={started}>{t("game_ui.checkers.modes.pvp")}</Button>
+        <Button size="sm" variant={mode === "easy" ? "default" : "outline"} onClick={() => setMode("easy")} disabled={started}>{t("game_ui.checkers.modes.easy")}</Button>
+        <Button size="sm" variant={mode === "hard" ? "default" : "outline"} onClick={() => setMode("hard")} disabled={started}>{t("game_ui.checkers.modes.hard")}</Button>
       </div>
       <div className="relative mx-auto w-fit" ref={boardRef}>
         <ConfettiRain active={!!winner || !!draw} />
@@ -363,10 +399,10 @@ export default function CheckersGame() {
         </div>
       </div>
       <div className="mt-4 flex gap-4 items-center">
-        <Button onClick={resetGame}>Reiniciar</Button>
+        <Button onClick={resetGame}>{t("game_ui.common.reset")}</Button>
         <span className="font-semibold">{status}</span>
         {mustCapture.length > 0 && !winner && !draw &&
-          <span className="ml-2 text-sm text-red-400">Captura obrigatória!</span>
+          <span className="ml-2 text-sm text-red-400">{t("game_ui.checkers.messages.must_capture")}</span>
         }
       </div>
     </Card>
