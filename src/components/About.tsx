@@ -24,7 +24,7 @@ export default function About() {
   ];
 
   const stats = [
-    { value: "5+", key: "experience" },
+    { value: "6+", key: "experience" },
     { value: "3", key: "companies" },
     { value: "∞", key: "coffee" },
   ];

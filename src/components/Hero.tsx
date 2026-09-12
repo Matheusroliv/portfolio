@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { FRONTEND_FRAMEWORKS, WHATSAPP_URL } from "@/lib/contact";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FaWhatsapp } from "react-icons/fa";
 
 const socials = [
   { icon: Github, href: "https://github.com/Matheusroliv", label: "GitHub" },
@@ -97,13 +99,28 @@ export default function Hero() {
           {t("hero.bio")}
         </motion.p>
 
+        <motion.div variants={item} className="mt-8 flex flex-col items-center gap-3">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            {t("hero.frameworks_label")}
+          </span>
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {FRONTEND_FRAMEWORKS.map((fw) => (
+              <span
+                key={fw}
+                className="glass-card px-4 py-1.5 text-sm font-medium text-foreground/90"
+              >
+                {fw}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
         <motion.div variants={item} className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Button
-            onClick={() => scrollToId("contact")}
-            className="gradient-button h-12 rounded-full px-8 text-base"
-          >
-            <Sparkles className="mr-2 h-4 w-4" />
-            {t("hero.cta_contact")}
+          <Button asChild className="gradient-button h-12 rounded-full px-8 text-base">
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <FaWhatsapp className="mr-2 h-4 w-4" />
+              {t("hero.cta_contact")}
+            </a>
           </Button>
           <Button
             variant="outline"

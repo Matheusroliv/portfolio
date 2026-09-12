@@ -5,14 +5,16 @@ import { Cpu, Globe, LayoutDashboard, LayoutList, Minus, Plus, Server, Users } f
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  SiAmazon, SiAngular, SiBootstrap, SiCplusplus, SiCss3, SiDocker, SiGit, SiGithub,
-  SiGithubactions, SiGraphql, SiHtml5, SiIonic, SiJasmine, SiJavascript, SiJest,
-  SiJira, SiMongodb, SiMui, SiNestjs, SiNodedotjs, SiPostgresql, SiReact,
-  SiSendgrid, SiStyledcomponents, SiTailwindcss, SiTwilio, SiTypescript
+  SiAmazon, SiAngular, SiBootstrap, SiCplusplus, SiCss3, SiDart, SiDocker, SiFlutter,
+  SiGit, SiGithub, SiGithubactions, SiGraphql, SiHtml5, SiIonic, SiJasmine, SiJavascript,
+  SiJest, SiJira, SiMongodb, SiMui, SiNestjs, SiNodedotjs, SiPostgresql, SiReact,
+  SiReactivex, SiSass, SiSendgrid, SiStyledcomponents, SiTailwindcss, SiTwilio,
+  SiTypescript, SiVuedotjs
 } from "react-icons/si";
 
 const icons: Record<string, JSX.Element> = {
-  JavaScript: <SiJavascript />, TypeScript: <SiTypescript />, "React.js": <SiReact />, Angular: <SiAngular />,
+  JavaScript: <SiJavascript />, TypeScript: <SiTypescript />, Dart: <SiDart />, "React.js": <SiReact />,
+  Angular: <SiAngular />, "Vue.js": <SiVuedotjs />, Flutter: <SiFlutter />, RxJS: <SiReactivex />, SCSS: <SiSass />,
   "Node.js": <SiNodedotjs />, "React Native": <SiReact />, NestJS: <SiNestjs />, "Ionic Framework": <SiIonic />,
   "REST APIs": <Server />, AWS: <SiAmazon />, Docker: <SiDocker />, "Tailwind CSS": <SiTailwindcss />,
   "Material-UI": <SiMui />, "styled-components": <SiStyledcomponents />, Jest: <SiJest />, "React Hooks": <SiReact />,
@@ -24,8 +26,8 @@ const icons: Record<string, JSX.Element> = {
 };
 
 const marqueeIcons = [
-  "TypeScript", "React.js", "Angular", "Node.js", "NestJS", "Ionic Framework",
-  "Tailwind CSS", "GraphQL", "Docker", "AWS", "PostgreSQL", "MongoDB", "Jest", "Git",
+  "TypeScript", "Angular", "React.js", "Vue.js", "React Native", "Flutter", "Ionic Framework",
+  "Node.js", "NestJS", "Tailwind CSS", "GraphQL", "Docker", "AWS", "PostgreSQL", "MongoDB", "Jest",
 ];
 
 export default function Skills() {
@@ -33,15 +35,16 @@ export default function Skills() {
 
   const allSkills = useMemo(
     () => [
-      "JavaScript", "TypeScript", "React.js", "Angular", "Node.js", "React Native",
-      "NestJS", "Ionic Framework", "REST APIs", "AWS", "Docker",
-      "Tailwind CSS", "Material-UI", "styled-components", "Jest",
-      "React Hooks", "AngularJS", "i18n", "GraphQL", "Karma", "Jasmine",
+      "TypeScript", "JavaScript", "Angular", "React.js", "Vue.js", "React Native",
+      "Flutter", "Ionic Framework", "Dart", "RxJS", "React Hooks", "AngularJS",
+      "NestJS", "Node.js", "REST APIs", "GraphQL", "AWS", "Docker",
+      "Tailwind CSS", "SCSS", "Material-UI", "styled-components", "Bootstrap",
+      "Jest", "Karma", "Jasmine", "i18n",
       "MongoDB", "PostgreSQL", "Twilio", "SendGrid",
       "Git", "GitHub", "CI / CD", "Jira", "Kanban", "Scrum",
       "Agile Methodologies", "Scrumban",
-      "HTML5", "CSS", "Bootstrap", "Web Engineering",
-      "Software Infrastructure", "Microsoft Excel", "C++",
+      "HTML5", "CSS", "Web Engineering",
+      "Software Infrastructure", "C++",
     ],
     []
   );

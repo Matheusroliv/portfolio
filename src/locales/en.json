@@ -2,11 +2,44 @@
   "title": "Matheus Oliveira • Portfolio",
   "hero": {
     "badge": "Available for new projects",
-    "role": "Software Engineer • Angular & React Specialist",
-    "bio": "For over 5 years, I’ve been transforming ideas into remarkable digital products using Angular, React, Ionic, and NestJS. Passionate about clean code and crafting interfaces that captivate users.",
+    "role": "Full Stack Developer • Specialist in every Front-end framework",
+    "bio": "For 6 years I've turned ideas into products that ship — from component to API. I master every major front-end framework and build solid back-ends with NestJS and Node.js.",
+    "frameworks_label": "Full front-end command",
     "cta_projects": "View projects",
-    "cta_contact": "Get in touch",
+    "cta_contact": "Chat on WhatsApp",
     "cta_about": "About me"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title_prefix": "How I can",
+    "title": "help",
+    "subtitle": "From front-end to deploy: one specialist to ship your product — in any framework.",
+    "items": {
+      "web": {
+        "title": "Web Development",
+        "description": "Fast, responsive SPAs and PWAs in Angular, React or Vue, focused on performance and SEO."
+      },
+      "mobile": {
+        "title": "Mobile Apps",
+        "description": "iOS and Android apps with React Native, Flutter or Ionic — one codebase, two stores."
+      },
+      "api": {
+        "title": "APIs & Back-end",
+        "description": "Robust REST APIs in NestJS and Node.js with auth, OTP/2FA, JWT and integrations."
+      },
+      "saas": {
+        "title": "SaaS & Whitelabel",
+        "description": "Whitelabel platforms and SaaS products from scratch: a new client live in days, not months."
+      },
+      "migration": {
+        "title": "Front-end Migration",
+        "description": "Migration and modernization across frameworks (AngularJS→Angular, jQuery→React and more) with no downtime."
+      },
+      "consulting": {
+        "title": "Consulting & Mentoring",
+        "description": "Code review, architecture and pair programming to speed up delivery and grow your team."
+      }
+    }
   },
   "footer": {
     "tagline": "Building digital solutions with Angular, React and NestJS. 💻✨",
@@ -33,8 +66,10 @@
     "subtitle": "Have a project in mind? Let’s talk and turn your ideas into reality.",
     "email_label": "Email",
     "phone_label": "Phone",
+    "whatsapp_label": "WhatsApp",
+    "whatsapp_cta": "Chat on WhatsApp",
     "location_label": "Location",
-    "location_value": "Brazil",
+    "location_value": "Brasília, Brazil • Remote or hybrid",
     "cta_title": "Shall we work together?",
     "cta_body": "I’m always open to chat and collaborate on new creative projects. 🚀",
     "form": {
@@ -72,6 +107,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "services": "Services",
     "contact": "Contact",
     "games": "Games"
   },

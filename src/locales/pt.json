@@ -2,11 +2,44 @@
   "title": "Matheus Oliveira • Portfólio",
   "hero": {
     "badge": "Disponível para novos projetos",
-    "role": "Engenheiro de Software • Especialista em Angular & React",
-    "bio": "Há mais de 5 anos transformo ideias em produtos digitais incríveis com Angular, React, Ionic e NestJS. Apaixonado por código limpo e interfaces que encantam usuários.",
+    "role": "Desenvolvedor Full Stack • Especialista em todos os frameworks Front-end",
+    "bio": "Há 6 anos transformo ideias em produtos que vão pro ar — do componente à API. Domino os principais frameworks front-end e construo back-ends sólidos com NestJS e Node.js.",
+    "frameworks_label": "Domínio completo do front-end",
     "cta_projects": "Ver projetos",
-    "cta_contact": "Falar comigo",
+    "cta_contact": "Falar no WhatsApp",
     "cta_about": "Sobre mim"
+  },
+  "services": {
+    "eyebrow": "Serviços",
+    "title_prefix": "Como posso",
+    "title": "ajudar",
+    "subtitle": "Do front ao deploy: um único especialista para levar seu produto ao ar — em qualquer framework.",
+    "items": {
+      "web": {
+        "title": "Desenvolvimento Web",
+        "description": "SPAs e PWAs rápidas e responsivas em Angular, React ou Vue, com foco em performance e SEO."
+      },
+      "mobile": {
+        "title": "Apps Mobile",
+        "description": "Aplicativos iOS e Android com React Native, Flutter ou Ionic — uma base de código, duas lojas."
+      },
+      "api": {
+        "title": "APIs & Back-end",
+        "description": "APIs REST robustas em NestJS e Node.js, com autenticação, OTP/2FA, JWT e integrações."
+      },
+      "saas": {
+        "title": "SaaS & Whitelabel",
+        "description": "Plataformas whitelabel e produtos SaaS do zero: novo cliente no ar em dias, não em meses."
+      },
+      "migration": {
+        "title": "Migração de Front-end",
+        "description": "Migração e modernização entre frameworks (AngularJS→Angular, jQuery→React e afins) sem parar o negócio."
+      },
+      "consulting": {
+        "title": "Consultoria & Mentoria",
+        "description": "Code review, arquitetura e pair programming para acelerar entregas e formar o seu time."
+      }
+    }
   },
   "footer": {
     "tagline": "Criando soluções digitais com Angular, React e NestJS. 💻✨",
@@ -33,8 +66,10 @@
     "subtitle": "Tem um projeto em mente? Vamos conversar e transformar suas ideias em realidade.",
     "email_label": "Email",
     "phone_label": "Telefone",
+    "whatsapp_label": "WhatsApp",
+    "whatsapp_cta": "Chamar no WhatsApp",
     "location_label": "Localização",
-    "location_value": "Brasil",
+    "location_value": "Brasília, DF • Remoto ou híbrido",
     "cta_title": "Vamos trabalhar juntos?",
     "cta_body": "Estou sempre aberto a trocar ideias e colaborar em novos projetos criativos. ",
     "form": {
@@ -72,6 +107,7 @@
   "nav": {
     "home": "Início",
     "about": "Sobre",
+    "services": "Serviços",
     "contact": "Contato",
     "games": "Games"
   },
