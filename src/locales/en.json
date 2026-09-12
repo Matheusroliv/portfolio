@@ -1,10 +1,12 @@
 {
   "title": "Matheus Oliveira • Portfolio",
   "hero": {
+    "badge": "Available for new projects",
     "role": "Software Engineer • Angular & React Specialist",
     "bio": "For over 5 years, I’ve been transforming ideas into remarkable digital products using Angular, React, Ionic, and NestJS. Passionate about clean code and crafting interfaces that captivate users.",
     "cta_projects": "View projects",
-    "cta_contact": "Get in touch"
+    "cta_contact": "Get in touch",
+    "cta_about": "About me"
   },
   "footer": {
     "tagline": "Building digital solutions with Angular, React and NestJS. 💻✨",
@@ -25,6 +27,7 @@
     }
   },
   "contact": {
+    "eyebrow": "Let's talk",
     "title_prefix": "Get in",
     "title_highlight": "Touch",
     "subtitle": "Have a project in mind? Let’s talk and turn your ideas into reality.",
@@ -45,7 +48,11 @@
     }
   },
   "skills": {
-    "title": "Tech Stack"
+    "eyebrow": "Stack",
+    "title_prefix": "My",
+    "title": "Tech Stack",
+    "show_more": "Show more",
+    "show_less": "Show less"
   },
   "projects": {
     "title_prefix": "My",
@@ -69,9 +76,15 @@
     "games": "Games"
   },
   "about": {
+    "eyebrow": "Who I am",
     "title_prefix": "About",
     "highlight": "Me",
     "subtitle": "Passionate developer creating innovative solutions and interfaces that connect people to technology",
+    "stats": {
+      "experience": "Years of experience",
+      "companies": "Companies",
+      "coffee": "Cups of coffee"
+    },
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn",

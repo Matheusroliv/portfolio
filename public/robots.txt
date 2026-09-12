@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://portfolio-matheusrolivs-projects.vercel.app/sitemap.xml

@@ -1,30 +1,44 @@
 import { ReactNode } from "react";
-import { useInView } from "../hooks/use-in-view";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 
-type Dir = "up" | "left" | "right";
+type Dir = "up" | "left" | "right" | "down";
 
 interface Props {
   children: ReactNode;
   dir?: Dir;
   delay?: number;
+  className?: string;
 }
 
-export default function Reveal({ children, dir = "up", delay = 0 }: Props) {
-  const { ref, isInView } = useInView<HTMLDivElement>("0px 0px -80px 0px");
+const offset: Record<Dir, { x?: number; y?: number }> = {
+  up: { y: 48 },
+  down: { y: -48 },
+  left: { x: 64 },
+  right: { x: -64 },
+};
 
-  const animClass: Record<Dir, string> = {
-    up: "animate-slide-up-fade",
-    left: "animate-slide-left-fade",
-    right: "animate-slide-right-fade"
+export default function Reveal({ children, dir = "up", delay = 0, className }: Props) {
+  const reduce = useReducedMotion();
+
+  const variants: Variants = {
+    hidden: reduce ? { opacity: 0 } : { opacity: 0, ...offset[dir] },
+    show: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
-    <div
-      ref={ref}
-      className={`reveal-init ${isInView ? animClass[dir] : ""}`}
-      style={{ animationDelay: `${delay}s` }}
+    <motion.div
+      className={className}
+      variants={variants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

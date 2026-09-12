@@ -1,10 +1,12 @@
 {
   "title": "Matheus Oliveira • Portfólio",
   "hero": {
+    "badge": "Disponível para novos projetos",
     "role": "Engenheiro de Software • Especialista em Angular & React",
     "bio": "Há mais de 5 anos transformo ideias em produtos digitais incríveis com Angular, React, Ionic e NestJS. Apaixonado por código limpo e interfaces que encantam usuários.",
     "cta_projects": "Ver projetos",
-    "cta_contact": "Falar comigo"
+    "cta_contact": "Falar comigo",
+    "cta_about": "Sobre mim"
   },
   "footer": {
     "tagline": "Criando soluções digitais com Angular, React e NestJS. 💻✨",
@@ -25,6 +27,7 @@
     }
   },
   "contact": {
+    "eyebrow": "Vamos conversar",
     "title_prefix": "Entre em",
     "title_highlight": "Contato",
     "subtitle": "Tem um projeto em mente? Vamos conversar e transformar suas ideias em realidade.",
@@ -45,7 +48,11 @@
     }
   },
   "skills": {
-    "title": "Tecnologias"
+    "eyebrow": "Stack",
+    "title_prefix": "Minhas",
+    "title": "Tecnologias",
+    "show_more": "Mostrar mais",
+    "show_less": "Mostrar menos"
   },
   "projects": {
     "title_prefix": "Meus",
@@ -70,9 +77,15 @@
   },
   
   "about": {
+    "eyebrow": "Quem sou",
     "title_prefix": "Sobre",
     "highlight": "Mim",
     "subtitle": "Desenvolvedor apaixonado por criar soluções inovadoras e interfaces que conectam pessoas à tecnologia",
+    "stats": {
+      "experience": "Anos de experiência",
+      "companies": "Empresas",
+      "coffee": "Xícaras de café"
+    },
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn",

@@ -1,6 +1,7 @@
+import Reveal from "@/components/Reveal";
 import { Card } from "@/components/ui/card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { Cpu, Globe, LayoutDashboard, LayoutList, Server, Users, Plus, Minus } from "lucide-react";
+import { Cpu, Globe, LayoutDashboard, LayoutList, Minus, Plus, Server, Users } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -9,6 +10,23 @@ import {
   SiJira, SiMongodb, SiMui, SiNestjs, SiNodedotjs, SiPostgresql, SiReact,
   SiSendgrid, SiStyledcomponents, SiTailwindcss, SiTwilio, SiTypescript
 } from "react-icons/si";
+
+const icons: Record<string, JSX.Element> = {
+  JavaScript: <SiJavascript />, TypeScript: <SiTypescript />, "React.js": <SiReact />, Angular: <SiAngular />,
+  "Node.js": <SiNodedotjs />, "React Native": <SiReact />, NestJS: <SiNestjs />, "Ionic Framework": <SiIonic />,
+  "REST APIs": <Server />, AWS: <SiAmazon />, Docker: <SiDocker />, "Tailwind CSS": <SiTailwindcss />,
+  "Material-UI": <SiMui />, "styled-components": <SiStyledcomponents />, Jest: <SiJest />, "React Hooks": <SiReact />,
+  AngularJS: <SiAngular />, i18n: <Globe />, GraphQL: <SiGraphql />, Jasmine: <SiJasmine />, MongoDB: <SiMongodb />,
+  PostgreSQL: <SiPostgresql />, Twilio: <SiTwilio />, SendGrid: <SiSendgrid />, Git: <SiGit />, GitHub: <SiGithub />,
+  "CI / CD": <SiGithubactions />, Jira: <SiJira />, Kanban: <LayoutDashboard />, Scrum: <Users />,
+  "Agile Methodologies": <Globe />, Scrumban: <LayoutList />, HTML5: <SiHtml5 />, CSS: <SiCss3 />,
+  Bootstrap: <SiBootstrap />, "Web Engineering": <Globe />, "Software Infrastructure": <Server />, "C++": <SiCplusplus />,
+};
+
+const marqueeIcons = [
+  "TypeScript", "React.js", "Angular", "Node.js", "NestJS", "Ionic Framework",
+  "Tailwind CSS", "GraphQL", "Docker", "AWS", "PostgreSQL", "MongoDB", "Jest", "Git",
+];
 
 export default function Skills() {
   const { t } = useTranslation();
@@ -28,21 +46,9 @@ export default function Skills() {
     []
   );
 
-  const icons: Record<string, JSX.Element> = {
-    JavaScript: <SiJavascript />, TypeScript: <SiTypescript />, "React.js": <SiReact />, Angular: <SiAngular />,
-    "Node.js": <SiNodedotjs />, "React Native": <SiReact />, NestJS: <SiNestjs />, "Ionic Framework": <SiIonic />,
-    "REST APIs": <Server />, AWS: <SiAmazon />, Docker: <SiDocker />, "Tailwind CSS": <SiTailwindcss />,
-    "Material-UI": <SiMui />, "styled-components": <SiStyledcomponents />, Jest: <SiJest />, "React Hooks": <SiReact />,
-    AngularJS: <SiAngular />, i18n: <Globe />, GraphQL: <SiGraphql />, Jasmine: <SiJasmine />, MongoDB: <SiMongodb />,
-    PostgreSQL: <SiPostgresql />, Twilio: <SiTwilio />, SendGrid: <SiSendgrid />, Git: <SiGit />, GitHub: <SiGithub />,
-    "CI / CD": <SiGithubactions />, Jira: <SiJira />, Kanban: <LayoutDashboard />, Scrum: <Users />,
-    "Agile Methodologies": <Globe />, Scrumban: <LayoutList />, HTML5: <SiHtml5 />, CSS: <SiCss3 />,
-    Bootstrap: <SiBootstrap />, "Web Engineering": <Globe />, "Software Infrastructure": <Server />, "C++": <SiCplusplus />,
-  };
-
   const INITIAL = 12;
   const STEP = 6;
-  const TICK = 70;
+  const TICK = 60;
 
   const [visibleCount, setVisibleCount] = useState(INITIAL);
   const [target, setTarget] = useState(INITIAL);
@@ -69,69 +75,73 @@ export default function Skills() {
   const canShowLess = visibleCount > INITIAL;
 
   return (
-    <section className="py-20 px-1 bg-muted/30">
-      <div className="container mx-auto">
-        <Card className="glass-card p-8 max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold mb-6 text-center">
-            {t("skills.title", "Tech Stack")}
-          </h3>
+    <section id="skills" className="relative scroll-mt-24 px-6 py-28">
+      <div className="container mx-auto max-w-6xl">
+        <Reveal dir="up">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              {t("skills.eyebrow", "Stack")}
+            </span>
+            <h2 className="mt-3 text-4xl font-bold md:text-5xl">
+              {t("skills.title_prefix", "Minhas")}{" "}
+              <span className="gradient-text">{t("skills.title", "Tecnologias")}</span>
+            </h2>
+          </div>
+        </Reveal>
 
-          <div
-            ref={parent}
-            className="
-              grid gap-4
-              grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6
-            "
-          >
-            {showing.map((tech, i) => (
+        {/* infinite marquee */}
+        <div className="marquee-mask relative mb-12 overflow-hidden py-2">
+          <div className="marquee-track gap-4">
+            {[...marqueeIcons, ...marqueeIcons].map((tech, i) => (
               <div
-                key={tech}
-                className="
-                  p-3 glass-card text-center text-sm font-medium
-                  flex flex-col items-center gap-2
-                  transition-transform duration-200 hover:scale-110
-                  opacity-0 translate-y-2
-                  data-[mounted=true]:opacity-100 data-[mounted=true]:translate-y-0
-                "
-                data-mounted="true"
-                style={{ transitionDelay: `${(i % STEP) * 20}ms` }}
+                key={`${tech}-${i}`}
+                className="glass-card flex shrink-0 items-center gap-2.5 px-5 py-3 text-sm font-medium"
               >
-                <span className="text-xl">{icons[tech] ?? <Cpu />}</span>
+                <span className="text-xl text-primary">{icons[tech] ?? <Cpu />}</span>
                 {tech}
               </div>
             ))}
           </div>
+        </div>
 
-          <div className="mt-8 flex justify-center gap-3">
-            <button
-              disabled={!canShowMore}
-              onClick={() => setTarget(Math.min(allSkills.length, visibleCount + STEP))}
-              aria-label={t("skills.show_more", "Show more")}
-              className="
-                inline-flex items-center justify-center
-                w-10 h-10 rounded-md border
-                disabled:opacity-40 disabled:cursor-not-allowed
-                hover:scale-[1.05] transition
-              "
+        <Reveal dir="up" delay={0.1}>
+          <Card className="glass-card border-0 bg-transparent p-6 md:p-8">
+            <div
+              ref={parent}
+              className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
             >
-              <Plus className="w-5 h-5" />
-            </button>
+              {showing.map((tech, i) => (
+                <div
+                  key={tech}
+                  className="glass-card glass-card-glow flex flex-col items-center gap-2 p-4 text-center text-sm font-medium"
+                  style={{ transitionDelay: `${(i % STEP) * 20}ms` }}
+                >
+                  <span className="text-2xl text-primary">{icons[tech] ?? <Cpu />}</span>
+                  {tech}
+                </div>
+              ))}
+            </div>
 
-            <button
-              disabled={!canShowLess}
-              onClick={() => setTarget(INITIAL)}
-              aria-label={t("skills.show_less", "Show less")}
-              className="
-                inline-flex items-center justify-center
-                w-10 h-10 rounded-md border
-                disabled:opacity-40 disabled:cursor-not-allowed
-                hover:scale-[1.05] transition
-              "
-            >
-              <Minus className="w-5 h-5" />
-            </button>
-          </div>
-        </Card>
+            <div className="mt-8 flex justify-center gap-3">
+              <button
+                disabled={!canShowMore}
+                onClick={() => setTarget(Math.min(allSkills.length, visibleCount + STEP))}
+                aria-label={t("skills.show_more", "Show more")}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border transition hover:scale-105 hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <Plus className="h-5 w-5" />
+              </button>
+              <button
+                disabled={!canShowLess}
+                onClick={() => setTarget(INITIAL)}
+                aria-label={t("skills.show_less", "Show less")}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border transition hover:scale-105 hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <Minus className="h-5 w-5" />
+              </button>
+            </div>
+          </Card>
+        </Reveal>
       </div>
     </section>
   );
