@@ -21,6 +21,8 @@ export default function Navbar() {
   const navItems = [
     { id: "home", label: t("nav.home", "Início") },
     { id: "about", label: t("nav.about", "Sobre") },
+    { id: "experience", label: t("nav.experience", "Experiência") },
+    { id: "skills", label: t("nav.skills", "Stack") },
     { id: "services", label: t("nav.services", "Serviços") },
     { id: "contact", label: t("nav.contact", "Contato") },
     { id: "games", label: t("nav.games", "Games"), to: "/games" },
@@ -35,7 +37,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (location.pathname !== "/") return
-    const ids = ["home", "about", "services", "contact"]
+    const ids = ["home", "about", "experience", "skills", "services", "contact"]
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => e.isIntersecting && setActive(e.target.id))

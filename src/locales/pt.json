@@ -7,7 +7,20 @@
     "frameworks_label": "Domínio completo do front-end",
     "cta_projects": "Ver projetos",
     "cta_contact": "Falar no WhatsApp",
-    "cta_about": "Sobre mim"
+    "cta_about": "Sobre mim",
+    "greeting": "Olá, eu sou",
+    "role_prefix": "Full Stack em",
+    "scroll": "Rolar",
+    "float_ship": "Do zero ao deploy",
+    "float_ship_sub": "front, back e mobile",
+    "float_years": "6+ anos",
+    "float_years_sub": "entregando produtos"
+  },
+  "experience": {
+    "eyebrow": "Trajetória",
+    "title_prefix": "Onde eu",
+    "title": "construí",
+    "subtitle": "Três empresas, dezenas de produtos e milhares de usuários impactados."
   },
   "services": {
     "eyebrow": "Serviços",
@@ -71,7 +84,11 @@
     "location_label": "Localização",
     "location_value": "Brasília, DF • Remoto ou híbrido",
     "cta_title": "Vamos trabalhar juntos?",
+    "cta_title_1": "Vamos construir algo",
+    "cta_title_hl": "incrível?",
     "cta_body": "Estou sempre aberto a trocar ideias e colaborar em novos projetos criativos. ",
+    "copy_email": "Copiar e-mail",
+    "copied": "Copiado!",
     "form": {
       "name_label": "Nome",
       "email_label": "Email",
@@ -86,8 +103,13 @@
     "eyebrow": "Stack",
     "title_prefix": "Minhas",
     "title": "Tecnologias",
-    "show_more": "Mostrar mais",
-    "show_less": "Mostrar menos"
+    "subtitle": "Passe o mouse — cada tecnologia acende na própria cor.",
+    "categories": {
+      "frontend": "Front-end",
+      "mobile": "Mobile",
+      "backend": "Back-end",
+      "tools": "Ferramentas"
+    }
   },
   "projects": {
     "title_prefix": "Meus",
@@ -107,6 +129,8 @@
   "nav": {
     "home": "Início",
     "about": "Sobre",
+    "experience": "Experiência",
+    "skills": "Stack",
     "services": "Serviços",
     "contact": "Contato",
     "games": "Games"
@@ -120,7 +144,14 @@
     "stats": {
       "experience": "Anos de experiência",
       "companies": "Empresas",
-      "coffee": "Xícaras de café"
+      "projects": "Projetos entregues"
+    },
+    "bento": {
+      "bio_1": "Desenvolvedor full stack que domina",
+      "bio_hl": "todos os principais frameworks front-end",
+      "bio_2": "e constrói back-ends sólidos em NestJS. Obsessão por detalhe, performance e produtos que vão pro ar.",
+      "clock": "Agora em Brasília",
+      "now_title": "Usando no dia a dia"
     },
     "social": {
       "github": "GitHub",
