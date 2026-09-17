@@ -1,6 +1,6 @@
 import About from "@/components/About";
 import Contact from "@/components/Contact";
-import Experience from "@/components/Experience";
+// import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import { CursorGlow, Marquee, ScrollProgress } from "@/components/fx";
 import Hero from "@/components/Hero";
@@ -15,7 +15,7 @@ const Index = () => (
     <Hero />
     <Marquee items={["Angular", "React", "Vue", "NestJS", "React Native", "Flutter", "TypeScript"]} />
     <About />
-    <Experience />
+    {/* <Experience /> */}
     <Marquee reverse items={["Full Stack", "Clean Code", "UI/UX", "Performance", "Mobile", "APIs"]} />
     <Skills />
     <Services />

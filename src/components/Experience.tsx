@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 const items = [
-  { key: "okegen", stack: ["NestJS", "Angular", "Ionic"], color: "from-primary to-accent-2" },
-  { key: "codetech", stack: ["NestJS", "React", "Whitelabel"], color: "from-accent-2 to-warm" },
-  { key: "tgt", stack: ["React", "React Native", "Angular"], color: "from-accent-3 to-primary" },
+  { key: "codetech", stack: ["NestJS", "React", "Angular", "Vue", "Ionic", "React Native", "Flutter"], color: "from-primary to-accent-2" },
+  { key: "tgt", stack: ["React", "React Native", "NestJS", "Angular", "Ionic"], color: "from-accent-2 to-warm" },
+  { key: "inss", stack: ["Excel", "GitHub", "HTML"], color: "from-accent-3 to-primary" },
 ] as const;
 
 export default function Experience() {

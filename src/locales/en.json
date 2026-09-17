@@ -1,9 +1,9 @@
 {
   "title": "Matheus Oliveira • Portfolio",
   "hero": {
-    "badge": "Available for new projects",
-    "role": "Full Stack Developer • Specialist in every Front-end framework",
-    "bio": "For 6 years I've turned ideas into products that ship — from component to API. I master every major front-end framework and build solid back-ends with NestJS and Node.js.",
+    "badge": "Open to CLT or contract",
+    "role": "Full Stack Developer • TypeScript · Angular · React · Vue · React Native · Flutter · NestJS",
+    "bio": "Full stack, 6 years, product in production: UI, API and database. TypeScript on the front (Angular, React, Vue, React Native, Flutter and Ionic) and NestJS/Node on the back, with MongoDB and PostgreSQL.",
     "frameworks_label": "Full front-end command",
     "cta_projects": "View projects",
     "cta_contact": "Chat on WhatsApp",
@@ -20,42 +20,42 @@
     "eyebrow": "Journey",
     "title_prefix": "Where I",
     "title": "built",
-    "subtitle": "Three companies, dozens of products and thousands of users impacted."
+    "subtitle": "Code Tech, TGT Digital and INSS. Whitelabel, APIs and apps still in production."
   },
   "services": {
     "eyebrow": "Services",
     "title_prefix": "How I can",
     "title": "help",
-    "subtitle": "From front-end to deploy: one specialist to ship your product — in any framework.",
+    "subtitle": "Custom software, SaaS, web and iOS/Android apps — the same stack I use every day.",
     "items": {
       "web": {
         "title": "Web Development",
-        "description": "Fast, responsive SPAs and PWAs in Angular, React or Vue, focused on performance and SEO."
+        "description": "SPAs and dashboards in Angular, React or Vue. From UI to API, the product ships and stays in production."
       },
       "mobile": {
-        "title": "Mobile Apps",
-        "description": "iOS and Android apps with React Native, Flutter or Ionic — one codebase, two stores."
+        "title": "iOS & Android Apps",
+        "description": "React Native, Flutter or Ionic on the same REST API as the web — one codebase, two stores."
       },
       "api": {
         "title": "APIs & Back-end",
-        "description": "Robust REST APIs in NestJS and Node.js with auth, OTP/2FA, JWT and integrations."
+        "description": "NestJS and Node: login, password reset, OTP/2FA, refresh tokens, jobs and integrations (SendGrid, SMS, S3)."
       },
       "saas": {
         "title": "SaaS & Whitelabel",
-        "description": "Whitelabel platforms and SaaS products from scratch: a new client live in days, not months."
+        "description": "Front-end templates + NestJS API: a new client rebrands and goes live in days, not months."
       },
       "migration": {
-        "title": "Front-end Migration",
-        "description": "Migration and modernization across frameworks (AngularJS→Angular, jQuery→React and more) with no downtime."
+        "title": "Custom software",
+        "description": "From scratch or production support: exchange, finance, portals and shop-floor operations."
       },
       "consulting": {
-        "title": "Consulting & Mentoring",
-        "description": "Code review, architecture and pair programming to speed up delivery and grow your team."
+        "title": "Onboarding & Review",
+        "description": "Pairing, code review and architecture walkthrough. New hires ship in week one."
       }
     }
   },
   "footer": {
-    "tagline": "Building digital solutions with Angular, React and NestJS. 💻✨",
+    "tagline": "Full stack in TypeScript: UI, API and database. Brasília — on-site, hybrid or remote.",
     "quick_links": "Quick links",
     "services": "Services",
     "rights": "© {{year}} Matheus Oliveira. All rights reserved.",
@@ -69,24 +69,24 @@
     "services_list": {
       "web": "Web & Mobile",
       "api": "REST APIs / NestJS",
-      "mentoring": "1:1 Career Mentoring"
+      "mentoring": "Onboarding & code review"
     }
   },
   "contact": {
     "eyebrow": "Let's talk",
     "title_prefix": "Get in",
     "title_highlight": "Touch",
-    "subtitle": "Have a project in mind? Let’s talk and turn your ideas into reality.",
+    "subtitle": "Open to full stack, back-end or front-end. CLT or contract — remote, hybrid or on-site in Brasília.",
     "email_label": "Email",
     "phone_label": "Phone",
     "whatsapp_label": "WhatsApp",
     "whatsapp_cta": "Chat on WhatsApp",
     "location_label": "Location",
-    "location_value": "Brasília, Brazil • Remote or hybrid",
+    "location_value": "Brasília, Brazil • On-site · Hybrid · Remote",
     "cta_title": "Shall we work together?",
     "cta_title_1": "Let's build something",
     "cta_title_hl": "amazing?",
-    "cta_body": "I’m always open to chat and collaborate on new creative projects. 🚀",
+    "cta_body": "CLT or contract. Full stack, back-end or front-end. Latin America — remote, hybrid or on-site.",
     "copy_email": "Copy e-mail",
     "copied": "Copied!",
     "form": {
@@ -139,16 +139,16 @@
     "eyebrow": "Who I am",
     "title_prefix": "About",
     "highlight": "Me",
-    "subtitle": "Passionate developer creating innovative solutions and interfaces that connect people to technology",
+    "subtitle": "6 years. UI, API and database. TypeScript end to end.",
     "stats": {
       "experience": "Years of experience",
       "companies": "Companies",
       "projects": "Projects shipped"
     },
     "bento": {
-      "bio_1": "Full stack developer who masters",
-      "bio_hl": "every major front-end framework",
-      "bio_2": "and builds solid back-ends with NestJS. Obsessed with detail, performance and products that actually ship.",
+      "bio_1": "Full stack, 6 years,",
+      "bio_hl": "product in production: UI, API and database.",
+      "bio_2": "On the front, TypeScript with Angular, React, Vue, React Native, Flutter and Ionic. On the back, NestJS and Node, MongoDB and PostgreSQL.",
       "clock": "Now in Brasília",
       "now_title": "Daily drivers"
     },
@@ -159,38 +159,38 @@
     },
     "cards": {
       "development": {
-        "title": "Development",
-        "description": "Specialist in React, TypeScript, Node.js and modern technologies — focused on performance and UX."
+        "title": "Whitelabel",
+        "description": "Front-end templates (React, Ionic, Angular, Vue) + NestJS API: a new client app live in days."
       },
       "design": {
-        "title": "Design",
-        "description": "I blend functionality with aesthetics, crafting intuitive and appealing interfaces."
+        "title": "Reusable auth",
+        "description": "Login, password reset, multi-channel OTP/2FA and refresh tokens — the next project starts with this ready."
       },
       "innovation": {
-        "title": "Innovation",
-        "description": "Always seeking the latest trends and technologies to solve complex challenges."
+        "title": "New hires ship",
+        "description": "Pairing, review and architecture walkthrough. First production delivery in week one."
       }
     },
     "experience": {
       "title": "Experience",
       "items": {
-        "okegen": {
-          "role": "Software Engineer",
-          "company": "OKEGEN Exchange",
-          "period": "2024 - Present",
-          "description": "Development of REST APIs with NestJS and creation of reusable components in Angular and Ionic, reducing delivery time and increasing the platform's security."
-        },
         "codetech": {
-          "role": "Full Stack Developer",
+          "role": "Fullstack Developer",
           "company": "Code Tech",
-          "period": "2023 - Present",
-          "description": "Creation of white-label templates with NestJS and React, speeding up the launch of new client applications by up to 80%."
+          "period": "Aug 2023 — Sep 2026 · Remote",
+          "description": "Reusable front-end templates (React/Ionic, Angular and Vue) + NestJS API: a new client rebrands and ships in days. Whitelabel auth (login, reset, OTP 2FA, refresh token). React Native and Flutter apps on the same REST API. NestJS microservices for an exchange (status jobs, verification-code cleanup, JWT 2FA). Production: SOL, Unie Suite, Ruragil, Portal do Bolsista. Onboarding with pair and review — first delivery in week one."
         },
         "tgt": {
-          "role": "Frontend Developer",
-          "company": "TGT Digital",
-          "period": "2021 - 2023",
-          "description": "Built robust apps with React, React Native and Angular, contributing to diverse projects that impacted thousands of end users."
+          "role": "Fullstack Developer",
+          "company": "TGT Digital S/A",
+          "period": "Sep 2021 — Aug 2023 · Hybrid",
+          "description": "Consultancy: a different product per client, web + mobile + API in production. Walkr (finance): React, React Native and NestJS from scratch — email (SendGrid) and SMS login, files on S3, i18n and theme; the app is still live. Wow Lavacar (Angular, Ionic, NestJS): site, app and an operations dashboard with live queue and metrics."
+        },
+        "inss": {
+          "role": "IT Intern",
+          "company": "INSS",
+          "period": "Jun 2018 — Jul 2019 · On-site",
+          "description": "Daily hardware and software support at the Brasília regional office. Excel automation (macros and formulas) to log admin processes in a shared spreadsheet instead of typing into several systems. Trained colleagues and left a support playbook."
         }
       }
     }

@@ -1,14 +1,14 @@
 import { Counter, SectionHeader, Spotlight, Tilt } from "@/components/fx";
 import { motion } from "framer-motion";
-import { Code, Github, Linkedin, MapPin, Palette, Rocket } from "lucide-react";
+import { Code, Github, KeyRound, Linkedin, MapPin, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SiAngular, SiNestjs, SiReact, SiTypescript } from "react-icons/si";
 
 const values = [
   { icon: Code, key: "development", color: "text-primary" },
-  { icon: Palette, key: "design", color: "text-accent-2" },
-  { icon: Rocket, key: "innovation", color: "text-warm" },
+  { icon: KeyRound, key: "design", color: "text-accent-2" },
+  { icon: Users, key: "innovation", color: "text-warm" },
 ];
 
 const now = [
