@@ -1,0 +1,137 @@
+.nv {
+  --nv-bg: 20 13 8;
+  --nv-bg2: 30 20 13;
+  --nv-leather: 90 53 32;
+  --nv-saddle: 139 90 43;
+  --nv-tan: 233 216 187;
+  --nv-muted: 181 158 128;
+  --nv-brass: 200 150 62;
+  --nv-rust: 160 82 45;
+  background: rgb(var(--nv-bg));
+  color: rgb(var(--nv-tan));
+  font-family: Lora, Georgia, serif;
+}
+
+.nv ::selection {
+  background: rgb(var(--nv-brass));
+  color: rgb(var(--nv-bg));
+}
+
+.nv-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.nv-leather {
+  background:
+    radial-gradient(120% 80% at 20% 0%, rgb(var(--nv-saddle) / 0.55), transparent 60%),
+    radial-gradient(90% 70% at 100% 100%, rgb(0 0 0 / 0.45), transparent 60%),
+    rgb(var(--nv-leather));
+}
+
+.nv-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+}
+
+.nv-stitch {
+  position: relative;
+}
+.nv-stitch::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed rgb(var(--nv-tan) / 0.35);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.nv-photo {
+  filter: sepia(0.35) saturate(0.85) contrast(1.05) brightness(0.88);
+}
+
+.nv-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  border-radius: 2px;
+  padding: 0.85rem 1.6rem;
+  font-family: Oswald, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(var(--nv-bg));
+  background: linear-gradient(135deg, #e3b865, rgb(var(--nv-brass)) 45%, #9a6b24);
+  box-shadow: 0 10px 30px -10px rgb(var(--nv-brass) / 0.7), inset 0 1px 0 rgb(255 255 255 / 0.35);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+.nv-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%) skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.45), transparent);
+  transition: transform 0.6s;
+}
+.nv-btn:hover {
+  transform: translateY(-2px);
+}
+.nv-btn:hover::after {
+  transform: translateX(120%) skewX(-20deg);
+}
+.nv-btn:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.nv-btn-ghost {
+  color: rgb(var(--nv-tan));
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px rgb(var(--nv-tan) / 0.4);
+}
+.nv-btn-ghost:hover {
+  box-shadow: inset 0 0 0 1.5px rgb(var(--nv-brass));
+  color: rgb(var(--nv-brass));
+}
+
+.nv-leader {
+  flex: 1;
+  min-width: 1.5rem;
+  margin: 0 0.6rem 0.35rem;
+  border-bottom: 2px dotted rgb(var(--nv-muted) / 0.35);
+}
+
+.nv-marquee {
+  animation: nv-marquee 30s linear infinite;
+}
+@keyframes nv-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.nv-map {
+  filter: grayscale(1) invert(0.92) sepia(0.6) hue-rotate(-12deg) contrast(0.9);
+}
+
+.nv-input {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid rgb(var(--nv-tan) / 0.2);
+  background: rgb(var(--nv-bg) / 0.6);
+  padding: 0.8rem 1rem;
+  color: rgb(var(--nv-tan));
+  outline: none;
+  transition: border-color 0.2s;
+}
+.nv-input:focus {
+  border-color: rgb(var(--nv-brass));
+}
+.nv-input::placeholder {
+  color: rgb(var(--nv-muted) / 0.6);
+}

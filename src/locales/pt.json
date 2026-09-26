@@ -133,9 +133,9 @@
     "skills": "Stack",
     "services": "Serviços",
     "contact": "Contato",
-    "games": "Games"
+    "games": "Games",
+    "sites": "Sites"
   },
-  
   "about": {
     "eyebrow": "Quem sou",
     "title_prefix": "Sobre",
@@ -287,6 +287,20 @@
         "stuck": "Sem movimentos disponíveis.",
         "remaining": "Peças restantes: {{count}}"
       }
+    }
+  },
+  "sites": {
+    "title": "Meus",
+    "highlight": "Sites",
+    "subtitle": "Um acervo de sites completos, cada um com identidade própria. Clique em um e mergulhe — sem sair do portfólio.",
+    "open": "Abrir site",
+    "soon": "Mais sites a caminho",
+    "loading": "Carregando experiência",
+    "back": "Voltar ao portfólio",
+    "viewing": "Você está vendo",
+    "by": "um projeto de Matheus Oliveira",
+    "items": {
+      "navalha": "Barbearia country premium — serviços, preços, equipe e agendamento online."
     }
   }
 }

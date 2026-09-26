@@ -26,6 +26,7 @@ export default function Navbar() {
     { id: "services", label: t("nav.services", "Serviços") },
     { id: "contact", label: t("nav.contact", "Contato") },
     { id: "games", label: t("nav.games", "Games"), to: "/games" },
+    { id: "sites", label: t("nav.sites"), to: "/sites" },
   ]
 
   useEffect(() => {
@@ -64,6 +65,8 @@ export default function Navbar() {
     setOpen(false)
   }
 
+  if (location.pathname.startsWith("/sites/")) return null
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3">
       <nav
@@ -83,7 +86,7 @@ export default function Navbar() {
 
           <ul className="hidden items-center gap-1 text-sm font-medium md:flex">
             {navItems.map((item) => {
-              const isActive = item.to ? location.pathname === item.to : active === item.id
+              const isActive = item.to ? location.pathname === item.to : location.pathname === "/" && active === item.id
               const inner = (
                 <span className="relative rounded-full px-4 py-2 transition-colors hover:text-primary">
                   {isActive && (

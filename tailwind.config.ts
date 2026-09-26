@@ -19,9 +19,15 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Inter', 'sans-serif']
+				inter: ['Inter', 'sans-serif'],
+				rye: ['Rye', 'serif'],
+				oswald: ['Oswald', 'sans-serif'],
+				lora: ['Lora', 'Georgia', 'serif']
 			},
 			colors: {
+				nv: Object.fromEntries(
+					['bg', 'bg2', 'leather', 'saddle', 'tan', 'muted', 'brass', 'rust'].map((c) => [c, `rgb(var(--nv-${c}) / <alpha-value>)`])
+				),
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

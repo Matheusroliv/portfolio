@@ -12,6 +12,8 @@ import { LocaleProvider } from "./contexts/LocaleContext"
 import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import Games from "./pages/games"
+import SiteViewer from "./pages/SiteViewer"
+import Sites from "./pages/Sites"
 
 const queryClient = new QueryClient()
 
@@ -31,6 +33,8 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/games" element={<Games />} />
+                <Route path="/sites" element={<Sites />} />
+                <Route path="/sites/:slug/*" element={<SiteViewer />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>

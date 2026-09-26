@@ -133,7 +133,8 @@
     "skills": "Stack",
     "services": "Services",
     "contact": "Contact",
-    "games": "Games"
+    "games": "Games",
+    "sites": "Sites"
   },
   "about": {
     "eyebrow": "Who I am",
@@ -286,6 +287,20 @@
         "stuck": "No moves available.",
         "remaining": "Remaining pegs: {{count}}"
       }
+    }
+  },
+  "sites": {
+    "title": "My",
+    "highlight": "Sites",
+    "subtitle": "A collection of complete websites, each with its own identity. Click one and dive in — without leaving the portfolio.",
+    "open": "Open site",
+    "soon": "More sites coming",
+    "loading": "Loading experience",
+    "back": "Back to portfolio",
+    "viewing": "You are viewing",
+    "by": "a project by Matheus Oliveira",
+    "items": {
+      "navalha": "Premium country barbershop — services, prices, team and online booking."
     }
   }
 }

@@ -37,6 +37,8 @@ src/
   components/         # Hero, About, Skills, Contact, Footer, Navbar, Reveal, Seo...
   components/ui/      # shadcn/ui (gerado — evite editar à mão)
   components/games/   # TicTacToe, Snake, Checkers, PegSolitaire
+  sites/registry.ts   # sites embutidos em /sites/:slug (cada um lazy-loaded)
+  sites/<slug>/       # site completo com identidade própria (CSS com escopo .nv etc.)
   contexts/           # ThemeContext, LocaleContext
   hooks/              # use-in-view, use-mobile, use-toast
 ```
