@@ -218,28 +218,23 @@ export default function DevScene({ hint, hello }: { hint: string; hello: string 
     const chest = add(torso, cap(0.19, 0.22), mat(SHIRT, 0.85), [0, 0.28, 0], [0, 0, 0], [1.2, 1, 0.95])
     add(torso, rbox(0.045, 0.045, 0.012, 0.008), accentMat, [0.085, 0.4, 0.168], [0.1, 0.35, 0])
     add(torso, new THREE.CylinderGeometry(0.06, 0.07, 0.1, 16), mat(SKIN, 0.55), [0, 0.6, 0.01])
-    add(torso, new THREE.TorusGeometry(0.115, 0.02, 12, 36), mat(DARK, 0.4), [0, 0.57, 0.02], [Math.PI / 2 - 0.25, 0, 0])
-    for (const x of [-0.115, 0.115]) {
-      add(torso, new THREE.CylinderGeometry(0.048, 0.048, 0.04, 20), mat(DARK, 0.4), [x, 0.55, 0.07], [0, 0, Math.PI / 2])
-      add(torso, new THREE.TorusGeometry(0.04, 0.007, 8, 24), glowMat, [x + Math.sign(x) * 0.021, 0.55, 0.07], [0, Math.PI / 2, 0])
-    }
-
     const head = new THREE.Group()
     head.position.set(0, 0.77, 0.03)
     torso.add(head)
     add(head, sph(0.17), mat(SKIN, 0.55), [0, 0, 0], [0, 0, 0], [1, 1.08, 1])
     const hairMat = new THREE.MeshStandardMaterial({ color: HAIR, roughness: 0.9, side: THREE.DoubleSide })
+    const stubbleMat = new THREE.MeshStandardMaterial({ color: 0x2a1d17, roughness: 1, transparent: true, opacity: 0.72, depthWrite: false })
     add(head, new THREE.SphereGeometry(0.182, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.4), hairMat, [0, 0.03, -0.012], [-0.42, 0, 0], [1, 1.12, 1])
     add(head, new THREE.SphereGeometry(0.179, 32, 16, Math.PI / 2 + 1.25, Math.PI * 2 - 2.5, Math.PI * 0.25, Math.PI * 0.27), hairMat, [0, 0.01, -0.005])
     add(
       head,
-      new THREE.SphereGeometry(0.173, 32, 16, Math.PI / 2 - 1.35, 2.7, Math.PI * 0.64, Math.PI * 0.3),
-      hairMat,
-      [0, -0.006, 0.004],
+      new THREE.SphereGeometry(0.172, 32, 16, Math.PI / 2 - 1.45, 2.9, Math.PI * 0.6, Math.PI * 0.34),
+      stubbleMat,
+      [0, -0.004, 0.002],
       [0, 0, 0],
-      [1.01, 1.08, 1.02]
+      [1.012, 1.085, 1.015]
     )
-    add(head, cap(0.011, 0.06), hairMat, [0, -0.048, 0.171], [0, 0, Math.PI / 2])
+    add(head, cap(0.009, 0.055), stubbleMat, [0, -0.048, 0.17], [0, 0, Math.PI / 2])
     add(head, sph(0.034), mat(SKIN, 0.5), [0, -0.008, 0.172], [0, 0, 0], [1, 1.1, 1])
     add(head, cap(0.007, 0.028), mat(0x7a4034, 0.5), [0, -0.076, 0.163], [0, 0, Math.PI / 2])
     const eyes = new THREE.Group()
@@ -250,6 +245,18 @@ export default function DevScene({ hint, hello }: { hint: string; hello: string 
       add(head, rbox(0.062, 0.015, 0.02, 0.006), hairMat, [x, 0.088, 0.158], [0, 0, -Math.sign(x) * 0.12])
       add(head, sph(0.036), mat(SKIN, 0.55), [x * 2.9, 0, -0.005], [0, 0, 0], [0.55, 1, 1])
     }
+    const headset = new THREE.Group()
+    headset.position.set(0, 0.005, -0.01)
+    head.add(headset)
+    add(headset, new THREE.TorusGeometry(0.196, 0.014, 10, 40, Math.PI), mat(DARK, 0.4), [0, 0, 0], [0, 0, 0], [1, 1.08, 1])
+    for (const s of [-1, 1]) {
+      add(headset, new THREE.CylinderGeometry(0.062, 0.062, 0.045, 28), mat(DARK, 0.4), [s * 0.19, -0.005, 0], [0, 0, Math.PI / 2])
+      add(headset, new THREE.TorusGeometry(0.045, 0.007, 8, 28), glowMat, [s * 0.214, -0.005, 0], [0, Math.PI / 2, 0])
+    }
+    const boom = add(headset, cap(0.006, 0.13), mat(DARK, 0.4), [0.15, -0.06, 0.09])
+    boom.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(-0.1, -0.04, 0.13).normalize())
+    add(headset, sph(0.014), glowMat, [0.1, -0.08, 0.155])
+
     const glasses = new THREE.Group()
     glasses.position.set(0, 0.035, 0.176)
     head.add(glasses)
@@ -446,10 +453,7 @@ export default function DevScene({ hint, hello }: { hint: string; hello: string 
         mode = mode === "type" ? "look" : "type"
         modeUntil = t + (mode === "type" ? 4 + Math.random() * 3 : 1.8)
       }
-      if (reduce) {
-        mode = "type"
-        typed = screen.total
-      } else if (mode === "type") {
+      if (mode === "type") {
         typed = Math.min(screen.total, typed + dt * 24)
         if (typed >= screen.total) {
           mode = "look"
@@ -463,7 +467,7 @@ export default function DevScene({ hint, hello }: { hint: string; hello: string 
         lastDraw = drawKey
       }
 
-      const typing = mode === "type" && !reduce
+      const typing = mode === "type"
       const look = mode !== "type"
       head.rotation.y = damp(head.rotation.y, look ? 0.55 + mouse.x * 0.15 : mouse.x * 0.12, 6, dt)
       head.rotation.x = damp(head.rotation.x, look ? -0.05 + mouse.y * 0.1 : 0.12 + (typing ? Math.sin(t * 3) * 0.02 : 0), 6, dt)
