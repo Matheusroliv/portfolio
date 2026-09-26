@@ -1,38 +1,11 @@
 import {
-  animate,
   motion,
-  useInView,
   useMotionTemplate,
   useMotionValue,
-  useReducedMotion,
   useScroll,
   useSpring,
-  useTransform,
 } from "framer-motion";
-import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
-
-/* ---------- Cursor spotlight following the mouse (desktop only) ---------- */
-export function CursorGlow() {
-  const reduce = useReducedMotion();
-  const x = useMotionValue(-500);
-  const y = useMotionValue(-500);
-  const sx = useSpring(x, { stiffness: 120, damping: 20, mass: 0.4 });
-  const sy = useSpring(y, { stiffness: 120, damping: 20, mass: 0.4 });
-  const bg = useMotionTemplate`radial-gradient(600px circle at ${sx}px ${sy}px, hsl(var(--primary) / 0.12), transparent 60%)`;
-
-  useEffect(() => {
-    if (reduce || !matchMedia("(pointer:fine)").matches) return;
-    const move = (e: PointerEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-    };
-    addEventListener("pointermove", move, { passive: true });
-    return () => removeEventListener("pointermove", move);
-  }, [reduce, x, y]);
-
-  if (reduce) return null;
-  return <motion.div aria-hidden className="pointer-events-none fixed inset-0 z-[1]" style={{ background: bg }} />;
-}
+import { MouseEvent, ReactNode } from "react";
 
 /* ---------- Top scroll progress bar ---------- */
 export function ScrollProgress() {
@@ -110,38 +83,6 @@ export function Tilt({ children, className, max = 12 }: { children: ReactNode; c
   );
 }
 
-/* ---------- Card whose border/bg glows where the mouse is ---------- */
-export function Spotlight({ children, className = "", as: Tag = "div", ...rest }: { children: ReactNode; className?: string; as?: "div" | "a" } & Record<string, unknown>) {
-  const onMove = (e: MouseEvent<HTMLElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-  };
-  return (
-    <Tag {...rest} onMouseMove={onMove} className={`glass-card glass-card-glow spotlight-card ${className}`}>
-      {children}
-    </Tag>
-  );
-}
-
-/* ---------- Count-up number when scrolled into view ---------- */
-export function Counter({ to, suffix = "", duration = 1.6 }: { to: number; suffix?: string; duration?: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [v, setV] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    const c = animate(0, to, { duration, ease: [0.22, 1, 0.36, 1], onUpdate: (n) => setV(Math.round(n)) });
-    return c.stop;
-  }, [inView, to, duration]);
-  return (
-    <span ref={ref} className="tabular-nums">
-      {v}
-      {suffix}
-    </span>
-  );
-}
-
 /* ---------- Section heading with word-by-word reveal ---------- */
 export function SectionHeader({ eyebrow, prefix, highlight, subtitle, align = "center" }: { eyebrow: string; prefix: string; highlight: string; subtitle?: string; align?: "center" | "left" }) {
   const words = [...prefix.split(" ").map((w) => ({ w, hl: false })), { w: highlight, hl: true }];
@@ -187,20 +128,3 @@ export function SectionHeader({ eyebrow, prefix, highlight, subtitle, align = "c
   );
 }
 
-/* ---------- Big skewed outlined-text band scrolling on scroll velocity ---------- */
-export function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
-  const { scrollYProgress } = useScroll();
-  const x = useTransform(scrollYProgress, [0, 1], reverse ? ["-30%", "0%"] : ["0%", "-30%"]);
-  return (
-    <div aria-hidden className="relative -my-6 overflow-hidden py-6 [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
-      <motion.div style={{ x }} className="flex w-max gap-10 whitespace-nowrap text-6xl font-black uppercase tracking-tight md:text-8xl">
-        {[...items, ...items, ...items].map((s, i) => (
-          <span key={i} className={i % 2 ? "outline-text" : "gradient-text"}>
-            {s}
-            <span className="mx-6 inline-block h-3 w-3 rounded-full bg-warm align-middle md:h-4 md:w-4" />
-          </span>
-        ))}
-      </motion.div>
-    </div>
-  );
-}

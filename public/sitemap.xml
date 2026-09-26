@@ -10,16 +10,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://portfolio-matheusrolivs-projects.vercel.app/" />
   </url>
   <url>
-    <loc>https://portfolio-matheusrolivs-projects.vercel.app/games</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://portfolio-matheusrolivs-projects.vercel.app/sites</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://portfolio-matheusrolivs-projects.vercel.app/sites/navalha</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

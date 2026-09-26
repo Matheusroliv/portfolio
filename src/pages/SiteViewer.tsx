@@ -97,7 +97,7 @@ export default function SiteViewer() {
     }
   }, [site, reduce])
 
-  if (!site) return <Navigate to="/sites" replace />
+  if (!site) return <Navigate to="/#sites" replace />
 
   return (
     <div className="min-h-screen pt-11" style={{ background: site.bg }}>
@@ -132,7 +132,7 @@ export default function SiteViewer() {
           initial={{ clipPath: "circle(0% at 60px 22px)" }}
           animate={{ clipPath: "circle(150% at 60px 22px)" }}
           transition={{ duration: reduce ? 0 : 0.7, ease: EASE }}
-          onAnimationComplete={() => navigate("/sites")}
+          onAnimationComplete={() => navigate("/#sites")}
         />
       )}
     </div>

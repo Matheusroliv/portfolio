@@ -4,7 +4,7 @@ Guia para agentes de IA (e humanos) que trabalham neste repositório.
 
 ## O que é
 
-Portfólio pessoal single-page (com uma página extra de `/games`). SPA em
+Portfólio pessoal single-page cujo foco é a galeria de sites em `/sites/:slug`. SPA em
 **Vite + React 18 + TypeScript**, estilizado com **Tailwind CSS 3** + **shadcn/ui**,
 internacionalizado (pt/en) e com tema claro/escuro. Estética: **dark aurora + glassmorphism**,
 accent **violeta**, com micro-interações via **Framer Motion**.
@@ -33,10 +33,9 @@ src/
   index.css           # design system: tokens CSS, utilitários (glass/gradient/glow), keyframes
   i18n.ts             # config i18next (pt padrão, en fallback)
   locales/{pt,en}.json# TODAS as strings visíveis vivem aqui
-  pages/              # Index (landing), games, NotFound
-  components/         # Hero, About, Skills, Contact, Footer, Navbar, Reveal, Seo...
+  pages/              # Index (landing), SiteViewer, NotFound
+  components/         # Hero, DevScene (Three.js), SiteGrid, Services, Experience, Skills, Contact...
   components/ui/      # shadcn/ui (gerado — evite editar à mão)
-  components/games/   # TicTacToe, Snake, Checkers, PegSolitaire
   sites/registry.ts   # sites embutidos em /sites/:slug (cada um lazy-loaded)
   sites/<slug>/       # site completo com identidade própria (CSS com escopo .nv etc.)
   contexts/           # ThemeContext, LocaleContext
@@ -55,8 +54,7 @@ src/
 - **Animações:** Framer Motion para orquestração/entrada; CSS keyframes (em `index.css`)
   para efeitos contínuos (aurora, glow, marquee). Respeite `prefers-reduced-motion`.
 - **Aliases:** import com `@/` → `src/`.
-- **Games:** o CSS dos jogos (snake/tictactoe/checkers/confetti) vive em `@layer utilities`
-  do `index.css`. Não remova.
+- **Three.js:** cenas 3D (`DevScene`, sites) são lazy-loaded; libere recursos no cleanup e pause fora da tela.
 
 ## SEO / GEO / AEO
 

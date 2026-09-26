@@ -1,5 +1,4 @@
-import { Tilt } from "@/components/fx"
-import { Badge } from "@/components/ui/badge"
+import { SectionHeader, Tilt } from "@/components/fx"
 import { sites, type SiteEntry } from "@/sites/registry"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, Plus } from "lucide-react"
@@ -9,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 type Launch = { site: SiteEntry; rect: DOMRect }
 
-export default function Sites() {
+export default function SiteGrid() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const reduce = useReducedMotion()
@@ -21,35 +20,25 @@ export default function Sites() {
   }
 
   return (
-    <main className="min-h-screen px-6 pb-24 pt-32">
-      <div aria-hidden className="grain" />
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <h1 className="mb-6 text-4xl font-bold md:text-5xl">
-            {t("sites.title")} <span className="gradient-text">{t("sites.highlight")}</span>
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">{t("sites.subtitle")}</p>
-        </motion.div>
+    <section id="sites" className="scroll-mt-24 px-6 py-28">
+      <div className="container mx-auto max-w-6xl">
+        <SectionHeader eyebrow={t("sites.eyebrow")} prefix={t("sites.title")} highlight={t("sites.highlight")} subtitle={t("sites.subtitle")} />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-6 [&>*]:w-full sm:[&>*]:w-[calc(50%-0.75rem)] lg:[&>*]:w-[calc(33.333%-1rem)]">
           {sites.map((site, i) => (
             <motion.div
               key={site.slug}
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
             >
-              <Tilt className="h-full">
+              <Tilt className="h-full" max={8}>
                 <button
                   type="button"
                   onClick={(e) => open(site, e)}
                   onMouseEnter={() => site.load()}
-                  className="glass-card group relative block aspect-[4/5] w-full overflow-hidden rounded-3xl text-left"
+                  className="group relative block aspect-[4/5] w-full overflow-hidden rounded-3xl text-left shadow-xl ring-1 ring-border"
                 >
                   <img
                     src={site.cover}
@@ -59,7 +48,7 @@ export default function Sites() {
                   />
                   <div
                     className="absolute inset-0"
-                    style={{ background: `linear-gradient(180deg, ${site.bg}66 0%, ${site.bg}ee 65%, ${site.bg} 100%)` }}
+                    style={{ background: `linear-gradient(180deg, ${site.bg}55 0%, ${site.bg}ee 65%, ${site.bg} 100%)` }}
                   />
                   <div className="relative flex h-full flex-col items-center justify-between p-6" style={{ color: site.accent }}>
                     <div className="flex w-full justify-end">
@@ -75,9 +64,9 @@ export default function Sites() {
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {site.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary" className="bg-white/10 text-xs text-white hover:bg-white/20">
+                          <span key={tag} className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-medium text-white">
                             {tag}
-                          </Badge>
+                          </span>
                         ))}
                       </div>
                     </div>
@@ -89,12 +78,14 @@ export default function Sites() {
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 + sites.length * 0.08, duration: 0.5 }}
-            className="flex aspect-[4/5] flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-border text-muted-foreground"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: sites.length * 0.08, duration: 0.5 }}
+            className="flex aspect-[4/5] flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-border p-8 text-center text-muted-foreground"
           >
             <Plus className="h-8 w-8" />
-            <span className="text-sm font-medium">{t("sites.soon")}</span>
+            <span className="font-semibold text-foreground">{t("sites.soon")}</span>
+            <span className="text-sm">{t("sites.soon_body")}</span>
           </motion.div>
         </div>
       </div>
@@ -123,6 +114,6 @@ export default function Sites() {
           </motion.div>
         </motion.div>
       )}
-    </main>
+    </section>
   )
 }

@@ -1,306 +1,160 @@
 {
-  "title": "Matheus Oliveira • Portfólio",
-  "hero": {
-    "badge": "Aberto a CLT ou contrato",
-    "role": "Desenvolvedor Full Stack • TypeScript · Angular · React · Vue · React Native · Flutter · NestJS",
-    "bio": "Full stack, 6 anos, produto no ar: tela, API e banco. TypeScript na frente (Angular, React, Vue, React Native, Flutter e Ionic) e NestJS/Node atrás, com MongoDB e PostgreSQL.",
-    "frameworks_label": "Domínio completo do front-end",
-    "cta_projects": "Ver projetos",
-    "cta_contact": "Falar no WhatsApp",
-    "cta_about": "Sobre mim",
-    "greeting": "Olá, eu sou",
-    "role_prefix": "Full Stack em",
-    "scroll": "Rolar",
-    "float_ship": "Do zero ao deploy",
-    "float_ship_sub": "front, back e mobile",
-    "float_years": "6+ anos",
-    "float_years_sub": "entregando produtos"
-  },
-  "experience": {
-    "eyebrow": "Trajetória",
-    "title_prefix": "Onde eu",
-    "title": "construí",
-    "subtitle": "Code Tech, TGT Digital e INSS. Whitelabel, APIs e apps que ainda estão em produção."
-  },
-  "services": {
-    "eyebrow": "Serviços",
-    "title_prefix": "Como posso",
-    "title": "ajudar",
-    "subtitle": "Software sob medida, SaaS, web e apps iOS/Android — o mesmo stack do dia a dia.",
-    "items": {
-      "web": {
-        "title": "Desenvolvimento Web",
-        "description": "SPAs e painéis em Angular, React ou Vue. Do layout à API, o produto sobe e fica em produção."
-      },
-      "mobile": {
-        "title": "Apps iOS e Android",
-        "description": "React Native, Flutter ou Ionic consumindo a mesma API REST do web — uma base, duas lojas."
-      },
-      "api": {
-        "title": "APIs & Back-end",
-        "description": "NestJS e Node: login, reset de senha, OTP/2FA, refresh token, jobs e integrações (SendGrid, SMS, S3)."
-      },
-      "saas": {
-        "title": "SaaS & Whitelabel",
-        "description": "Templates de front + API NestJS: cliente novo troca a marca e sobe em dias, não em meses."
-      },
-      "migration": {
-        "title": "Software personalizado",
-        "description": "Produto do zero ou manutenção em produção: exchange, finanças, portais e operação no turno."
-      },
-      "consulting": {
-        "title": "Onboarding & Review",
-        "description": "Pair, code review e walkthrough de arquitetura. Quem entra entrega na primeira semana."
-      }
-    }
-  },
-  "footer": {
-    "tagline": "Full stack em TypeScript: tela, API e banco. Brasília — presencial, híbrido ou remoto.",
-    "quick_links": "Links rápidos",
-    "services": "Serviços",
-    "rights": "© {{year}} Matheus Oliveira. Todos os direitos reservados.",
-    "made_with": "Feito com ❤, ☕ e umas boas linhas de TypeScript.",
-    "links": {
-      "about": "Sobre",
-      "skills": "Habilidades",
-      "projects": "Projetos",
-      "contact": "Contato"
-    },
-    "services_list": {
-      "web": "Web & Mobile",
-      "api": "APIs REST / NestJS",
-      "mentoring": "Onboarding e code review"
-    }
-  },
-  "contact": {
-    "eyebrow": "Vamos conversar",
-    "title_prefix": "Entre em",
-    "title_highlight": "Contato",
-    "subtitle": "Aberto a full stack, back ou front. CLT ou contrato, remoto, híbrido ou presencial em Brasília.",
-    "email_label": "Email",
-    "phone_label": "Telefone",
-    "whatsapp_label": "WhatsApp",
-    "whatsapp_cta": "Chamar no WhatsApp",
-    "location_label": "Localização",
-    "location_value": "Brasília, DF • Presencial · Híbrido · Remoto",
-    "cta_title": "Vamos trabalhar juntos?",
-    "cta_title_1": "Vamos construir algo",
-    "cta_title_hl": "incrível?",
-    "cta_body": "CLT ou contrato. Full stack, back ou front. América Latina — remoto, híbrido ou presencial.",
-    "copy_email": "Copiar e-mail",
-    "copied": "Copiado!",
-    "form": {
-      "name_label": "Nome",
-      "email_label": "Email",
-      "message_label": "Mensagem",
-      "name_placeholder": "Seu nome completo",
-      "email_placeholder": "seu@email.com",
-      "message_placeholder": "Conte-me sobre seu projeto...",
-      "submit": "Enviar Mensagem"
-    }
-  },
-  "skills": {
-    "eyebrow": "Stack",
-    "title_prefix": "Minhas",
-    "title": "Tecnologias",
-    "subtitle": "Passe o mouse — cada tecnologia acende na própria cor.",
-    "categories": {
-      "frontend": "Front-end",
-      "mobile": "Mobile",
-      "backend": "Back-end",
-      "tools": "Ferramentas"
-    }
-  },
-  "projects": {
-    "title_prefix": "Meus",
-    "title_highlight": "Projetos",
-    "subtitle": "Alguns dos projetos que desenvolvi, mostrando minhas habilidades e paixão pela programação",
-    "buttons": {
-      "demo": "Demo",
-      "code": "Código"
-    },
-    "view_all": "Ver Todos os Projetos"
-  },
-  "notfound": {
-    "title": "404",
-    "message": "Ops! Página não encontrada",
-    "back_home": "Voltar para a Home"
-  },
+  "title": "Matheus Oliveira • Desenvolvedor Full Stack",
   "nav": {
     "home": "Início",
-    "about": "Sobre",
-    "experience": "Experiência",
-    "skills": "Stack",
+    "sites": "Sites",
     "services": "Serviços",
+    "experience": "Experiência",
+    "stack": "Stack",
     "contact": "Contato",
-    "games": "Games",
-    "sites": "Sites"
+    "cv": "Currículo"
   },
-  "about": {
-    "eyebrow": "Quem sou",
-    "title_prefix": "Sobre",
-    "highlight": "Mim",
-    "subtitle": "6 anos. Tela, API e banco. TypeScript de ponta a ponta.",
-    "stats": {
-      "experience": "Anos de experiência",
-      "companies": "Empresas",
-      "projects": "Projetos entregues"
-    },
-    "bento": {
-      "bio_1": "Full stack, 6 anos,",
-      "bio_hl": "produto no ar: tela, API e banco.",
-      "bio_2": "Na frente, TypeScript com Angular, React, Vue, React Native, Flutter e Ionic. Atrás, NestJS e Node, MongoDB e PostgreSQL.",
-      "clock": "Agora em Brasília",
-      "now_title": "Usando no dia a dia"
-    },
-    "social": {
-      "github": "GitHub",
-      "linkedin": "LinkedIn",
-      "email": "Email"
-    },
-    "cards": {
-      "development": {
-        "title": "Whitelabel",
-        "description": "Templates de front (React, Ionic, Angular, Vue) + API NestJS: app de cliente novo no ar em dias."
-      },
-      "design": {
-        "title": "Auth reutilizável",
-        "description": "Login, reset de senha, OTP/2FA multicanal e refresh token — o próximo projeto já começa com isso."
-      },
-      "innovation": {
-        "title": "Quem entra, entrega",
-        "description": "Pair, review e walkthrough de arquitetura. Primeira entrega em produção na primeira semana."
-      }
-    },
-    "experience": {
-      "title": "Experiência",
-      "items": {
-        "codetech": {
-          "role": "Desenvolvedor Fullstack",
-          "company": "Code Tech",
-          "period": "ago 2023 — set 2026 · Remoto",
-          "description": "Templates de front (React/Ionic, Angular e Vue) + API NestJS: cliente novo troca a marca e sobe em dias. API de autenticação whitelabel (login, reset, OTP 2FA, refresh token). Apps em React Native e Flutter na mesma REST. Microsserviços NestJS para exchange (status, expurgo de códigos, 2FA com JWT) e rotinas agendadas. Produção: SOL, Unie Suite, Ruragil, Portal do Bolsista. Onboarding com pair e review — primeira entrega na primeira semana."
-        },
-        "tgt": {
-          "role": "Desenvolvedor Fullstack",
-          "company": "TGT Digital S/A",
-          "period": "set 2021 — ago 2023 · Híbrido",
-          "description": "Consultoria: cada cliente um produto, web + mobile + API em produção. Walkr (finanças): React, React Native e NestJS do zero — login por e-mail (SendGrid) e SMS, arquivos no S3, i18n e tema; o app ainda está no ar. Wow Lavacar (Angular, Ionic, NestJS): site, app e painel da operação com fila e números ao vivo."
-        },
-        "inss": {
-          "role": "Estagiário de TI",
-          "company": "INSS",
-          "period": "jun 2018 — jul 2019 · Presencial",
-          "description": "Suporte de hardware e software na regional de Brasília. Automação em Excel (macros e fórmulas) para registrar processos numa planilha compartilhada no lugar da digitação em vários sistemas. Treinei colegas e deixei o passo a passo."
-        }
-      }
-    }
-  },
-  "games": {
-    "title": "Meus",
-    "highlight": "Jogos",
-    "subtitle": "Uma coleção de jogos e experimentos onde misturo código, design e diversão.",
-    "play_now": "Jogar agora",
-    "cards": {
-      "tictactoe": {
-        "title": "Jogo da Velha Infinito",
-        "description": "Uma versão moderna e infinita do jogo da velha."
-      },
-      "snake": {
-        "title": "Cobrinha",
-        "description": "Cobrinha fofa, comidas em emoji e níveis com crescimento variável."
-      },
-      "checkers": {
-        "title": "Damas",
-        "description": "Clássico jogo de damas (checkers) com lógica de dama, captura e promoção."
-      },
-      "restaum": {
-        "title": "Resta 1",
-        "description": "Resta 1 com lógica de saltos e desfazer."
-      }
-    }
-  },
-  "game_ui": {
-    "common": {
-      "reset": "Reiniciar",
-      "undo": "Desfazer"
-    },
-    "snake": {
-      "levels": {
-        "normal": "🙂 Normal",
-        "hard": "🤖 Difícil"
-      },
-      "labels": {
-        "snake_color": "Cor da cobrinha"
-      },
-      "aria": {
-        "pick_snake_color": "Escolher cor da cobrinha"
-      },
-      "tooltip": {
-        "pick_snake_color": "Escolher cor da cobrinha"
-      },
-      "messages": {
-        "game_over": "Fim de jogo — pressione qualquer tecla de movimento para reiniciar!",
-        "you_win": "Você venceu! 🎉"
-      },
-      "hint": {
-        "controls": "Use as setas ou WASD."
-      },
-      "badges": {
-        "combo_3x": "🌶️⭐ Combo 3x!",
-        "combo_2x": "✨ Combo 2x!"
-      }
-    },
-    "tictactoe": {
-      "levels": {
-        "easy": "😴 Fácil",
-        "medium": "🙂 Médio",
-        "hard": "🤖 Difícil"
-      },
-      "status": {
-        "winner": "🏆 {{player}} venceu!",
-        "turn": "Vez de {{player}}"
-      }
-    },
-    "checkers": {
-      "modes": {
-        "pvp": "PvP",
-        "easy": "Fácil 🤖",
-        "hard": "Difícil 🤖"
-      },
-      "players": {
-        "white": "Brancas",
-        "black": "Pretas"
-      },
-      "status": {
-        "winner": "🏆 {{player}} venceram!",
-        "draw": "Empate (Afogamento)",
-        "turn": "Vez das {{player}}"
-      },
-      "messages": {
-        "must_capture": "Captura obrigatória!"
-      }
-    },
-    "restaum": {
-      "status": {
-        "won": "🏆 Você venceu! Restou apenas 1 peça.",
-        "stuck": "Sem movimentos disponíveis.",
-        "remaining": "Peças restantes: {{count}}"
-      }
-    }
+  "hero": {
+    "badge": "Disponível para CLT, contrato ou projeto",
+    "eyebrow": "Full Stack Developer",
+    "title_1": "Sites e apps que",
+    "title_hl": "vão pro ar.",
+    "bio": "Full stack com 6 anos em produção. Do design à API e ao deploy, tudo em TypeScript: Angular, React, Vue, React Native, Flutter e NestJS.",
+    "cta_sites": "Ver sites",
+    "cta_contact": "Falar comigo",
+    "cv": "Baixar CV",
+    "stat_years": "6+ anos",
+    "stat_years_label": "entregando em produção",
+    "stat_stack": "Web & App",
+    "stat_stack_label": "front, back e apps",
+    "stat_loc": "Brasília",
+    "stat_loc_label": "remoto ou híbrido",
+    "scene_hint": "Clica em mim 👋",
+    "scene_hello": "Olá! Bora tirar seu site do papel?"
   },
   "sites": {
-    "title": "Meus",
-    "highlight": "Sites",
-    "subtitle": "Um acervo de sites completos, cada um com identidade própria. Clique em um e mergulhe — sem sair do portfólio.",
+    "eyebrow": "Portfólio",
+    "title": "Sites que eu",
+    "highlight": "construo",
+    "subtitle": "Cada site tem identidade própria e roda completo aqui dentro. Clique em um para abrir.",
     "open": "Abrir site",
     "soon": "Mais sites a caminho",
+    "soon_body": "Novos projetos entram nesta galeria com frequência.",
     "loading": "Carregando experiência",
     "back": "Voltar ao portfólio",
     "viewing": "Você está vendo",
     "by": "um projeto de Matheus Oliveira",
     "items": {
-      "navalha": "Barbearia country premium — serviços, preços, equipe e agendamento online."
+      "navalha": "Barbearia country premium: serviços, preços, equipe e agendamento online."
     }
+  },
+  "services": {
+    "eyebrow": "Serviços",
+    "prefix": "O que eu",
+    "highlight": "faço",
+    "subtitle": "Do layout ao banco de dados, sem precisar juntar três pessoas diferentes.",
+    "items": {
+      "web": {
+        "title": "Sites & Web Apps",
+        "desc": "Sites institucionais, landing pages, painéis e SaaS. Rápidos, responsivos, com SEO e animações que valorizam a marca."
+      },
+      "mobile": {
+        "title": "Apps Mobile",
+        "desc": "Apps iOS e Android em React Native ou Flutter, consumindo a mesma API do produto web. Uma base, duas lojas."
+      },
+      "api": {
+        "title": "APIs & Segurança",
+        "desc": "Back-end em NestJS com login, OTP/2FA, refresh token, jobs agendados e dados sensíveis tratados com cuidado (LGPD)."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Trajetória",
+    "prefix": "Onde eu",
+    "highlight": "trabalhei",
+    "subtitle": "Plataformas whitelabel, exchange, finanças pessoais e apps que continuam no ar.",
+    "education": "Formação",
+    "jobs": {
+      "codetech": {
+        "role": "Desenvolvedor Full Stack",
+        "company": "Code Tech",
+        "period": "ago/2023 – set/2026",
+        "place": "Remoto",
+        "points": [
+          "Liderei a plataforma whitelabel (templates React/Ionic, Angular e Vue + API NestJS): app de cliente novo em produção em dias.",
+          "API de autenticação reutilizável: login, reset, OTP 2FA e refresh token.",
+          "Microsserviços NestJS para exchange, apps em React Native e Flutter e rotinas agendadas sem intervenção manual."
+        ]
+      },
+      "tgt": {
+        "role": "Desenvolvedor Full Stack",
+        "company": "TGT Digital S/A",
+        "period": "set/2021 – ago/2023",
+        "place": "Brasília, DF · Consultoria",
+        "points": [
+          "Walkr (finanças pessoais): web, mobile e API do zero, com OTP via SendGrid/SMS e arquivos no AWS S3. Ainda na Play Store.",
+          "Wow Lavacar: web, mobile e back-office com filas e métricas em tempo real usados pela operação.",
+          "Entregas em Vue e Flutter para clientes com stack e prazo próprios."
+        ]
+      },
+      "inss": {
+        "role": "Estagiário de TI",
+        "company": "INSS",
+        "period": "jun/2018 – jul/2019",
+        "place": "Brasília, DF",
+        "points": [
+          "Automação em Excel para registro de processos, no lugar da digitação em vários sistemas.",
+          "Suporte de hardware e software na regional de Brasília."
+        ]
+      }
+    },
+    "edu": {
+      "puc": {
+        "title": "Pós-graduação em Cibersegurança e Governança de Dados",
+        "org": "PUC Minas",
+        "period": "2023 – 2024"
+      },
+      "ucb": {
+        "title": "Tecnólogo em Gestão da Tecnologia da Informação",
+        "org": "Universidade Católica de Brasília",
+        "period": "2017 – 2019"
+      },
+      "labenu": {
+        "title": "Bootcamp Full-Stack Web Development",
+        "org": "Labenu",
+        "period": "2021"
+      }
+    }
+  },
+  "stack": {
+    "eyebrow": "Stack",
+    "prefix": "Ferramentas do",
+    "highlight": "dia a dia",
+    "subtitle": "O que uso em produção, não só em tutorial.",
+    "groups": {
+      "front": "Front-end",
+      "mobile": "Mobile",
+      "back": "Back-end & dados",
+      "quality": "Segurança & qualidade"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contato",
+    "role": "Full Stack · Brasília, DF",
+    "title_1": "Vamos construir",
+    "title_hl": "o próximo?",
+    "body": "Tem um site, app ou vaga em mente? Me chama. Respondo rápido.",
+    "whatsapp": "Chamar no WhatsApp",
+    "copy_email": "Copiar e-mail",
+    "copied": "Copiado!",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "cv": "Currículo",
+    "location": "Local",
+    "location_value": "Brasília · remoto ou híbrido"
+  },
+  "footer": {
+    "rights": "© {{year}} Matheus Oliveira",
+    "top": "Topo"
+  },
+  "notfound": {
+    "title": "404",
+    "message": "Ops! Página não encontrada",
+    "back_home": "Voltar para a Home"
   }
 }

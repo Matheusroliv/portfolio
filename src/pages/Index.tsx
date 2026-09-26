@@ -1,27 +1,31 @@
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-// import Experience from "@/components/Experience";
-import Footer from "@/components/Footer";
-import { CursorGlow, Marquee, ScrollProgress } from "@/components/fx";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Skills from "@/components/Skills";
+import Contact from "@/components/Contact"
+import Experience from "@/components/Experience"
+import Footer from "@/components/Footer"
+import { ScrollProgress } from "@/components/fx"
+import Hero from "@/components/Hero"
+import Services from "@/components/Services"
+import SiteGrid from "@/components/SiteGrid"
+import Skills from "@/components/Skills"
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 
-const Index = () => (
-  <main className="min-h-screen">
-    <ScrollProgress />
-    <CursorGlow />
-    <div aria-hidden className="grain" />
-    <Hero />
-    <Marquee items={["Angular", "React", "Vue", "NestJS", "React Native", "Flutter", "TypeScript"]} />
-    <About />
-    {/* <Experience /> */}
-    <Marquee reverse items={["Full Stack", "Clean Code", "UI/UX", "Performance", "Mobile", "APIs"]} />
-    <Skills />
-    <Services />
-    <Contact />
-    <Footer />
-  </main>
-);
+export default function Index() {
+  const { hash } = useLocation()
 
-export default Index;
+  useEffect(() => {
+    if (hash) requestAnimationFrame(() => document.getElementById(hash.slice(1))?.scrollIntoView())
+  }, [hash])
+
+  return (
+    <main className="min-h-screen">
+      <ScrollProgress />
+      <Hero />
+      <SiteGrid />
+      <Services />
+      <Experience />
+      <Skills />
+      <Contact />
+      <Footer />
+    </main>
+  )
+}

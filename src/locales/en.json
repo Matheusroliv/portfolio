@@ -1,306 +1,160 @@
 {
-  "title": "Matheus Oliveira • Portfolio",
-  "hero": {
-    "badge": "Open to CLT or contract",
-    "role": "Full Stack Developer • TypeScript · Angular · React · Vue · React Native · Flutter · NestJS",
-    "bio": "Full stack, 6 years, product in production: UI, API and database. TypeScript on the front (Angular, React, Vue, React Native, Flutter and Ionic) and NestJS/Node on the back, with MongoDB and PostgreSQL.",
-    "frameworks_label": "Full front-end command",
-    "cta_projects": "View projects",
-    "cta_contact": "Chat on WhatsApp",
-    "cta_about": "About me",
-    "greeting": "Hi, I'm",
-    "role_prefix": "Full Stack in",
-    "scroll": "Scroll",
-    "float_ship": "Zero to deploy",
-    "float_ship_sub": "front, back & mobile",
-    "float_years": "6+ years",
-    "float_years_sub": "shipping products"
-  },
-  "experience": {
-    "eyebrow": "Journey",
-    "title_prefix": "Where I",
-    "title": "built",
-    "subtitle": "Code Tech, TGT Digital and INSS. Whitelabel, APIs and apps still in production."
-  },
-  "services": {
-    "eyebrow": "Services",
-    "title_prefix": "How I can",
-    "title": "help",
-    "subtitle": "Custom software, SaaS, web and iOS/Android apps — the same stack I use every day.",
-    "items": {
-      "web": {
-        "title": "Web Development",
-        "description": "SPAs and dashboards in Angular, React or Vue. From UI to API, the product ships and stays in production."
-      },
-      "mobile": {
-        "title": "iOS & Android Apps",
-        "description": "React Native, Flutter or Ionic on the same REST API as the web — one codebase, two stores."
-      },
-      "api": {
-        "title": "APIs & Back-end",
-        "description": "NestJS and Node: login, password reset, OTP/2FA, refresh tokens, jobs and integrations (SendGrid, SMS, S3)."
-      },
-      "saas": {
-        "title": "SaaS & Whitelabel",
-        "description": "Front-end templates + NestJS API: a new client rebrands and goes live in days, not months."
-      },
-      "migration": {
-        "title": "Custom software",
-        "description": "From scratch or production support: exchange, finance, portals and shop-floor operations."
-      },
-      "consulting": {
-        "title": "Onboarding & Review",
-        "description": "Pairing, code review and architecture walkthrough. New hires ship in week one."
-      }
-    }
-  },
-  "footer": {
-    "tagline": "Full stack in TypeScript: UI, API and database. Brasília — on-site, hybrid or remote.",
-    "quick_links": "Quick links",
-    "services": "Services",
-    "rights": "© {{year}} Matheus Oliveira. All rights reserved.",
-    "made_with": "Made with ❤, ☕ and a pinch of TypeScript.",
-    "links": {
-      "about": "About",
-      "skills": "Skills",
-      "projects": "Projects",
-      "contact": "Contact"
-    },
-    "services_list": {
-      "web": "Web & Mobile",
-      "api": "REST APIs / NestJS",
-      "mentoring": "Onboarding & code review"
-    }
-  },
-  "contact": {
-    "eyebrow": "Let's talk",
-    "title_prefix": "Get in",
-    "title_highlight": "Touch",
-    "subtitle": "Open to full stack, back-end or front-end. CLT or contract — remote, hybrid or on-site in Brasília.",
-    "email_label": "Email",
-    "phone_label": "Phone",
-    "whatsapp_label": "WhatsApp",
-    "whatsapp_cta": "Chat on WhatsApp",
-    "location_label": "Location",
-    "location_value": "Brasília, Brazil • On-site · Hybrid · Remote",
-    "cta_title": "Shall we work together?",
-    "cta_title_1": "Let's build something",
-    "cta_title_hl": "amazing?",
-    "cta_body": "CLT or contract. Full stack, back-end or front-end. Latin America — remote, hybrid or on-site.",
-    "copy_email": "Copy e-mail",
-    "copied": "Copied!",
-    "form": {
-      "name_label": "Name",
-      "email_label": "Email",
-      "message_label": "Message",
-      "name_placeholder": "Your full name",
-      "email_placeholder": "you@email.com",
-      "message_placeholder": "Tell me about your project...",
-      "submit": "Send Message"
-    }
-  },
-  "skills": {
-    "eyebrow": "Stack",
-    "title_prefix": "My",
-    "title": "Tech Stack",
-    "subtitle": "Hover around — every technology lights up in its own color.",
-    "categories": {
-      "frontend": "Front-end",
-      "mobile": "Mobile",
-      "backend": "Back-end",
-      "tools": "Tools"
-    }
-  },
-  "projects": {
-    "title_prefix": "My",
-    "title_highlight": "Projects",
-    "subtitle": "Some of the projects I've built, showcasing my skills and passion for programming",
-    "buttons": {
-      "demo": "Demo",
-      "code": "Code"
-    },
-    "view_all": "View All Projects"
-  },
-  "notfound": {
-    "title": "404",
-    "message": "Oops! Page not found",
-    "back_home": "Return to Home"
-  },
+  "title": "Matheus Oliveira • Full Stack Developer",
   "nav": {
     "home": "Home",
-    "about": "About",
-    "experience": "Experience",
-    "skills": "Stack",
+    "sites": "Sites",
     "services": "Services",
+    "experience": "Experience",
+    "stack": "Stack",
     "contact": "Contact",
-    "games": "Games",
-    "sites": "Sites"
+    "cv": "Resume"
   },
-  "about": {
-    "eyebrow": "Who I am",
-    "title_prefix": "About",
-    "highlight": "Me",
-    "subtitle": "6 years. UI, API and database. TypeScript end to end.",
-    "stats": {
-      "experience": "Years of experience",
-      "companies": "Companies",
-      "projects": "Projects shipped"
-    },
-    "bento": {
-      "bio_1": "Full stack, 6 years,",
-      "bio_hl": "product in production: UI, API and database.",
-      "bio_2": "On the front, TypeScript with Angular, React, Vue, React Native, Flutter and Ionic. On the back, NestJS and Node, MongoDB and PostgreSQL.",
-      "clock": "Now in Brasília",
-      "now_title": "Daily drivers"
-    },
-    "social": {
-      "github": "GitHub",
-      "linkedin": "LinkedIn",
-      "email": "Email"
-    },
-    "cards": {
-      "development": {
-        "title": "Whitelabel",
-        "description": "Front-end templates (React, Ionic, Angular, Vue) + NestJS API: a new client app live in days."
-      },
-      "design": {
-        "title": "Reusable auth",
-        "description": "Login, password reset, multi-channel OTP/2FA and refresh tokens — the next project starts with this ready."
-      },
-      "innovation": {
-        "title": "New hires ship",
-        "description": "Pairing, review and architecture walkthrough. First production delivery in week one."
-      }
-    },
-    "experience": {
-      "title": "Experience",
-      "items": {
-        "codetech": {
-          "role": "Fullstack Developer",
-          "company": "Code Tech",
-          "period": "Aug 2023 — Sep 2026 · Remote",
-          "description": "Reusable front-end templates (React/Ionic, Angular and Vue) + NestJS API: a new client rebrands and ships in days. Whitelabel auth (login, reset, OTP 2FA, refresh token). React Native and Flutter apps on the same REST API. NestJS microservices for an exchange (status jobs, verification-code cleanup, JWT 2FA). Production: SOL, Unie Suite, Ruragil, Portal do Bolsista. Onboarding with pair and review — first delivery in week one."
-        },
-        "tgt": {
-          "role": "Fullstack Developer",
-          "company": "TGT Digital S/A",
-          "period": "Sep 2021 — Aug 2023 · Hybrid",
-          "description": "Consultancy: a different product per client, web + mobile + API in production. Walkr (finance): React, React Native and NestJS from scratch — email (SendGrid) and SMS login, files on S3, i18n and theme; the app is still live. Wow Lavacar (Angular, Ionic, NestJS): site, app and an operations dashboard with live queue and metrics."
-        },
-        "inss": {
-          "role": "IT Intern",
-          "company": "INSS",
-          "period": "Jun 2018 — Jul 2019 · On-site",
-          "description": "Daily hardware and software support at the Brasília regional office. Excel automation (macros and formulas) to log admin processes in a shared spreadsheet instead of typing into several systems. Trained colleagues and left a support playbook."
-        }
-      }
-    }
-  },
-  "games": {
-    "title": "My",
-    "highlight": "Games",
-    "subtitle": "A curated collection of small games and experiments where I blend code, design, and fun.",
-    "play_now": "Play now",
-    "cards": {
-      "tictactoe": {
-        "title": "Tic Tac Toe Infinity",
-        "description": "A modern, infinite take on tic-tac-toe."
-      },
-      "snake": {
-        "title": "Snake",
-        "description": "Cute snake, emoji food and levels with variable growth."
-      },
-      "checkers": {
-        "title": "Checkers",
-        "description": "Classic checkers with piece capture and king promotion."
-      },
-      "restaum": {
-        "title": "Peg Solitaire",
-        "description": "Peg Solitaire with jump logic and undo."
-      }
-    }
-  },
-  "game_ui": {
-    "common": {
-      "reset": "Reset",
-      "undo": "Undo"
-    },
-    "snake": {
-      "levels": {
-        "normal": "🙂 Normal",
-        "hard": "🤖 Hard"
-      },
-      "labels": {
-        "snake_color": "Snake color"
-      },
-      "aria": {
-        "pick_snake_color": "Pick snake color"
-      },
-      "tooltip": {
-        "pick_snake_color": "Pick snake color"
-      },
-      "messages": {
-        "game_over": "Game Over — press any move key to restart!",
-        "you_win": "You win! 🎉"
-      },
-      "hint": {
-        "controls": "Use Arrow Keys or WASD."
-      },
-      "badges": {
-        "combo_3x": "🌶️⭐ 3x combo!",
-        "combo_2x": "✨ 2x combo!"
-      }
-    },
-    "tictactoe": {
-      "levels": {
-        "easy": "😴 Easy",
-        "medium": "🙂 Medium",
-        "hard": "🤖 Hard"
-      },
-      "status": {
-        "winner": "🏆 {{player}} won!",
-        "turn": "Turn of {{player}}"
-      }
-    },
-    "checkers": {
-      "modes": {
-        "pvp": "PvP",
-        "easy": "Easy 🤖",
-        "hard": "Hard 🤖"
-      },
-      "players": {
-        "white": "White",
-        "black": "Black"
-      },
-      "status": {
-        "winner": "🏆 {{player}} won!",
-        "draw": "Draw (Stalemate)",
-        "turn": "Turn of {{player}}"
-      },
-      "messages": {
-        "must_capture": "Mandatory capture!"
-      }
-    },
-    "restaum": {
-      "status": {
-        "won": "🏆 You won! Only 1 peg left.",
-        "stuck": "No moves available.",
-        "remaining": "Remaining pegs: {{count}}"
-      }
-    }
+  "hero": {
+    "badge": "Available for full-time, contract or freelance",
+    "eyebrow": "Full Stack Developer",
+    "title_1": "Websites & apps",
+    "title_hl": "that go live.",
+    "bio": "Full stack developer with 6 years in production. From design to API to deploy, all in TypeScript: Angular, React, Vue, React Native, Flutter and NestJS.",
+    "cta_sites": "See sites",
+    "cta_contact": "Let's talk",
+    "cv": "Download resume",
+    "stat_years": "6+ years",
+    "stat_years_label": "shipping to production",
+    "stat_stack": "Web & App",
+    "stat_stack_label": "front, back and apps",
+    "stat_loc": "Brasília",
+    "stat_loc_label": "remote or hybrid",
+    "scene_hint": "Click me 👋",
+    "scene_hello": "Hi! Ready to build your site?"
   },
   "sites": {
-    "title": "My",
-    "highlight": "Sites",
-    "subtitle": "A collection of complete websites, each with its own identity. Click one and dive in — without leaving the portfolio.",
+    "eyebrow": "Portfolio",
+    "title": "Sites I",
+    "highlight": "build",
+    "subtitle": "Each site has its own identity and runs fully inside this page. Click one to open it.",
     "open": "Open site",
     "soon": "More sites coming",
+    "soon_body": "New projects join this gallery regularly.",
     "loading": "Loading experience",
     "back": "Back to portfolio",
     "viewing": "You are viewing",
     "by": "a project by Matheus Oliveira",
     "items": {
-      "navalha": "Premium country barbershop — services, prices, team and online booking."
+      "navalha": "Premium country barbershop: services, prices, team and online booking."
     }
+  },
+  "services": {
+    "eyebrow": "Services",
+    "prefix": "What I",
+    "highlight": "do",
+    "subtitle": "From layout to database, without hiring three different people.",
+    "items": {
+      "web": {
+        "title": "Websites & Web Apps",
+        "desc": "Company sites, landing pages, dashboards and SaaS. Fast, responsive, SEO-ready, with motion that elevates the brand."
+      },
+      "mobile": {
+        "title": "Mobile Apps",
+        "desc": "iOS and Android apps in React Native or Flutter, consuming the same API as the web product. One codebase, two stores."
+      },
+      "api": {
+        "title": "APIs & Security",
+        "desc": "NestJS back-ends with login, OTP/2FA, refresh tokens, scheduled jobs and sensitive data handled with care (LGPD)."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Journey",
+    "prefix": "Where I've",
+    "highlight": "worked",
+    "subtitle": "Whitelabel platforms, crypto exchange, personal finance and apps that are still live.",
+    "education": "Education",
+    "jobs": {
+      "codetech": {
+        "role": "Full Stack Developer",
+        "company": "Code Tech",
+        "period": "Aug 2023 – Sep 2026",
+        "place": "Remote",
+        "points": [
+          "Led the whitelabel platform (React/Ionic, Angular and Vue templates + NestJS API): new client apps live in days.",
+          "Reusable authentication API: login, reset, OTP 2FA and refresh tokens.",
+          "NestJS microservices for an exchange, React Native and Flutter apps, and scheduled jobs with no manual work."
+        ]
+      },
+      "tgt": {
+        "role": "Full Stack Developer",
+        "company": "TGT Digital S/A",
+        "period": "Sep 2021 – Aug 2023",
+        "place": "Brasília, Brazil · Consulting",
+        "points": [
+          "Walkr (personal finance): web, mobile and API from scratch, with OTP via SendGrid/SMS and files on AWS S3. Still on the Play Store.",
+          "Wow Lavacar: web, mobile and back-office with real-time queues and metrics used by operations.",
+          "Vue and Flutter deliveries for clients with their own stack and deadlines."
+        ]
+      },
+      "inss": {
+        "role": "IT Intern",
+        "company": "INSS",
+        "period": "Jun 2018 – Jul 2019",
+        "place": "Brasília, Brazil",
+        "points": [
+          "Excel automation to register administrative processes instead of typing into several systems.",
+          "Hardware and software support for the Brasília office."
+        ]
+      }
+    },
+    "edu": {
+      "puc": {
+        "title": "Postgraduate in Cybersecurity and Data Governance",
+        "org": "PUC Minas",
+        "period": "2023 – 2024"
+      },
+      "ucb": {
+        "title": "Associate Degree in IT Management",
+        "org": "Catholic University of Brasília",
+        "period": "2017 – 2019"
+      },
+      "labenu": {
+        "title": "Full-Stack Web Development Bootcamp",
+        "org": "Labenu",
+        "period": "2021"
+      }
+    }
+  },
+  "stack": {
+    "eyebrow": "Stack",
+    "prefix": "Everyday",
+    "highlight": "tools",
+    "subtitle": "What I use in production, not just in tutorials.",
+    "groups": {
+      "front": "Front-end",
+      "mobile": "Mobile",
+      "back": "Back-end & data",
+      "quality": "Security & quality"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "role": "Full Stack · Brasília, Brazil",
+    "title_1": "Let's build",
+    "title_hl": "the next one?",
+    "body": "Have a website, app or role in mind? Reach out. I reply fast.",
+    "whatsapp": "Message on WhatsApp",
+    "copy_email": "Copy email",
+    "copied": "Copied!",
+    "email": "Email",
+    "phone": "Phone",
+    "cv": "Resume",
+    "location": "Location",
+    "location_value": "Brasília · remote or hybrid"
+  },
+  "footer": {
+    "rights": "© {{year}} Matheus Oliveira",
+    "top": "Top"
+  },
+  "notfound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "back_home": "Back to Home"
   }
 }
