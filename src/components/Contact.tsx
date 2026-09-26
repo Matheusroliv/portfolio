@@ -32,11 +32,11 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="container relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-border bg-card/70 p-8 backdrop-blur md:p-14"
+        className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-border bg-card/70 p-6 backdrop-blur sm:p-8 md:p-14"
       >
         <div aria-hidden className="glow-blob -right-24 -top-24 h-80 w-80 bg-primary/25" />
         <div className="relative grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div>
+          <div className="min-w-0">
             <div className="mb-8 flex items-center gap-4">
               <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/40 ring-offset-4 ring-offset-card">
                 <img src="/matheus.png" alt="Matheus Oliveira" loading="lazy" className="h-full w-full origin-[50%_28%] scale-[1.7] object-cover" />
@@ -68,13 +68,13 @@ export default function Contact() {
             </div>
           </div>
 
-          <ul className="divide-y divide-border self-center">
+          <ul className="min-w-0 divide-y divide-border self-center">
             {links.map(({ Icon, label, value, href }) => {
               const inner = (
                 <>
                   <Icon className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
-                  <span className="w-24 shrink-0 text-sm text-muted-foreground">{label}</span>
-                  <span className="truncate text-sm font-medium">{value}</span>
+                  <span className="w-20 shrink-0 text-sm text-muted-foreground sm:w-24">{label}</span>
+                  <span className="min-w-0 text-sm font-medium [overflow-wrap:anywhere]">{value}</span>
                 </>
               )
               return (

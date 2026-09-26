@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
     <footer className="px-6 pb-10">
-      <div className="container mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground md:flex-row">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground md:flex-row">
         <p>{t("footer.rights", { year: new Date().getFullYear() })}</p>
         <div className="flex items-center gap-2">
           {socials.map(({ Icon, href, label }) => (

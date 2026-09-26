@@ -21,7 +21,7 @@ export default function SiteGrid() {
 
   return (
     <section id="sites" className="scroll-mt-24 px-6 py-28">
-      <div className="container mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader eyebrow={t("sites.eyebrow")} prefix={t("sites.title")} highlight={t("sites.highlight")} subtitle={t("sites.subtitle")} />
 
         <div className="flex flex-wrap justify-center gap-6 [&>*]:w-full sm:[&>*]:w-[calc(50%-0.75rem)] lg:[&>*]:w-[calc(33.333%-1rem)]">

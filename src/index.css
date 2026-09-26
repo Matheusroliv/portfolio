@@ -67,17 +67,20 @@
   }
   html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: clip;
   }
   body {
     @apply bg-background text-foreground font-inter antialiased;
     position: relative;
-    overflow-x: hidden;
+    max-width: 100%;
+    overflow-x: clip;
   }
   /* Aurora backdrop fixed behind everything */
   body::before {
     content: "";
     position: fixed;
-    inset: -20% -10% auto -10%;
+    inset: -20% 0 auto 0;
     height: 120vh;
     z-index: -2;
     background:

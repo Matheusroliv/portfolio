@@ -49,7 +49,7 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3">
       <nav
-        className={`container mx-auto max-w-7xl rounded-2xl transition-all duration-300 ${
+        className={`mx-auto max-w-7xl rounded-2xl transition-all duration-300 ${
           scrolled || open ? "glass-card border-border/60 py-2.5 shadow-lg" : "border-transparent bg-transparent py-3.5"
         }`}
       >

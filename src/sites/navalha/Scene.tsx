@@ -93,6 +93,7 @@ export default function RazorScene({ className }: { className?: string }) {
     }
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
     renderer.toneMapping = THREE.ACESFilmicToneMapping
+    Object.assign(renderer.domElement.style, { position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", maxWidth: "100%" })
     el.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
@@ -130,7 +131,7 @@ export default function RazorScene({ className }: { className?: string }) {
     const resize = () => {
       const { clientWidth: w, clientHeight: h } = el
       if (!w || !h) return
-      renderer.setSize(w, h)
+      renderer.setSize(w, h, false)
       camera.aspect = w / h
       camera.updateProjectionMatrix()
       const wide = w / h > 1.1
@@ -192,5 +193,5 @@ export default function RazorScene({ className }: { className?: string }) {
     }
   }, [])
 
-  return <div ref={ref} aria-hidden className={className} />
+  return <div ref={ref} aria-hidden className={`overflow-hidden ${className ?? ""}`} />
 }

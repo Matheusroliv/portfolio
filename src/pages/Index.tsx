@@ -17,7 +17,7 @@ export default function Index() {
   }, [hash])
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen max-w-[100vw] overflow-x-clip">
       <ScrollProgress />
       <Hero />
       <SiteGrid />

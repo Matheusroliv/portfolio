@@ -134,6 +134,7 @@ export default function DevScene({ hint, hello }: { hint: string; hello: string 
     renderer.toneMapping = THREE.ACESFilmicToneMapping
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
+    Object.assign(renderer.domElement.style, { position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", maxWidth: "100%" })
     el.appendChild(renderer.domElement)
 
     const accent = accentFromCss()
@@ -413,15 +414,17 @@ export default function DevScene({ hint, hello }: { hint: string; hello: string 
     const resize = () => {
       const { clientWidth: w, clientHeight: h } = el
       if (!w || !h) return
-      renderer.setSize(w, h)
+      renderer.setSize(w, h, false)
       camera.aspect = w / h
       const d = 3.9 * Math.max(1, 1.15 / camera.aspect)
       camera.position.copy(target).add(new THREE.Vector3(1, 0.3, 0.5).normalize().multiplyScalar(d))
       camera.lookAt(target)
       camera.updateProjectionMatrix()
       const right = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0)
-      holo.position.copy(new THREE.Vector3(0, 1.62, -0.35)).addScaledVector(right, 0.42)
-      holo.scale.setScalar(0.62)
+      const side = w < 640 ? 0.08 : 0.42
+      holo.position.copy(new THREE.Vector3(0, w < 640 ? 1.85 : 1.62, -0.35)).addScaledVector(right, side)
+      holo.scale.setScalar(w < 640 ? 0.38 : 0.62)
+      holo.visible = w >= 420
       holo.userData.y = holo.position.y
       holo.lookAt(camera.position)
     }
@@ -537,9 +540,9 @@ export default function DevScene({ hint, hello }: { hint: string; hello: string 
   }, [])
 
   return (
-    <div ref={ref} className="relative h-full w-full [mask-image:linear-gradient(to_bottom,#000_85%,transparent)]" aria-label={hint} role="img">
+    <div ref={ref} className="relative h-full w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_bottom,#000_85%,transparent)]" aria-label={hint} role="img">
       <div
-        className={`pointer-events-none absolute left-1/2 top-[8%] -translate-x-1/2 whitespace-nowrap rounded-2xl rounded-bl-sm border border-border bg-card/90 px-4 py-2 text-sm font-medium shadow-xl backdrop-blur transition-all duration-300 ${
+        className={`pointer-events-none absolute left-1/2 top-[8%] w-max max-w-[min(16rem,calc(100%-1.5rem))] -translate-x-1/2 text-center rounded-2xl rounded-bl-sm border border-border bg-card/90 px-3 py-2 text-sm font-medium shadow-xl backdrop-blur transition-all duration-300 ${
           waving || hovered ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
         }`}
       >

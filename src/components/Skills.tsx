@@ -31,7 +31,7 @@ export default function Skills() {
 
   return (
     <section id="stack" className="scroll-mt-24 px-6 py-28">
-      <div className="container mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader eyebrow={t("stack.eyebrow")} prefix={t("stack.prefix")} highlight={t("stack.highlight")} subtitle={t("stack.subtitle")} />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {Object.entries(groups).map(([g, list], i) => (

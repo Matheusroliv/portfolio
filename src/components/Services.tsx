@@ -14,7 +14,7 @@ export default function Services() {
 
   return (
     <section id="services" className="scroll-mt-24 px-6 py-28">
-      <div className="container mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader eyebrow={t("services.eyebrow")} prefix={t("services.prefix")} highlight={t("services.highlight")} subtitle={t("services.subtitle")} />
         <div className="grid gap-6 md:grid-cols-3">
           {items.map(({ key, Icon, tags }, i) => (

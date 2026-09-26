@@ -11,7 +11,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="scroll-mt-24 px-6 py-28">
-      <div className="container mx-auto max-w-5xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeader eyebrow={t("experience.eyebrow")} prefix={t("experience.prefix")} highlight={t("experience.highlight")} subtitle={t("experience.subtitle")} />
 
         <ol className="relative space-y-12 border-l border-border pl-8 md:ml-40">
